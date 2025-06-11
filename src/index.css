@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,19 +38,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -98,6 +92,46 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
   }
+
+  /* Glass morphism utilities */
+  .glass {
+    @apply bg-glass-light backdrop-blur-md border border-white/20;
+  }
+
+  .glass-strong {
+    @apply bg-glass-medium backdrop-blur-lg border border-white/30;
+  }
+
+  /* Floating animation for hero elements */
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Aurora background animation */
+  .aurora-bg {
+    background: radial-gradient(circle at 20% 80%, rgba(255, 95, 150, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(181, 101, 217, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(122, 92, 250, 0.3) 0%, transparent 50%);
+    animation: aurora-flow 8s ease-in-out infinite;
+  }
+}
+
+/* Custom scrollbar for modern look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(122, 92, 250, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(122, 92, 250, 0.7);
 }

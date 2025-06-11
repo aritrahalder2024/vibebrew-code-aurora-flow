@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'space-grotesk': ['Space Grotesk', 'sans-serif'],
+				'inter': ['Inter', 'sans-serif'],
+				'jetbrains-mono': ['JetBrains Mono', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -52,6 +58,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Aurora gradient colors
+				aurora: {
+					pink: '#FF5F96',
+					purple: '#B565D9',
+					violet: '#7A5CFA',
+				},
+				// Glass colors
+				glass: {
+					light: 'rgba(255, 255, 255, 0.1)',
+					medium: 'rgba(255, 255, 255, 0.2)',
+					dark: 'rgba(0, 0, 0, 0.1)',
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -63,10 +81,26 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			backgroundImage: {
+				'aurora-gradient': 'linear-gradient(135deg, #FF5F96 0%, #B565D9 50%, #7A5CFA 100%)',
+				'aurora-mesh': 'radial-gradient(circle at 20% 80%, #FF5F96 0%, transparent 50%), radial-gradient(circle at 80% 20%, #B565D9 0%, transparent 50%), radial-gradient(circle at 40% 40%, #7A5CFA 0%, transparent 50%)',
+				'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
+			},
+			backdropBlur: {
+				xs: '2px',
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+				'glass': '20px',
+			},
+			boxShadow: {
+				'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+				'glass-inset': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
+				'glow': '0 0 20px rgba(122, 92, 250, 0.3)',
+				'glow-pink': '0 0 20px rgba(255, 95, 150, 0.3)',
+				'tile': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -84,11 +118,26 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'aurora-flow': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(100%)' },
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-20px)' },
+				},
+				'glow-pulse': {
+					'0%, 100%': { boxShadow: '0 0 20px rgba(122, 92, 250, 0.3)' },
+					'50%': { boxShadow: '0 0 30px rgba(122, 92, 250, 0.5)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'aurora-flow': 'aurora-flow 8s ease-in-out infinite',
+				'float': 'float 6s ease-in-out infinite',
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
 			}
 		}
 	},
