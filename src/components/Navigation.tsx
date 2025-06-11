@@ -11,7 +11,7 @@ export const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-aurora-gradient rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-aurora-gradient rounded-lg flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
               <span className="text-white font-bold text-lg">V</span>
             </div>
             <span className="text-white font-space-grotesk font-bold text-xl">Vibebrew</span>
@@ -19,30 +19,33 @@ export const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-white/80 hover:text-white transition-colors font-medium">
+            <a href="#home" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
               Home
             </a>
-            <a href="#community" className="text-white/80 hover:text-white transition-colors font-medium">
+            <a href="#community" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
               Community
             </a>
-            <a href="#blog" className="text-white/80 hover:text-white transition-colors font-medium">
+            <a href="#events" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
+              Events
+            </a>
+            <a href="#blog" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
               Blog
             </a>
-            <a href="#events" className="text-white/80 hover:text-white transition-colors font-medium">
-              Events
+            <a href="#faq" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
+              FAQ
             </a>
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-aurora-gradient hover:scale-105 transition-transform duration-300 font-medium px-6 py-2 rounded-full shadow-glow">
+            <Button className="bg-aurora-gradient hover:scale-105 transition-transform duration-300 font-medium px-6 py-2 rounded-full shadow-glow hover:shadow-glow-pink">
               Join Waitlist
             </Button>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 hover:scale-110 transition-transform"
             onClick={() => setIsOpen(!isOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,11 +64,14 @@ export const Navigation = () => {
               <a href="#community" className="text-white/80 hover:text-white transition-colors font-medium">
                 Community
               </a>
+              <a href="#events" className="text-white/80 hover:text-white transition-colors font-medium">
+                Events
+              </a>
               <a href="#blog" className="text-white/80 hover:text-white transition-colors font-medium">
                 Blog
               </a>
-              <a href="#events" className="text-white/80 hover:text-white transition-colors font-medium">
-                Events
+              <a href="#faq" className="text-white/80 hover:text-white transition-colors font-medium">
+                FAQ
               </a>
               <Button className="bg-aurora-gradient hover:scale-105 transition-transform duration-300 font-medium px-6 py-2 rounded-full shadow-glow w-fit">
                 Join Waitlist
