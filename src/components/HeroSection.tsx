@@ -7,20 +7,20 @@ export const HeroSection = () => {
   const [typedText, setTypedText] = useState("");
   
   const codeSnippets = [
-    `const community = {
-  name: 'Vibebrew',
-  vibe: 'creative',
-  members: '∞'
+    `const vibecoder = {
+  mindset: 'solopreneur',
+  tools: ['AI', 'automation'],
+  vibe: 'unstoppable'
 };`,
-    `function brewCode() {
-  return creativity
-    .mix(collaboration)
-    .add(innovation);
+    `function buildWithAI() {
+  return passion
+    .mix(vibeTools)
+    .scale(community);
 }`,
-    `class Developer {
+    `class Solopreneur {
   constructor() {
-    this.passion = true;
-    this.creativity = 100;
+    this.aiPowered = true;
+    this.vibeLevel = 100;
   }
 }`
   ];
@@ -77,15 +77,15 @@ export const HeroSection = () => {
         {/* Main content */}
         <div className="relative z-10 max-w-4xl mx-auto">
           <h1 className="text-6xl md:text-8xl font-space-grotesk font-bold text-white mb-6 leading-tight">
-            Where Code
+            Where AI
             <br />
             <span className="bg-aurora-gradient bg-clip-text text-transparent animate-glow-pulse">
-              Meets Culture
+              Meets Vibe
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Vibebrew is a coding community built for creators — designers, developers, hackers and dreamers.
+            Join vibecoders building the future with AI tools, sharing solopreneur journeys, and creating magic together.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -93,7 +93,7 @@ export const HeroSection = () => {
               size="lg" 
               className="glass-strong hover:scale-105 transition-all duration-300 font-medium px-8 py-4 rounded-full text-lg shadow-glow animate-glow-pulse group"
             >
-              <span className="group-hover:animate-pulse">Join the Brew</span>
+              <span className="group-hover:animate-pulse">Join the Vibe</span>
             </Button>
             <Button 
               variant="outline" 
@@ -102,6 +102,14 @@ export const HeroSection = () => {
             >
               Explore Community
             </Button>
+          </div>
+
+          {/* Early bird offer */}
+          <div className="mt-8 glass rounded-2xl p-4 max-w-md mx-auto border border-aurora-pink/30">
+            <div className="text-aurora-pink font-medium text-sm mb-1">🚀 Early Access</div>
+            <div className="text-white/90 text-sm">
+              First 100 signups get <span className="text-aurora-pink font-bold">lifetime free access</span>
+            </div>
           </div>
         </div>
 

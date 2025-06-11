@@ -26,10 +26,7 @@ export const Navigation = () => {
               Community
             </a>
             <a href="#events" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
-              Events
-            </a>
-            <a href="#blog" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
-              Blog
+              Discussions
             </a>
             <a href="#faq" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
               FAQ
@@ -65,10 +62,7 @@ export const Navigation = () => {
                 Community
               </a>
               <a href="#events" className="text-white/80 hover:text-white transition-colors font-medium">
-                Events
-              </a>
-              <a href="#blog" className="text-white/80 hover:text-white transition-colors font-medium">
-                Blog
+                Discussions
               </a>
               <a href="#faq" className="text-white/80 hover:text-white transition-colors font-medium">
                 FAQ

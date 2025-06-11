@@ -1,29 +1,32 @@
 
 export const EventsSection = () => {
-  const events = [
+  const userEvents = [
     {
       id: 1,
-      title: "Creative Coding Workshop",
+      title: "AI Tools Showcase & Demo",
+      organizer: "Sarah Chen",
       date: "2024-06-15",
       time: "2:00 PM UTC",
-      type: "Workshop",
-      status: "upcoming"
+      type: "Community Led",
+      status: "promoted"
     },
     {
       id: 2,
-      title: "AI & Art Hackathon",
+      title: "Solopreneur Success Stories",
+      organizer: "Marcus Rivera",
       date: "2024-06-22",
       time: "10:00 AM UTC",
-      type: "Hackathon",
+      type: "Panel Discussion",
       status: "featured"
     },
     {
       id: 3,
-      title: "Community Coffee Chat",
+      title: "Building with Claude & Cursor",
+      organizer: "Dev Thompson",
       date: "2024-06-29",
       time: "4:00 PM UTC",
-      type: "Social",
-      status: "upcoming"
+      type: "Workshop",
+      status: "promoted"
     }
   ];
 
@@ -40,15 +43,15 @@ export const EventsSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-4">
-            Upcoming <span className="text-aurora-violet">Events</span>
+            Community <span className="text-aurora-violet">Events</span>
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Join our community events and level up your creative coding journey
+            Events organized and promoted by our vibecoder community members
           </p>
         </div>
 
         <div className="space-y-6 max-w-4xl mx-auto">
-          {events.map((event) => (
+          {userEvents.map((event) => (
             <div
               key={event.id}
               className={`glass-strong rounded-glass p-6 shadow-tile hover:scale-[1.02] transition-all duration-300 border-l-4 ${
@@ -78,7 +81,7 @@ export const EventsSection = () => {
                     {event.title}
                   </h3>
                   
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-white/70">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-white/70 mb-1">
                     <span>{new Date(event.date).toLocaleDateString('en-US', { 
                       weekday: 'long', 
                       year: 'numeric', 
@@ -87,6 +90,10 @@ export const EventsSection = () => {
                     })}</span>
                     <span className="hidden sm:inline">•</span>
                     <span>{event.time}</span>
+                  </div>
+                  
+                  <div className="text-sm text-aurora-pink">
+                    Organized by {event.organizer}
                   </div>
                 </div>
 
@@ -105,6 +112,21 @@ export const EventsSection = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Promote your event CTA */}
+        <div className="mt-12 text-center">
+          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-space-grotesk font-bold text-white mb-4">
+              Want to promote your event?
+            </h3>
+            <p className="text-white/70 mb-6">
+              Share your workshops, talks, or meetups with the vibecoder community
+            </p>
+            <button className="px-8 py-3 border border-aurora-violet text-aurora-violet rounded-full hover:bg-aurora-violet/10 transition-all duration-300">
+              Promote Event
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -3,45 +3,51 @@ export const CommunityShowcase = () => {
   const projects = [
     {
       id: 1,
-      title: "Neural Art Generator",
+      title: "AI-Powered SaaS Builder",
       creator: "Sarah Chen",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop",
-      avatar: "SC"
+      avatar: "SC",
+      type: "Solopreneur Journey"
     },
     {
       id: 2,
-      title: "Blockchain Visualizer",
+      title: "ChatGPT Code Assistant",
       creator: "Marcus Rivera", 
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop",
-      avatar: "MR"
+      avatar: "MR",
+      type: "AI Tool Discovery"
     },
     {
       id: 3,
-      title: "Climate Data Dashboard",
+      title: "No-Code AI Analytics",
       creator: "Aisha Patel",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop",
-      avatar: "AP"
+      avatar: "AP",
+      type: "Idea Validation"
     },
     {
       id: 4,
-      title: "AR Poetry Experience",
+      title: "Voice-to-Code App",
       creator: "Dev Thompson",
       image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=400&h=300&fit=crop",
-      avatar: "DT"
+      avatar: "DT",
+      type: "AI Experiment"
     },
     {
       id: 5,
-      title: "Collaborative Code Editor",
+      title: "Automated Content Engine",
       creator: "Luna Kim",
       image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&h=300&fit=crop",
-      avatar: "LK"
+      avatar: "LK",
+      type: "Solo Success"
     },
     {
       id: 6,
-      title: "Music Generation AI",
+      title: "AI Music Generator",
       creator: "Zara Johnson",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop",
-      avatar: "ZJ"
+      avatar: "ZJ",
+      type: "Creative AI"
     }
   ];
 
@@ -50,10 +56,10 @@ export const CommunityShowcase = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-4">
-            Community <span className="text-aurora-purple">Showcase</span>
+            Vibecoder <span className="text-aurora-purple">Showcase</span>
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Discover incredible projects built by our creative coding community
+            See what our community is building with AI tools and sharing their solopreneur journeys
           </p>
         </div>
 
@@ -70,6 +76,11 @@ export const CommunityShowcase = () => {
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                <div className="absolute top-3 left-3">
+                  <span className="px-2 py-1 bg-aurora-gradient rounded-full text-xs font-medium text-white">
+                    {project.type}
+                  </span>
+                </div>
               </div>
               
               <div className="p-6">

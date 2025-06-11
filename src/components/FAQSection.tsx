@@ -5,33 +5,33 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Code, Users, Zap, Coffee } from "lucide-react";
+import { MessageSquare, Zap, Users, Gift } from "lucide-react";
 
 export const FAQSection = () => {
   const faqs = [
     {
       id: "item-1",
-      icon: <Code className="w-5 h-5" />,
-      question: "What makes Vibebrew different from other coding communities?",
-      answer: "Vibebrew focuses on the intersection of code and culture. We're not just about technical skills - we celebrate creativity, collaboration, and the human side of development. Our community thrives on experimental projects, artistic coding, and pushing boundaries."
+      icon: <MessageSquare className="w-5 h-5" />,
+      question: "What exactly is vibecoding and who is this community for?",
+      answer: "Vibecoding is about leveraging AI tools to build, create, and scale efficiently as a solopreneur. Our community is for developers, creators, and builders who use AI coding assistants like ChatGPT, Claude, Cursor, and GitHub Copilot to accelerate their projects and share their entrepreneurial journey."
     },
     {
       id: "item-2", 
-      icon: <Users className="w-5 h-5" />,
-      question: "Who can join the Vibebrew community?",
-      answer: "Everyone! Whether you're a seasoned developer, a designer learning to code, a student exploring tech, or someone curious about creative coding - there's a place for you. We welcome all skill levels and backgrounds."
+      icon: <Zap className="w-5 h-5" />,
+      question: "How does the Reddit-style discussion format work?",
+      answer: "Our platform features threaded discussions where you can share AI tool discoveries, ask for feedback on ideas, showcase your solopreneur progress, and get help with AI-assisted coding. Upvote the best content, engage in meaningful conversations, and build your reputation in the vibecoder community."
     },
     {
       id: "item-3",
-      icon: <Zap className="w-5 h-5" />,
-      question: "What kind of events and activities do you organize?",
-      answer: "We host coding workshops, creative hackathons, tech talks with industry leaders, collaborative art projects, and casual coffee chats. Our events blend technical learning with creative expression and community building."
+      icon: <Users className="w-5 h-5" />,
+      question: "Can I promote my own events or workshops in the community?",
+      answer: "Absolutely! While we don't host official events, community members are encouraged to promote their workshops, talks, meetups, or online sessions. Share your expertise about AI tools, solopreneur strategies, or coding techniques with fellow vibecoders."
     },
     {
       id: "item-4",
-      icon: <Coffee className="w-5 h-5" />,
-      question: "How do I get started and stay engaged?",
-      answer: "Join our waitlist to get early access! Once you're in, introduce yourself, share your projects, participate in discussions, and attend events. The best way to engage is to be curious, supportive, and ready to learn from others."
+      icon: <Gift className="w-5 h-5" />,
+      question: "What's this about lifetime free access for the first 100 users?",
+      answer: "The first 100 people to sign up get lifetime free access to all premium features including advanced AI tool recommendations, exclusive solopreneur resources, priority support, and access to our inner circle of successful vibecoders. Join early to secure your spot!"
     }
   ];
 
@@ -49,7 +49,7 @@ export const FAQSection = () => {
             <span className="bg-aurora-gradient bg-clip-text text-transparent">Questions</span>
           </h2>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Everything you need to know about joining our creative coding community
+            Everything you need to know about joining the vibecoder community
           </p>
         </div>
 
