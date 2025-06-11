@@ -52,8 +52,15 @@ export const CommunityShowcase = () => {
   ];
 
   return (
-    <section id="community" className="py-20 px-6">
-      <div className="container mx-auto">
+    <section id="community" className="py-20 px-6 relative overflow-hidden">
+      {/* Enhanced background effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-aurora-pink/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-aurora-violet/20 rounded-full blur-3xl animate-pulse animation-delay-300"></div>
+        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-aurora-purple/20 rounded-full blur-2xl animate-pulse animation-delay-600"></div>
+      </div>
+
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-4">
             Vibecoder <span className="text-aurora-purple">Showcase</span>
@@ -63,40 +70,177 @@ export const CommunityShowcase = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow transition-all duration-300 cursor-pointer group"
-            >
-              <div className="relative overflow-hidden">
+        {/* Non-linear masonry-style grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-7xl mx-auto">
+          {/* Project 1 - Large */}
+          <div className="md:col-span-6 md:row-span-2">
+            <div className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow hover:rotate-1 transition-all duration-500 cursor-pointer group h-full">
+              <div className="relative overflow-hidden h-64 md:h-80">
                 <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                  src={projects[0].image}
+                  alt={projects[0].title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                <div className="absolute top-3 left-3">
-                  <span className="px-2 py-1 bg-aurora-gradient rounded-full text-xs font-medium text-white">
-                    {project.type}
+                <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 bg-aurora-gradient rounded-full text-xs font-medium text-white">
+                    {projects[0].type}
                   </span>
                 </div>
               </div>
-              
               <div className="p-6">
-                <h3 className="text-xl font-space-grotesk font-bold text-white mb-2">
-                  {project.title}
+                <h3 className="text-xl font-space-grotesk font-bold text-white mb-3">
+                  {projects[0].title}
                 </h3>
-                
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-aurora-gradient rounded-full flex items-center justify-center text-white text-sm font-bold">
-                    {project.avatar}
+                    {projects[0].avatar}
                   </div>
-                  <span className="text-white/70 text-sm">by {project.creator}</span>
+                  <span className="text-white/70 text-sm">by {projects[0].creator}</span>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Project 2 - Medium */}
+          <div className="md:col-span-6">
+            <div className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow hover:-rotate-1 transition-all duration-500 cursor-pointer group">
+              <div className="relative overflow-hidden h-48">
+                <img
+                  src={projects[1].image}
+                  alt={projects[1].title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                <div className="absolute top-3 left-3">
+                  <span className="px-2 py-1 bg-aurora-gradient rounded-full text-xs font-medium text-white">
+                    {projects[1].type}
+                  </span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-space-grotesk font-bold text-white mb-2">
+                  {projects[1].title}
+                </h3>
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 bg-aurora-gradient rounded-full flex items-center justify-center text-white text-xs font-bold">
+                    {projects[1].avatar}
+                  </div>
+                  <span className="text-white/70 text-xs">by {projects[1].creator}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Project 3 - Small */}
+          <div className="md:col-span-3">
+            <div className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow hover:rotate-2 transition-all duration-500 cursor-pointer group">
+              <div className="relative overflow-hidden h-32">
+                <img
+                  src={projects[2].image}
+                  alt={projects[2].title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+              </div>
+              <div className="p-3">
+                <h3 className="text-sm font-space-grotesk font-bold text-white mb-1">
+                  {projects[2].title}
+                </h3>
+                <div className="flex items-center space-x-1">
+                  <div className="w-5 h-5 bg-aurora-gradient rounded-full flex items-center justify-center text-white text-xs font-bold">
+                    {projects[2].avatar}
+                  </div>
+                  <span className="text-white/70 text-xs">{projects[2].creator}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Project 4 - Small */}
+          <div className="md:col-span-3">
+            <div className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow hover:-rotate-2 transition-all duration-500 cursor-pointer group">
+              <div className="relative overflow-hidden h-32">
+                <img
+                  src={projects[3].image}
+                  alt={projects[3].title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+              </div>
+              <div className="p-3">
+                <h3 className="text-sm font-space-grotesk font-bold text-white mb-1">
+                  {projects[3].title}
+                </h3>
+                <div className="flex items-center space-x-1">
+                  <div className="w-5 h-5 bg-aurora-gradient rounded-full flex items-center justify-center text-white text-xs font-bold">
+                    {projects[3].avatar}
+                  </div>
+                  <span className="text-white/70 text-xs">{projects[3].creator}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Project 5 - Medium */}
+          <div className="md:col-span-4">
+            <div className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow hover:rotate-1 transition-all duration-500 cursor-pointer group">
+              <div className="relative overflow-hidden h-40">
+                <img
+                  src={projects[4].image}
+                  alt={projects[4].title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                <div className="absolute top-3 left-3">
+                  <span className="px-2 py-1 bg-aurora-gradient rounded-full text-xs font-medium text-white">
+                    {projects[4].type}
+                  </span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-space-grotesk font-bold text-white mb-2">
+                  {projects[4].title}
+                </h3>
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 bg-aurora-gradient rounded-full flex items-center justify-center text-white text-xs font-bold">
+                    {projects[4].avatar}
+                  </div>
+                  <span className="text-white/70 text-xs">by {projects[4].creator}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Project 6 - Medium */}
+          <div className="md:col-span-8">
+            <div className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow hover:-rotate-1 transition-all duration-500 cursor-pointer group">
+              <div className="relative overflow-hidden h-40">
+                <img
+                  src={projects[5].image}
+                  alt={projects[5].title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                <div className="absolute top-3 left-3">
+                  <span className="px-2 py-1 bg-aurora-gradient rounded-full text-xs font-medium text-white">
+                    {projects[5].type}
+                  </span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-space-grotesk font-bold text-white mb-2">
+                  {projects[5].title}
+                </h3>
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 bg-aurora-gradient rounded-full flex items-center justify-center text-white text-xs font-bold">
+                    {projects[5].avatar}
+                  </div>
+                  <span className="text-white/70 text-xs">by {projects[5].creator}</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
