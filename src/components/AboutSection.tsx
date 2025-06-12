@@ -1,80 +1,63 @@
 
 export const AboutSection = () => {
+  const stats = [
+    { number: "500+", label: "Vibecoders" },
+    { number: "50+", label: "AI Tools Discussed" },
+    { number: "100+", label: "Success Stories" },
+    { number: "24/7", label: "Community Support" }
+  ];
+
   return (
-    <section id="about" className="py-20 px-6">
-      <div className="container mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left: Large text blocks */}
-          <div className="space-y-8">
-            <h2 className="text-5xl md:text-6xl font-space-grotesk font-bold text-white leading-tight">
-              The Ultimate
-              <br />
-              <span className="text-aurora-pink">Vibecoder</span>
-              <br />
-              Community
-            </h2>
-            
-            <div className="space-y-6 text-lg text-white/80 leading-relaxed">
-              <p>
-                We're building the go-to community for vibecoders who leverage AI tools to create, build, and scale as solopreneurs.
-              </p>
-              
-              <p>
-                Share your journey, discover cutting-edge AI coding tools, get feedback on your ideas, and connect with like-minded builders who vibe with the future.
-              </p>
-              
-              <p className="text-aurora-violet font-medium">
-                Reddit-style discussions. AI tool discoveries. Solopreneur stories. Pure vibe.
-              </p>
+    <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
+      <div className="container mx-auto relative z-10 max-w-6xl">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-4 sm:mb-6">
+            Welcome to the <span className="text-aurora-purple">Vibecoder</span> Revolution
+          </h2>
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed px-4">
+            The ultimate community for AI-powered solopreneurs. Share your journey, discover cutting-edge tools, 
+            validate ideas, and connect with fellow builders who are changing the world one line of code at a time.
+          </p>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-12 sm:mb-16">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center glass-strong rounded-2xl p-4 sm:p-6 hover:scale-105 transition-transform duration-300">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-space-grotesk font-bold text-aurora-pink mb-2">
+                {stat.number}
+              </div>
+              <div className="text-sm sm:text-base text-white/80 font-medium">
+                {stat.label}
+              </div>
             </div>
+          ))}
+        </div>
+
+        {/* Feature Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:scale-105 transition-transform duration-300 group">
+            <div className="text-3xl sm:text-4xl mb-4 group-hover:animate-bounce">🤖</div>
+            <h3 className="text-xl sm:text-2xl font-space-grotesk font-bold text-white mb-3 sm:mb-4">AI Tool Discovery</h3>
+            <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+              Discover, review, and share the latest AI tools that are actually worth your time and money.
+            </p>
           </div>
 
-          {/* Right: Stats panel */}
-          <div className="glass-strong rounded-glass p-8 shadow-glass">
-            <h3 className="text-2xl font-space-grotesk font-bold text-white mb-8">Community Vibes</h3>
-            
-            <div className="grid grid-cols-2 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold bg-aurora-gradient bg-clip-text text-transparent mb-2">
-                  500+
-                </div>
-                <div className="text-white/60 text-sm uppercase tracking-wide">Vibecoders</div>
-              </div>
-              
-              <div className="text-center">
-                <div className="text-3xl font-bold bg-aurora-gradient bg-clip-text text-transparent mb-2">
-                  200+
-                </div>
-                <div className="text-white/60 text-sm uppercase tracking-wide">AI Tools Shared</div>
-              </div>
-              
-              <div className="text-center">
-                <div className="text-3xl font-bold bg-aurora-gradient bg-clip-text text-transparent mb-2">
-                  150+
-                </div>
-                <div className="text-white/60 text-sm uppercase tracking-wide">Solo Journeys</div>
-              </div>
-              
-              <div className="text-center">
-                <div className="text-3xl font-bold bg-aurora-gradient bg-clip-text text-transparent mb-2">
-                  24/7
-                </div>
-                <div className="text-white/60 text-sm uppercase tracking-wide">Vibe Exchange</div>
-              </div>
-            </div>
-            
-            <div className="mt-8 pt-6 border-t border-white/10">
-              <div className="text-center">
-                <div className="text-aurora-pink font-medium mb-2">Hot AI Tools</div>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {['ChatGPT', 'Claude', 'GitHub Copilot', 'Cursor', 'V0'].map((tool) => (
-                    <span key={tool} className="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70 font-jetbrains-mono">
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:scale-105 transition-transform duration-300 group">
+            <div className="text-3xl sm:text-4xl mb-4 group-hover:animate-bounce">💡</div>
+            <h3 className="text-xl sm:text-2xl font-space-grotesk font-bold text-white mb-3 sm:mb-4">Idea Validation</h3>
+            <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+              Test your startup ideas with a community that gets it. Get real feedback from fellow builders.
+            </p>
+          </div>
+
+          <div className="glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:scale-105 transition-transform duration-300 group">
+            <div className="text-3xl sm:text-4xl mb-4 group-hover:animate-bounce">🚀</div>
+            <h3 className="text-xl sm:text-2xl font-space-grotesk font-bold text-white mb-3 sm:mb-4">Solo Success</h3>
+            <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+              Share your solopreneur journey, celebrate wins, and learn from setbacks together.
+            </p>
           </div>
         </div>
       </div>

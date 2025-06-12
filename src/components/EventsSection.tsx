@@ -1,132 +1,88 @@
 
 export const EventsSection = () => {
-  const userEvents = [
+  const events = [
     {
       id: 1,
-      title: "AI Tools Showcase & Demo",
+      title: "AI-First Startup Showcase",
       organizer: "Sarah Chen",
-      date: "2024-06-15",
-      time: "2:00 PM UTC",
-      type: "Community Led",
-      status: "promoted"
+      date: "Dec 20, 2024",
+      time: "2:00 PM PST",
+      type: "Virtual Demo Day",
+      description: "Watch 10 AI-powered startups pitch their revolutionary ideas to a panel of expert judges.",
+      attendees: 234
     },
     {
       id: 2,
-      title: "Solopreneur Success Stories",
+      title: "No-Code AI Workshop",
       organizer: "Marcus Rivera",
-      date: "2024-06-22",
-      time: "10:00 AM UTC",
-      type: "Panel Discussion",
-      status: "featured"
+      date: "Dec 22, 2024", 
+      time: "11:00 AM EST",
+      type: "Live Workshop",
+      description: "Learn to build AI-powered apps without coding using the latest no-code platforms.",
+      attendees: 156
     },
     {
       id: 3,
-      title: "Building with Claude & Cursor",
-      organizer: "Dev Thompson",
-      date: "2024-06-29",
-      time: "4:00 PM UTC",
-      type: "Workshop",
-      status: "promoted"
+      title: "Solopreneur Success Stories",
+      organizer: "Luna Kim",
+      date: "Dec 25, 2024",
+      time: "4:00 PM GMT",
+      type: "Community Meetup",
+      description: "Hear from successful solopreneurs who built million-dollar businesses with AI tools.",
+      attendees: 89
     }
   ];
 
-  const getTimeUntil = (dateString: string) => {
-    const eventDate = new Date(dateString);
-    const now = new Date();
-    const diff = eventDate.getTime() - now.getTime();
-    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-    return days > 0 ? `${days} days` : 'Today';
-  };
-
   return (
-    <section id="events" className="py-20 px-6">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-4">
-            Community <span className="text-aurora-violet">Events</span>
+    <section id="events" className="py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
+      <div className="container mx-auto relative z-10 max-w-6xl">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-4 sm:mb-6">
+            Community <span className="text-aurora-purple">Events</span>
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Events organized and promoted by our vibecoder community members
+          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto px-4">
+            Join vibecoder-hosted events and discover what our community members are organizing
           </p>
         </div>
 
-        <div className="space-y-6 max-w-4xl mx-auto">
-          {userEvents.map((event) => (
-            <div
-              key={event.id}
-              className={`glass-strong rounded-glass p-6 shadow-tile hover:scale-[1.02] transition-all duration-300 border-l-4 ${
-                event.status === 'featured' 
-                  ? 'border-aurora-pink shadow-glow-pink' 
-                  : 'border-aurora-violet'
-              }`}
-            >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      event.status === 'featured'
-                        ? 'bg-aurora-pink/20 text-aurora-pink'
-                        : 'bg-aurora-violet/20 text-aurora-violet'
-                    }`}>
-                      {event.type}
-                    </span>
-                    {event.status === 'featured' && (
-                      <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white animate-pulse">
-                        Featured
-                      </span>
-                    )}
-                  </div>
-                  
-                  <h3 className="text-2xl font-space-grotesk font-bold text-white mb-2">
-                    {event.title}
-                  </h3>
-                  
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-white/70 mb-1">
-                    <span>{new Date(event.date).toLocaleDateString('en-US', { 
-                      weekday: 'long', 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
-                    })}</span>
-                    <span className="hidden sm:inline">•</span>
-                    <span>{event.time}</span>
-                  </div>
-                  
-                  <div className="text-sm text-aurora-pink">
-                    Organized by {event.organizer}
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {events.map((event, index) => (
+            <div key={event.id} className="glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:scale-105 transition-all duration-300 cursor-pointer group">
+              <div className="flex items-center justify-between mb-4">
+                <span className="px-3 py-1 bg-aurora-gradient rounded-full text-xs font-medium text-white">
+                  {event.type}
+                </span>
+                <span className="text-white/60 text-sm">{event.attendees} attending</span>
+              </div>
+              
+              <h3 className="text-lg sm:text-xl font-space-grotesk font-bold text-white mb-3 group-hover:text-aurora-pink transition-colors">
+                {event.title}
+              </h3>
+              
+              <p className="text-sm sm:text-base text-white/70 mb-4 line-clamp-2">
+                {event.description}
+              </p>
+              
+              <div className="space-y-2 text-sm text-white/60">
+                <div className="flex items-center gap-2">
+                  <span>📅</span>
+                  <span>{event.date}</span>
                 </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold bg-aurora-gradient bg-clip-text text-transparent font-jetbrains-mono">
-                      {getTimeUntil(event.date)}
-                    </div>
-                    <div className="text-xs text-white/60 uppercase tracking-wide">to go</div>
-                  </div>
-                  
-                  <button className="px-6 py-2 bg-aurora-gradient rounded-full text-white font-medium hover:scale-105 transition-transform duration-300">
-                    Join Event
-                  </button>
+                <div className="flex items-center gap-2">
+                  <span>⏰</span>
+                  <span>{event.time}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>👤</span>
+                  <span>by {event.organizer}</span>
                 </div>
               </div>
+              
+              <button className="w-full mt-4 px-4 py-2 bg-aurora-gradient rounded-full text-white font-medium text-sm hover:scale-105 transition-transform">
+                Join Event
+              </button>
             </div>
           ))}
-        </div>
-
-        {/* Promote your event CTA */}
-        <div className="mt-12 text-center">
-          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-space-grotesk font-bold text-white mb-4">
-              Want to promote your event?
-            </h3>
-            <p className="text-white/70 mb-6">
-              Share your workshops, talks, or meetups with the vibecoder community
-            </p>
-            <button className="px-8 py-3 border border-aurora-violet text-aurora-violet rounded-full hover:bg-aurora-violet/10 transition-all duration-300">
-              Promote Event
-            </button>
-          </div>
         </div>
       </div>
     </section>
