@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { DiscussionPreview } from "@/components/DiscussionPreview";
 import { CommunityShowcase } from "@/components/CommunityShowcase";
+import { FeaturedPost } from "@/components/FeaturedPost";
 import { EventsSection } from "@/components/EventsSection";
 import { BlogSection } from "@/components/BlogSection";
 import { FAQSection } from "@/components/FAQSection";
@@ -12,14 +13,8 @@ import { Footer } from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-      {/* Simplified Aurora background effect */}
-      <div className="aurora-bg absolute inset-0 opacity-50"></div>
-      
-      {/* Minimal background elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-aurora-pink/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-aurora-violet/5 rounded-full blur-3xl"></div>
-      </div>
+      {/* Simplified background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-purple-900/30 to-slate-900/50"></div>
       
       {/* Main content */}
       <div className="relative z-10">
@@ -28,6 +23,7 @@ const Index = () => {
         <AboutSection />
         <DiscussionPreview />
         <CommunityShowcase />
+        <FeaturedPost />
         <EventsSection />
         <BlogSection />
         <FAQSection />

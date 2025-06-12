@@ -1,75 +1,72 @@
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navItems = [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#community", label: "Community" },
+    { href: "#events", label: "Events" },
+    { href: "#blog", label: "Blog" },
+    { href: "#faq", label: "FAQ" },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-strong border-b border-white/10">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-aurora-gradient rounded-lg flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
-              <span className="text-white font-bold text-lg">V</span>
-            </div>
-            <span className="text-white font-space-grotesk font-bold text-xl">Vibebrew</span>
+          <div className="flex items-center">
+            <img 
+              src="/lovable-uploads/4cc4b31e-9b0b-4ad4-8e52-3b8a41df42c6.png" 
+              alt="Vibebrew" 
+              className="h-8 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
-              Home
-            </a>
-            <a href="#community" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
-              Community
-            </a>
-            <a href="#events" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
-              Discussions
-            </a>
-            <a href="#faq" className="text-white/80 hover:text-white transition-colors font-medium hover:scale-105 transform duration-200">
-              FAQ
-            </a>
-          </div>
-
-          {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-aurora-gradient hover:scale-105 transition-transform duration-300 font-medium px-6 py-2 rounded-full shadow-glow hover:shadow-glow-pink">
-              Join Waitlist
-            </Button>
+            <div className="ml-10 flex items-baseline space-x-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-white/80 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-white/10"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Mobile menu button */}
-          <button
-            className="md:hidden text-white p-2 hover:scale-110 transition-transform"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-            </svg>
-          </button>
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white/80 hover:text-white p-2"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-white/10">
-            <div className="flex flex-col space-y-4 mt-4">
-              <a href="#home" className="text-white/80 hover:text-white transition-colors font-medium">
-                Home
-              </a>
-              <a href="#community" className="text-white/80 hover:text-white transition-colors font-medium">
-                Community
-              </a>
-              <a href="#events" className="text-white/80 hover:text-white transition-colors font-medium">
-                Discussions
-              </a>
-              <a href="#faq" className="text-white/80 hover:text-white transition-colors font-medium">
-                FAQ
-              </a>
-              <Button className="bg-aurora-gradient hover:scale-105 transition-transform duration-300 font-medium px-6 py-2 rounded-full shadow-glow w-fit">
-                Join Waitlist
-              </Button>
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-white/10">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-white/80 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 hover:bg-white/10"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
           </div>
         )}
