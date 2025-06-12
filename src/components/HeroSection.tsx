@@ -6,40 +6,50 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
 export const HeroSection = () => {
+  // State to store the email input value
   const [email, setEmail] = useState("");
+  // State to track if form is being submitted
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // Hook to show toast notifications
   const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // Function to handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent page refresh
+    
+    // Don't submit if email is empty
     if (!email) return;
     
-    setIsSubmitting(true);
+    setIsSubmitting(true); // Show loading state
     
     try {
+      // Try to save email to Supabase database
       const { error } = await supabase
         .from('waitlist')
         .insert([{ email }]);
 
       if (error) {
-        if (error.code === '23505') { // Unique constraint violation
+        // If email already exists, show friendly message
+        if (error.code === '23505') {
           toast({
             title: "Already on the waitlist! 🎉",
             description: "You're already signed up. We'll notify you when we launch!",
             duration: 5000,
           });
         } else {
-          throw error;
+          throw error; // If other error, throw it
         }
       } else {
+        // Success! Show success message and clear email
         toast({
           title: "Welcome to the Revolution! 🚀",
           description: "You're now on the waitlist. Get ready for exclusive discounts!",
           duration: 5000,
         });
-        setEmail("");
+        setEmail(""); // Clear the input
       }
     } catch (error) {
+      // Show error message if something went wrong
       console.error('Error adding to waitlist:', error);
       toast({
         title: "Oops! Something went wrong",
@@ -48,7 +58,7 @@ export const HeroSection = () => {
         duration: 5000,
       });
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false); // Hide loading state
     }
   };
 
@@ -57,6 +67,7 @@ export const HeroSection = () => {
       <div className="container mx-auto text-center relative max-w-4xl">
         {/* Main content */}
         <div className="relative z-10">
+          {/* Logo */}
           <div className="mb-8">
             <img 
               src="/lovable-uploads/4cc4b31e-9b0b-4ad4-8e52-3b8a41df42c6.png" 
@@ -65,37 +76,38 @@ export const HeroSection = () => {
             />
           </div>
           
+          {/* Main heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-space-grotesk font-black text-white mb-6 leading-tight tracking-tight">
-            <span className="block mb-2">Where Code Meets</span>
+            <span className="block mb-2">Where Devs Vibe,</span>
             <span className="bg-aurora-gradient bg-clip-text text-transparent">
-              Culture
+              Build & Brew Ideas with AI
             </span>
           </h1>
           
+          {/* Description */}
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-medium px-4">
             Join the vibrant community of creators, developers, and innovators building the future together.
           </p>
           
-          {/* Email signup form */}
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 max-w-md mx-auto px-4">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="glass-strong text-white placeholder:text-white/50 border-white/30 text-base py-3 px-4 rounded-full flex-1"
-              required
-            />
-            <Button 
-              type="submit"
-              disabled={isSubmitting}
-              size="lg" 
-              className="glass-strong hover:scale-105 transition-all duration-300 font-bold px-6 py-3 rounded-full text-base shadow-glow animate-pulse group hover:shadow-glow-pink w-full sm:w-auto"
-            >
-              <span className="group-hover:animate-pulse">
-                {isSubmitting ? "Joining..." : "Join the Revolution"}
-              </span>
-            </Button>
+          {/* Email signup form - styled like the uploaded image */}
+          <form onSubmit={handleSubmit} className="flex justify-center items-center mb-8 max-w-md mx-auto px-4">
+            <div className="flex w-full bg-white/10 backdrop-blur-md rounded-full border border-white/20 overflow-hidden">
+              <Input
+                type="email"
+                placeholder="Your work email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-transparent border-0 text-white placeholder:text-white/60 focus:ring-0 focus:border-0 flex-1 px-6 py-4 text-base rounded-none"
+                required
+              />
+              <Button 
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-white text-black hover:bg-gray-100 font-semibold px-6 py-4 rounded-none rounded-r-full border-0 text-base"
+              >
+                {isSubmitting ? "Joining..." : "Join waitlist"}
+              </Button>
+            </div>
           </form>
 
           {/* Early bird message */}
