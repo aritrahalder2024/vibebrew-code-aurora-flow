@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -247,4 +246,53 @@
 
 .animate-bounce {
   animation: bounce 2s infinite;
+}
+
+/* Mobile horizontal scroll improvements */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+  .floating {
+    animation-duration: 4s;
+  }
+  
+  .aurora-bg {
+    opacity: 0.5;
+  }
+  
+  /* Reduce motion for better mobile performance */
+  .animate-pulse {
+    animation-duration: 3s;
+  }
+}
+
+/* Interactive circle hover effects */
+.interactive-circle:hover {
+  transform: scale(1.1) !important;
+  transition: transform 0.3s ease;
+}
+
+/* Smooth scrolling for mobile horizontal */
+@supports (scroll-behavior: smooth) {
+  .overflow-x-auto {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Enhanced glow effects for interactive elements */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(122, 92, 250, 0.4), 0 0 60px rgba(255, 95, 150, 0.2);
+  transform: translateY(-2px);
 }
