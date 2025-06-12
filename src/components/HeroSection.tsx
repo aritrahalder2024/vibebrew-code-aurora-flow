@@ -114,10 +114,24 @@ export const HeroSection = () => {
             </div>
           </form>
 
-          {/* Early bird message */}
-          <div className="mt-6 glass-strong rounded-2xl p-4 max-w-sm mx-auto border border-aurora-pink/50 relative z-10">
-            <div className="text-white font-medium text-sm">
-              Join the waitlist for <span className="text-aurora-pink font-bold">exclusive discounts</span>
+          {/* Developers brewing section */}
+          <div className="mt-6 flex items-center gap-4 max-w-sm mx-auto relative z-10">
+            {/* Overlapping avatars */}
+            <div className="flex -space-x-4">
+              {["A", "B", "C", "D", "E"].map((letter, idx) => (
+                <div
+                  key={letter}
+                  className="w-10 h-10 rounded-full bg-gray-700 border-2 border-gray-500 flex items-center justify-center text-white font-bold text-lg shadow"
+                  style={{ zIndex: 10 - idx }}
+                >
+                  {letter}
+                </div>
+              ))}
+            </div>
+            {/* Text */}
+            <div>
+              <div className="text-white font-bold text-lg leading-tight">1,200+ developers</div>
+              <div className="text-white/60 text-sm leading-tight">already brewing</div>
             </div>
           </div>
         </div>
