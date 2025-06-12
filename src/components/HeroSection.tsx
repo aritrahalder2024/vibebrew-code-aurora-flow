@@ -74,7 +74,7 @@ export const HeroSection = () => {
             <img 
               src=" /logo.webp"
               alt="Vibebrew Logo" 
-              className="mx-auto h-1 w-auto mb-1"
+              className="mx-auto h-16 w-auto mb-6"
             />
           </div>
           
