@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 
@@ -6,19 +7,20 @@ export const HeroSection = () => {
   const [typedText, setTypedText] = useState("");
   
   const codeSnippets = [
-    `// Your next unicorn startup
-const success = AI + vision + execution;
-return millionaire.status;`,
-    `// Build faster than ever
-function revolutionize() {
-  return code.withAI()
-    .ship().scale().profit();
+    `const vibecoder = {
+  mindset: 'solopreneur',
+  tools: ['AI', 'automation'],
+  vibe: 'unstoppable'
+};`,
+    `function buildWithAI() {
+  return passion
+    .mix(vibeTools)
+    .scale(community);
 }`,
-    `// Join the AI gold rush
-class Vibecoder extends Solopreneur {
+    `class Solopreneur {
   constructor() {
     this.aiPowered = true;
-    this.limitless = true;
+    this.vibeLevel = 100;
   }
 }`
   ];
@@ -48,65 +50,98 @@ class Vibecoder extends Solopreneur {
   }, [currentCode]);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 md:px-6 pt-20 relative overflow-hidden">
-      <div className="container mx-auto text-center relative z-10">
+    <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+      <div className="container mx-auto text-center relative">
+        {/* Enhanced floating interactive code elements */}
+        <div className="absolute top-10 right-10 w-32 h-32 bg-aurora-gradient rounded-3xl opacity-30 floating blur-sm cursor-pointer hover:opacity-50 transition-opacity animate-pulse"></div>
+        <div className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-r from-aurora-purple to-aurora-violet rounded-full opacity-40 floating animation-delay-300 cursor-pointer hover:scale-110 transition-transform animate-bounce"></div>
+        <div className="absolute top-1/3 left-20 w-16 h-16 bg-aurora-pink/30 rounded-lg floating animation-delay-600 hover:rotate-45 transition-transform"></div>
+        <div className="absolute bottom-1/3 right-20 w-20 h-20 bg-aurora-violet/30 rounded-full floating animation-delay-900 hover:scale-125 transition-transform"></div>
+        
+        {/* Moving code particles */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute text-white/20 font-jetbrains-mono text-xs animate-float hover:text-white/40 transition-colors"
+              style={{
+                left: `${10 + i * 8}%`,
+                top: `${20 + (i % 4) * 20}%`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: `${3 + i * 0.5}s`
+              }}
+            >
+              {['{', '}', '()', '[]', '=>', '&&', '<>', '/>', 'AI', 'VIBE', '{}', '::'][i]}
+            </div>
+          ))}
+        </div>
+
+        {/* Orbiting elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute w-4 h-4 bg-aurora-pink rounded-full animate-spin origin-[12rem_0px] opacity-60"></div>
+            <div className="absolute w-3 h-3 bg-aurora-purple rounded-full animate-spin origin-[8rem_0px] opacity-70 animation-delay-300" style={{ animationDuration: '8s' }}></div>
+            <div className="absolute w-2 h-2 bg-aurora-violet rounded-full animate-spin origin-[6rem_0px] opacity-80 animation-delay-600" style={{ animationDuration: '12s' }}></div>
+          </div>
+        </div>
+        
         {/* Main content */}
-        <div className="relative z-10 max-w-6xl mx-auto">
+        <div className="relative z-10 max-w-5xl mx-auto">
           <div className="mb-6">
             <div className="inline-block animate-bounce">
-              <span className="text-aurora-pink text-2xl md:text-3xl font-bold">⚡</span>
+              <span className="text-aurora-pink text-xl font-bold">🚀</span>
             </div>
           </div>
           
-          <h1 className="text-5xl md:text-7xl lg:text-9xl font-space-grotesk font-black text-white mb-6 md:mb-8 leading-tight tracking-tight">
-            <span className="block mb-2">TURN YOUR</span>
-            <span className="block mb-2">CODE INTO</span>
+          <h1 className="text-7xl md:text-9xl font-space-grotesk font-black text-white mb-8 leading-tight tracking-tight">
+            <span className="block mb-2">STOP</span>
+            <span className="block mb-2">BUILDING</span>
             <span className="bg-aurora-gradient bg-clip-text text-transparent animate-glow-pulse block">
-              CASH
+              ALONE
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl lg:text-3xl text-white/95 mb-4 max-w-5xl mx-auto leading-relaxed font-bold">
-            The ONLY community where AI-powered solopreneurs are making
+          <p className="text-2xl md:text-3xl text-white/90 mb-4 max-w-4xl mx-auto leading-relaxed font-bold">
+            Join 500+ AI-powered solopreneurs who are
           </p>
-          <p className="text-lg md:text-xl lg:text-2xl text-aurora-pink mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed font-semibold">
-            $10K-$100K per month building the future with code & AI tools
+          <p className="text-xl md:text-2xl text-aurora-pink mb-8 max-w-3xl mx-auto leading-relaxed font-semibold">
+            building the future, sharing victories, and vibing with AI tools that actually work.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-6 md:mb-8">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
             <Button 
               size="lg" 
-              className="glass-strong hover:scale-110 transition-all duration-300 font-bold px-8 md:px-12 py-4 md:py-6 rounded-full text-lg md:text-xl shadow-glow animate-glow-pulse group hover:shadow-glow-pink w-full sm:w-auto"
+              className="glass-strong hover:scale-110 transition-all duration-300 font-bold px-12 py-6 rounded-full text-xl shadow-glow animate-glow-pulse group hover:shadow-glow-pink"
             >
-              <span className="group-hover:animate-pulse">JOIN THE REVOLUTION →</span>
+              <span className="group-hover:animate-pulse">Join the Revolution</span>
             </Button>
             <Button 
               variant="outline" 
               size="lg"
-              className="border-white/50 text-white hover:bg-white/20 backdrop-blur-md px-8 md:px-12 py-4 md:py-6 rounded-full text-lg md:text-xl hover:scale-110 transition-all duration-300 hover:border-aurora-pink w-full sm:w-auto"
+              className="border-white/50 text-white hover:bg-white/20 backdrop-blur-md px-12 py-6 rounded-full text-xl hover:scale-110 transition-all duration-300 hover:border-aurora-pink"
             >
-              See Success Stories
+              See What We're Building
             </Button>
           </div>
 
           {/* Enhanced early bird offer */}
-          <div className="mt-6 md:mt-8 glass-strong rounded-2xl md:rounded-3xl p-4 md:p-6 max-w-lg mx-auto border border-aurora-pink/50 hover:scale-105 transition-transform duration-300 cursor-pointer animate-pulse">
-            <div className="text-aurora-pink font-bold text-base md:text-lg mb-2 animate-bounce">🎯 EXCLUSIVE EARLY ACCESS</div>
-            <div className="text-white font-semibold text-base md:text-lg">
-              Join the waitlist for <span className="text-aurora-pink font-black text-lg md:text-xl">EXCLUSIVE DISCOUNTS</span>
+          <div className="mt-8 glass-strong rounded-3xl p-6 max-w-lg mx-auto border border-aurora-pink/50 hover:scale-105 transition-transform duration-300 cursor-pointer animate-pulse">
+            <div className="text-aurora-pink font-bold text-lg mb-2 animate-bounce">⚡ EARLY BIRD SPECIAL ⚡</div>
+            <div className="text-white font-semibold text-lg">
+              First 100 signups get <span className="text-aurora-pink font-black text-xl">LIFETIME FREE ACCESS</span>
             </div>
-            <div className="text-white/70 text-sm mt-2">First 100 members get lifetime benefits</div>
+            <div className="text-white/70 text-sm mt-2">No strings attached. Forever.</div>
           </div>
         </div>
 
-        {/* Enhanced interactive typing code snippet - Hidden on mobile */}
-        <div className="absolute bottom-10 right-0 glass-strong rounded-2xl p-4 md:p-6 max-w-xs md:max-w-sm hidden lg:block cursor-pointer hover:scale-110 transition-transform group hover:shadow-glow">
+        {/* Enhanced interactive typing code snippet */}
+        <div className="absolute bottom-10 right-0 glass-strong rounded-2xl p-6 max-w-sm hidden lg:block cursor-pointer hover:scale-110 transition-transform group hover:shadow-glow">
           <div className="flex items-center gap-2 mb-3">
             <div className="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
             <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse animation-delay-300"></div>
             <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse animation-delay-600"></div>
           </div>
-          <pre className="text-xs md:text-sm text-white/80 font-jetbrains-mono min-h-[80px] md:min-h-[100px]">
+          <pre className="text-sm text-white/80 font-jetbrains-mono min-h-[100px]">
             <code>{typedText}<span className="animate-pulse text-aurora-pink">|</span></code>
           </pre>
           <div className="text-xs text-aurora-pink mt-3 opacity-0 group-hover:opacity-100 transition-opacity font-semibold">
