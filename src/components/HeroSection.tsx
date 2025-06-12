@@ -69,12 +69,12 @@ export const HeroSection = () => {
       <div className="container mx-auto text-center relative z-20 max-w-4xl">
         {/* Main content */}
         <div className="relative">
-          {/* Logo */}
-          <div className="mb-4">
+          {/* Logo - Remove or make it much smaller and more subtle */}
+          <div className="mb-2">
             <img 
               src=" /logo.webp"
               alt="Vibebrew Logo" 
-              className="mx-auto h-10 w-auto mb-4"
+              className="mx-auto h-8 w-auto mb-2 opacity-90"
             />
           </div>
           
