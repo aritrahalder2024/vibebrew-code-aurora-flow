@@ -116,15 +116,30 @@ export const HeroSection = () => {
 
           {/* Developers brewing section */}
           <div className="mt-6 flex items-center gap-4 max-w-sm mx-auto relative z-10">
-            {/* Overlapping avatars */}
+            {/* Overlapping avatars with hover effect and image support */}
             <div className="flex -space-x-4">
-              {["A", "B", "C", "D", "E"].map((letter, idx) => (
+              {[
+                { name: "A", img: null },
+                { name: "B", img: null },
+                { name: "C", img: null },
+                { name: "D", img: null },
+                { name: "E", img: null },
+              ].map((user, idx) => (
                 <div
-                  key={letter}
-                  className="w-10 h-10 rounded-full bg-gray-700 border-2 border-gray-500 flex items-center justify-center text-white font-bold text-lg shadow"
+                  key={user.name}
+                  className="w-10 h-10 rounded-full border-2 border-gray-500 flex items-center justify-center text-white font-bold text-lg shadow bg-gray-700 group transition-transform duration-200 hover:scale-110 hover:z-20 hover:ring-2 hover:ring-pink-400 cursor-pointer"
                   style={{ zIndex: 10 - idx }}
+                  title={user.name}
                 >
-                  {letter}
+                  {user.img ? (
+                    <img
+                      src={user.img}
+                      alt={user.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  ) : (
+                    user.name
+                  )}
                 </div>
               ))}
             </div>
