@@ -136,3 +136,9 @@ img[alt="Vibebrew"] {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 20, 147, 0.7);
 }
+
+/* Navbar glass effect without border */
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+}
