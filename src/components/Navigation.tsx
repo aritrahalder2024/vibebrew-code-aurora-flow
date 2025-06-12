@@ -14,8 +14,8 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 navbar-glass h-14 flex items-center">
-      <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+    <nav className="navbar-glass fixed left-1/2 top-6 transform -translate-x-1/2 z-50 h-16 flex items-center rounded-full shadow-lg px-6 max-w-4xl w-[90vw]">
+      <div className="flex items-center justify-between w-full h-16">
         {/* Logo */}
         <div className="flex items-center h-full pl-2">
           <a href="#home" className="flex items-center h-full">

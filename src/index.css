@@ -137,8 +137,9 @@ img[alt="Vibebrew"] {
   background: rgba(255, 20, 147, 0.7);
 }
 
-/* Navbar glass effect without border */
+/* Navbar glass effect without border, dock style */
 .navbar-glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
+  background: rgba(40, 30, 80, 0.55);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25), 0 2px 8px 0 rgba(0,0,0,0.10);
 }
