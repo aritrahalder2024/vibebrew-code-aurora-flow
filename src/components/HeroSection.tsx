@@ -63,9 +63,12 @@ export const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 pt-20 relative overflow-hidden">
-      <div className="container mx-auto text-center relative max-w-4xl">
+      {/* Fixed background without interfering elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
+      
+      <div className="container mx-auto text-center relative z-20 max-w-4xl">
         {/* Main content */}
-        <div className="relative z-10">
+        <div className="relative">
           {/* Logo */}
           <div className="mb-8">
             <img 
@@ -76,7 +79,7 @@ export const HeroSection = () => {
           </div>
           
           {/* Main heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-space-grotesk font-black text-white mb-6 leading-tight tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-space-grotesk font-black text-white mb-6 leading-tight tracking-tight relative z-10">
             <span className="block mb-2">Where Devs Vibe,</span>
             <span className="bg-aurora-gradient bg-clip-text text-transparent">
               Build & Brew Ideas with AI
@@ -84,12 +87,12 @@ export const HeroSection = () => {
           </h1>
           
           {/* Description */}
-          <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-medium px-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-medium px-4 relative z-10">
             Join the vibrant community of creators, developers, and innovators building the future together.
           </p>
           
-          {/* Email signup form - styled exactly like the uploaded image */}
-          <form onSubmit={handleSubmit} className="flex justify-center items-center mb-8 max-w-md mx-auto px-4">
+          {/* Email signup form with glowing button */}
+          <form onSubmit={handleSubmit} className="flex justify-center items-center mb-8 max-w-md mx-auto px-4 relative z-10">
             <div className="flex w-full bg-white/10 backdrop-blur-md rounded-full border border-white/20 overflow-hidden shadow-lg">
               <Input
                 type="email"
@@ -102,15 +105,23 @@ export const HeroSection = () => {
               <Button 
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-black text-white hover:bg-gray-800 font-semibold px-6 py-4 rounded-none rounded-r-full border-0 text-base transition-colors duration-200 disabled:opacity-50"
+                className="bg-black text-white hover:bg-gray-800 font-semibold px-6 py-4 rounded-none rounded-r-full border-0 text-base transition-all duration-300 disabled:opacity-50 relative overflow-hidden group"
+                style={{
+                  boxShadow: '0 0 20px rgba(255, 20, 147, 0.5), 0 0 40px rgba(138, 43, 226, 0.3)',
+                  animation: 'glow-pulse 2s ease-in-out infinite'
+                }}
               >
-                {isSubmitting ? "Joining..." : "Join waitlist"}
+                <span className="relative z-10">
+                  {isSubmitting ? "Joining..." : "Join waitlist"}
+                </span>
+                {/* Animated glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-violet-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-r-full"></div>
               </Button>
             </div>
           </form>
 
           {/* Early bird message */}
-          <div className="mt-6 glass-strong rounded-2xl p-4 max-w-sm mx-auto border border-aurora-pink/50">
+          <div className="mt-6 glass-strong rounded-2xl p-4 max-w-sm mx-auto border border-aurora-pink/50 relative z-10">
             <div className="text-white font-medium text-sm">
               Join the waitlist for <span className="text-aurora-pink font-bold">exclusive discounts</span>
             </div>

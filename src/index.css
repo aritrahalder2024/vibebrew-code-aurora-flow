@@ -68,7 +68,7 @@ body {
   color: #9333ea;
 }
 
-/* Glow effects */
+/* Enhanced glow effects */
 .shadow-glow {
   box-shadow: 0 0 30px rgba(255, 20, 147, 0.3);
 }
@@ -84,6 +84,16 @@ body {
 
 .animation-delay-600 {
   animation-delay: 600ms;
+}
+
+/* Enhanced glow pulse animation for button */
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.5), 0 0 40px rgba(138, 43, 226, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(255, 20, 147, 0.8), 0 0 60px rgba(138, 43, 226, 0.5);
+  }
 }
 
 /* Line clamp utility */
