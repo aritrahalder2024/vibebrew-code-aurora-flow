@@ -22,10 +22,9 @@ export const Navigation = () => {
             <img 
               src="/logo.webp" 
               alt="Vibebrew" 
-              className="h-9 w-auto object-contain"
-              style={{ maxHeight: '44px', minWidth: '44px' }}
+              className="h-10 w-auto object-contain"
+              style={{ maxHeight: '48px', minWidth: '48px' }}
             />
-            <span className="ml-2 text-white font-semibold text-base">Vibebrew</span>
           </a>
         </div>
 
