@@ -72,7 +72,7 @@ export const HeroSection = () => {
           {/* Logo */}
           <div className="mb-8">
             <img 
-              src="/lovable-uploads/4cc4b31e-9b0b-4ad4-8e52-3b8a41df42c6.png" 
+              src=" /logo.webp" 
               alt="Vibebrew Logo" 
               className="mx-auto h-16 w-auto mb-6"
             />
