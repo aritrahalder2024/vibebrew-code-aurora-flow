@@ -14,16 +14,16 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="navbar-glass fixed left-1/2 top-6 transform -translate-x-1/2 z-50 h-16 flex items-center rounded-full shadow-lg px-6 max-w-6xl w-[96vw]">
-      <div className="flex items-center justify-between w-full h-16">
+    <nav className="navbar-glass fixed left-1/2 top-6 transform -translate-x-1/2 z-50 h-20 flex items-center rounded-full shadow-lg px-8 max-w-6xl w-[96vw]">
+      <div className="flex items-center justify-between w-full h-20">
         {/* Logo */}
         <div className="flex items-center h-full pl-2">
           <a href="#home" className="flex items-center h-full">
             <img 
               src="/logo.webp" 
               alt="Vibebrew" 
-              className="h-11 w-auto object-contain"
-              style={{ maxHeight: '60px', minWidth: '60px' }}
+              className="h-10 w-auto object-contain"
+              style={{ maxHeight: '48px', minWidth: '48px' }}
             />
           </a>
         </div>
