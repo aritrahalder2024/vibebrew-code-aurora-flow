@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import Button from "./Button";
 
 export const HeroSection = () => {
   // State to store the email input value
@@ -105,7 +105,9 @@ export const HeroSection = () => {
               <Button 
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-black text-white hover:bg-gray-800 font-semibold px-6 py-4 rounded-none rounded-r-full border-0 text-base transition-all duration-300 disabled:opacity-50 relative overflow-hidden group"
+                variant="primary"
+                size="medium"
+                className="px-6 py-4 rounded-none rounded-r-full border-0 text-base transition-all duration-300 disabled:opacity-50 relative overflow-hidden group"
                 style={{
                   boxShadow: '0 0 20px rgba(255, 20, 147, 0.5), 0 0 40px rgba(138, 43, 226, 0.3)',
                   animation: 'glow-pulse 2s ease-in-out infinite'
