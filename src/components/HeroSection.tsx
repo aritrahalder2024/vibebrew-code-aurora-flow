@@ -70,11 +70,11 @@ export const HeroSection = () => {
         {/* Main content */}
         <div className="relative">
           {/* Logo */}
-          <div className="mb-8">
+          <div className="mb-4">
             <img 
               src=" /logo.webp"
               alt="Vibebrew Logo" 
-              className="mx-auto h-16 w-auto mb-6"
+              className="mx-auto h-10 w-auto mb-4"
             />
           </div>
           
