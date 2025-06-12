@@ -1,4 +1,3 @@
-
 import {
   Accordion,
   AccordionContent,
@@ -38,15 +37,15 @@ export const FAQSection = () => {
   return (
     <section id="faq" className="py-20 px-6 relative">
       <div className="container mx-auto max-w-4xl">
-        {/* Floating background elements */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-aurora-purple/20 rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 bg-aurora-pink/20 rounded-full blur-xl floating animation-delay-300"></div>
+        {/* Remove floating background elements */}
+        {/* <div className="absolute top-10 left-10 w-20 h-20 bg-aurora-purple/20 rounded-full blur-xl animate-float"></div>
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-aurora-pink/20 rounded-full blur-xl floating animation-delay-300"></div> */}
         
         <div className="text-center mb-16 relative z-10">
           <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-6">
             Frequently Asked
             <br />
-            <span className="bg-aurora-gradient bg-clip-text text-transparent">Questions</span>
+            <span className="text-aurora-pink">Questions</span>
           </h2>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
             Everything you need to know about joining the vibecoder community

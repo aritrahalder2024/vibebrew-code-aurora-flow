@@ -73,7 +73,7 @@ export const HeroSection = () => {
           {/* Main heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-space-grotesk font-black text-white mb-6 leading-tight tracking-tight relative z-10">
             <span className="block mb-2">Where Devs Vibe,</span>
-            <span className="bg-aurora-gradient bg-clip-text text-transparent">
+            <span className="text-aurora-pink font-bold">
               Build & Brew Ideas with AI
             </span>
           </h1>
