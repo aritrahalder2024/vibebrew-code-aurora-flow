@@ -107,17 +107,9 @@ export const HeroSection = () => {
                 disabled={isSubmitting}
                 variant="primary"
                 size="medium"
-                className="px-6 py-4 rounded-none rounded-r-full border-0 text-base transition-all duration-300 disabled:opacity-50 relative overflow-hidden group"
-                style={{
-                  boxShadow: '0 0 20px rgba(255, 20, 147, 0.5), 0 0 40px rgba(138, 43, 226, 0.3)',
-                  animation: 'glow-pulse 2s ease-in-out infinite'
-                }}
+                className="bg-black text-white rounded-full py-2 px-6 font-semibold"
               >
-                <span className="relative z-10">
-                  {isSubmitting ? "Joining..." : "Join waitlist"}
-                </span>
-                {/* Animated glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-violet-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-r-full"></div>
+                {isSubmitting ? "Joining..." : "Join waitlist"}
               </Button>
             </div>
           </form>

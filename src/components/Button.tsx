@@ -19,12 +19,12 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   type = 'button',
 }) => {
-  const baseStyles = 'rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
+  const baseStyles = 'font-medium transition-all duration-300 relative overflow-hidden';
   
   const variantStyles = {
-    primary: 'bg-amber-600 text-white hover:bg-amber-700 focus:ring-amber-500',
-    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500',
-    outline: 'border border-amber-600 text-amber-600 hover:bg-amber-50 focus:ring-amber-500',
+    primary: 'bg-black text-white hover:bg-gray-800',
+    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300',
+    outline: 'border border-gray-400 text-gray-800 hover:bg-gray-50',
   };
   
   const sizeStyles = {
@@ -35,14 +35,24 @@ const Button: React.FC<ButtonProps> = ({
   
   const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
   
+  // Custom styles for the glowing waitlist button
+  const waitlistButtonStyles = variant === 'primary' ? 
+    'rounded-full shadow-lg flex items-center justify-center' : '';
+  
   return (
     <button
       type={type}
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${className}`}
+      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${waitlistButtonStyles} ${className}`}
       onClick={onClick}
       disabled={disabled}
+      style={variant === 'primary' ? {
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)'
+      } : {}}
     >
-      {children}
+      <span className="relative z-10">{children}</span>
+      {variant === 'primary' && (
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+      )}
     </button>
   );
 };
