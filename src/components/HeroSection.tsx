@@ -72,8 +72,8 @@ export const HeroSection = () => {
         <div className="relative">
           {/* Main heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-space-grotesk font-black text-white mb-6 leading-tight tracking-tight relative z-10">
-            <span className="block mb-2">Where Devs Vibe,</span>
-            <span className="text-aurora-pink font-bold">
+            <span className="inline">Where Devs Vibe, </span>
+            <span className="text-aurora-pink font-bold inline">
               Build & Brew Ideas with AI
             </span>
           </h1>
@@ -99,9 +99,17 @@ export const HeroSection = () => {
                 disabled={isSubmitting}
                 variant="primary"
                 size="medium"
-                className="bg-black text-white rounded-full py-2 px-6 font-semibold"
+                className="bg-black text-white rounded-full py-2 px-6 font-semibold relative overflow-hidden group"
+                style={{
+                  boxShadow: '0 0 15px rgba(255, 20, 147, 0.7), 0 0 30px rgba(138, 43, 226, 0.4)',
+                  animation: 'glow-pulse 2s ease-in-out infinite'
+                }}
               >
-                {isSubmitting ? "Joining..." : "Join waitlist"}
+                <span className="relative z-10">
+                  {isSubmitting ? "Joining..." : "Join waitlist"}
+                </span>
+                {/* Animated glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
               </Button>
             </div>
           </form>

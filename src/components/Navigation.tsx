@@ -20,7 +20,12 @@ export const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center">
             <a href="#home" className="flex items-center">
-              <span className="text-white font-bold text-lg mr-2">Vibebrew</span>
+              <img 
+                src="/logo.webp" 
+                alt="Vibebrew" 
+                className="h-8 w-auto mr-2"
+              />
+              <span className="text-white font-bold text-lg">Vibebrew</span>
             </a>
           </div>
 
