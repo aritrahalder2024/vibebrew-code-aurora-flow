@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -89,21 +88,21 @@ export const HeroSection = () => {
             Join the vibrant community of creators, developers, and innovators building the future together.
           </p>
           
-          {/* Email signup form - styled like the uploaded image */}
+          {/* Email signup form - styled exactly like the uploaded image */}
           <form onSubmit={handleSubmit} className="flex justify-center items-center mb-8 max-w-md mx-auto px-4">
-            <div className="flex w-full bg-white/10 backdrop-blur-md rounded-full border border-white/20 overflow-hidden">
+            <div className="flex w-full bg-white/10 backdrop-blur-md rounded-full border border-white/20 overflow-hidden shadow-lg">
               <Input
                 type="email"
                 placeholder="Your work email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent border-0 text-white placeholder:text-white/60 focus:ring-0 focus:border-0 flex-1 px-6 py-4 text-base rounded-none"
+                className="bg-transparent border-0 text-white placeholder:text-white/60 focus:ring-0 focus:border-0 flex-1 px-6 py-4 text-base rounded-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 required
               />
               <Button 
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-white text-black hover:bg-gray-100 font-semibold px-6 py-4 rounded-none rounded-r-full border-0 text-base"
+                className="bg-black text-white hover:bg-gray-800 font-semibold px-6 py-4 rounded-none rounded-r-full border-0 text-base transition-colors duration-200 disabled:opacity-50"
               >
                 {isSubmitting ? "Joining..." : "Join waitlist"}
               </Button>
