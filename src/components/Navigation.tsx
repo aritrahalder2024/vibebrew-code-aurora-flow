@@ -19,11 +19,9 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <img 
-              src="/logo.webp" 
-              alt="Vibebrew" 
-              className="h-8 w-auto"
-            />
+            <a href="#home" className="flex items-center">
+              <span className="text-white font-bold text-lg mr-2">Vibebrew</span>
+            </a>
           </div>
 
           {/* Desktop Navigation */}

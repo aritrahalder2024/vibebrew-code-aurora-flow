@@ -66,18 +66,10 @@ export const HeroSection = () => {
       {/* Fixed background without interfering elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
       
+      {/* Overlay with centered content */}
       <div className="container mx-auto text-center relative z-20 max-w-4xl">
         {/* Main content */}
         <div className="relative">
-          {/* Logo - Remove or make it much smaller and more subtle */}
-          <div className="mb-2">
-            <img 
-              src=" /logo.webp"
-              alt="Vibebrew Logo" 
-              className="mx-auto h-8 w-auto mb-2 opacity-90"
-            />
-          </div>
-          
           {/* Main heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-space-grotesk font-black text-white mb-6 leading-tight tracking-tight relative z-10">
             <span className="block mb-2">Where Devs Vibe,</span>
