@@ -1,4 +1,3 @@
-
 export const BlogSection = () => {
   const blogPosts = [
     {
@@ -27,6 +26,15 @@ export const BlogSection = () => {
       date: "2024-06-05",
       readTime: "6 min read",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop"
+    },
+    {
+      id: 4,
+      title: "AI for Everyday Life",
+      excerpt: "How artificial intelligence is transforming daily routines and productivity for everyone.",
+      author: "Priya Das",
+      date: "2024-06-03",
+      readTime: "4 min read",
+      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop"
     }
   ];
 
