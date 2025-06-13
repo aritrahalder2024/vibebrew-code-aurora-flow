@@ -35,9 +35,6 @@ export const Navigation = () => {
                   minWidth: '40px'
                 }}
               />
-              
-              {/* Additional highlight effect */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent rounded-full rotate-45 scale-75"></div>
             </div>
           </a>
         </div>
