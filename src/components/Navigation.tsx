@@ -16,20 +16,14 @@ export const Navigation = () => {
   return (
     <nav className="navbar-glass fixed left-1/2 top-6 transform -translate-x-1/2 z-50 h-16 sm:h-20 flex items-center rounded-full shadow-lg px-4 sm:px-8 max-w-6xl w-[96vw]">
       <div className="flex items-center justify-between w-full h-full">
-        {/* Logo with enhanced visibility */}
+        {/* Logo */}
         <div className="flex items-center h-full pl-2">
           <a href="#home" className="flex items-center h-full">
-            <div className="relative logo-container">
-              {/* Permanent glow effect behind logo */}
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/40 to-purple-500/40 rounded-full blur-lg opacity-70 scale-150 animate-pulse-slow"></div>
-              
-              {/* Subtle backdrop for better contrast */}
-              <div className="absolute inset-0 bg-black/20 backdrop-blur-sm rounded-full scale-90"></div>
-              
+            <div className="relative">
               <img 
                 src="/logo.webp" 
                 alt="Vibebrew" 
-                className="h-8 sm:h-10 w-auto object-contain relative z-10"
+                className="h-8 sm:h-10 w-auto object-contain"
                 style={{ 
                   maxHeight: '40px', 
                   minWidth: '40px'
