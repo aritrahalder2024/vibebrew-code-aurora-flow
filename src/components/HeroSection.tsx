@@ -95,10 +95,10 @@ export const HeroSection = () => {
               
               <Input
                 type="email"
-                placeholder="Your work email"
+                placeholder="you@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent border-0 text-white placeholder:text-white/70 focus:ring-0 focus:border-0 flex-1 px-4 sm:px-6 py-3 sm:py-4 text-base rounded-xl sm:rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 relative z-10 w-full"
+                className="bg-transparent border-0 text-white placeholder:text-white/60 placeholder:text-center sm:placeholder:text-left focus:ring-0 focus:border-0 flex-1 px-4 sm:px-6 py-3 sm:py-4 text-base text-center sm:text-left rounded-xl sm:rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 relative z-10 w-full"
                 style={{
                   textShadow: '0 0 10px rgba(255, 255, 255, 0.3)'
                 }}
@@ -109,7 +109,7 @@ export const HeroSection = () => {
                 disabled={isSubmitting}
                 variant="primary"
                 size="medium"
-                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl sm:rounded-full py-3 px-6 font-semibold relative overflow-hidden group transform transition-all duration-300 hover:scale-105 w-full sm:w-auto mt-2 sm:mt-0"
+                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl sm:rounded-full py-3 px-6 font-semibold relative overflow-hidden transform transition-all duration-300 hover:scale-105 w-full sm:w-auto mt-2 sm:mt-0 focus:outline-none focus:ring-0 hover:ring-0 active:ring-0"
                 style={{
                   boxShadow: '0 0 25px rgba(255, 20, 147, 0.6), 0 0 50px rgba(138, 43, 226, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                 }}
@@ -117,9 +117,6 @@ export const HeroSection = () => {
                 <span className="relative z-10 drop-shadow-lg">
                   {isSubmitting ? "Joining..." : "Join waitlist"}
                 </span>
-                {/* Static glow effect without animation */}
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </Button>
             </div>
           </form>

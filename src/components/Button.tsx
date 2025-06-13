@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
   type = 'button',
   style,
 }) => {
-  const baseStyles = 'font-medium transition-all duration-300 relative overflow-hidden';
+  const baseStyles = 'font-medium transition-all duration-300 relative overflow-hidden focus:outline-none focus:ring-0 active:ring-0';
   
   const variantStyles = {
     primary: 'bg-black text-white hover:bg-gray-800',
@@ -51,9 +51,6 @@ const Button: React.FC<ButtonProps> = ({
       style={style}
     >
       <span className="relative z-10">{children}</span>
-      {variant === 'primary' && (
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-      )}
     </button>
   );
 };
