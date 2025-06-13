@@ -131,6 +131,8 @@ export const HeroSection = () => {
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed font-medium px-4 relative z-10">
             Join the vibrant community of creators, developers, and innovators building the future together.
           </p>
+          {/* Add extra margin above the waitlist form for better aesthetics */}
+          <div className="mt-20 sm:mt-28"></div>
           {/* Email signup form with enhanced glowing effects - Mobile optimized */}
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row justify-center items-center mb-6 sm:mb-8 w-[450px] mx-auto px-4 relative z-10 gap-3 sm:gap-0">
             <div className="flex flex-col sm:flex-row w-full bg-white/15 backdrop-blur-xl rounded-2xl sm:rounded-full border border-white/30 overflow-hidden shadow-2xl relative p-1 h-14 items-center"
