@@ -1,4 +1,3 @@
-
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -85,8 +84,8 @@ export const HeroSection = () => {
           </p>
           
           {/* Email signup form with enhanced glowing effects - Mobile optimized */}
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row justify-center items-center mb-6 sm:mb-8 max-w-lg mx-auto px-4 relative z-10 gap-3 sm:gap-0">
-            <div className="flex flex-col sm:flex-row w-full bg-white/15 backdrop-blur-xl rounded-2xl sm:rounded-full border border-white/30 overflow-hidden shadow-2xl relative p-1"
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row justify-center items-center mb-6 sm:mb-8 w-[350px] mx-auto px-4 relative z-10 gap-3 sm:gap-0">
+            <div className="flex flex-col sm:flex-row w-full bg-white/15 backdrop-blur-xl rounded-2xl sm:rounded-full border border-white/30 overflow-hidden shadow-2xl relative p-1 h-14 items-center"
                  style={{
                    boxShadow: '0 0 40px rgba(255, 20, 147, 0.4), 0 0 80px rgba(138, 43, 226, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                  }}>
@@ -98,10 +97,7 @@ export const HeroSection = () => {
                 placeholder="you@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent border-0 text-white placeholder:text-white/60 placeholder:text-center sm:placeholder:text-left focus:ring-0 focus:border-0 flex-1 px-4 sm:px-6 py-2.5 sm:py-3 text-base text-center sm:text-left rounded-xl sm:rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 relative z-10 w-full h-10 sm:h-12"
-                style={{
-                  textShadow: '0 0 10px rgba(255, 255, 255, 0.3)'
-                }}
+                className="bg-transparent border-0 text-white placeholder:text-white/60 focus:ring-0 focus:border-0 flex-1 px-6 py-0 text-base text-left rounded-xl sm:rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 relative z-10 w-full h-full leading-normal"
                 required
               />
               <Button 
@@ -109,7 +105,7 @@ export const HeroSection = () => {
                 disabled={isSubmitting}
                 variant="primary"
                 size="medium"
-                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl sm:rounded-full py-2.5 px-6 font-semibold relative overflow-hidden transform transition-all duration-300 hover:scale-105 w-full sm:w-auto mt-2 sm:mt-0 h-10 sm:h-12"
+                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl sm:rounded-full px-6 font-semibold relative overflow-hidden transform transition-all duration-300 hover:scale-105 w-full sm:w-auto mt-2 sm:mt-0 h-12"
                 style={{
                   boxShadow: '0 0 25px rgba(255, 20, 147, 0.6), 0 0 50px rgba(138, 43, 226, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                 }}
