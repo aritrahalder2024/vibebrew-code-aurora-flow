@@ -98,7 +98,7 @@ export const HeroSection = () => {
                 placeholder="you@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent border-0 text-white placeholder:text-white/60 placeholder:text-center sm:placeholder:text-left focus:ring-0 focus:border-0 flex-1 px-4 sm:px-6 py-3 sm:py-4 text-base text-center sm:text-left rounded-xl sm:rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 relative z-10 w-full"
+                className="bg-transparent border-0 text-white placeholder:text-white/60 placeholder:text-center sm:placeholder:text-left focus:ring-0 focus:border-0 flex-1 px-4 sm:px-6 py-2.5 sm:py-3 text-base text-center sm:text-left rounded-xl sm:rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 relative z-10 w-full h-10 sm:h-12"
                 style={{
                   textShadow: '0 0 10px rgba(255, 255, 255, 0.3)'
                 }}
@@ -109,7 +109,7 @@ export const HeroSection = () => {
                 disabled={isSubmitting}
                 variant="primary"
                 size="medium"
-                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl sm:rounded-full py-3 px-6 font-semibold relative overflow-hidden transform transition-all duration-300 hover:scale-105 w-full sm:w-auto mt-2 sm:mt-0 focus:outline-none focus:ring-0 hover:ring-0 active:ring-0"
+                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl sm:rounded-full py-2.5 px-6 font-semibold relative overflow-hidden transform transition-all duration-300 hover:scale-105 w-full sm:w-auto mt-2 sm:mt-0 h-10 sm:h-12"
                 style={{
                   boxShadow: '0 0 25px rgba(255, 20, 147, 0.6), 0 0 50px rgba(138, 43, 226, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                 }}
@@ -120,42 +120,6 @@ export const HeroSection = () => {
               </Button>
             </div>
           </form>
-
-          {/* Developers brewing section - Mobile optimized */}
-          <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-sm mx-auto relative z-10">
-            {/* Overlapping avatars with hover effect and image support */}
-            <div className="flex -space-x-3 sm:-space-x-4">
-              {[
-                { name: "A", img: null },
-                { name: "B", img: null },
-                { name: "C", img: null },
-                { name: "D", img: null },
-                { name: "E", img: null },
-              ].map((user, idx) => (
-                <div
-                  key={user.name}
-                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-gray-500 flex items-center justify-center text-white font-bold text-sm sm:text-lg shadow bg-gray-700 group transition-transform duration-200 hover:scale-110 hover:z-20 hover:ring-2 hover:ring-pink-400 cursor-pointer"
-                  style={{ zIndex: 10 - idx }}
-                  title={user.name}
-                >
-                  {user.img ? (
-                    <img
-                      src={user.img}
-                      alt={user.name}
-                      className="w-full h-full object-cover rounded-full"
-                    />
-                  ) : (
-                    user.name
-                  )}
-                </div>
-              ))}
-            </div>
-            {/* Text */}
-            <div className="text-center sm:text-left">
-              <div className="text-white font-bold text-base sm:text-lg leading-tight">1,200+ developers</div>
-              <div className="text-white/60 text-sm leading-tight">already brewing</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
