@@ -13,26 +13,26 @@ export const FAQSection = React.memo(() => {
     {
       id: "item-1",
       icon: <MessageSquare className="w-5 h-5" />,
-      question: "What exactly is vibecoding and who is this community for?",
-      answer: "Vibecoding is about leveraging AI tools to build, create, and scale efficiently as a solopreneur. Our community is for developers, creators, and builders who use AI coding assistants like ChatGPT, Claude, Cursor, and GitHub Copilot to accelerate their projects and share their entrepreneurial journey."
+      question: "What is ‘vibe coding’ and how is it different?",
+      answer: "Vibe coding is about more than just writing code—it's about building, learning, and collaborating in a positive, creative, and supportive environment. At Vibebrew, we believe coding should be fun, social, and inspiring, not just a solo grind."
     },
     {
       id: "item-2", 
       icon: <Zap className="w-5 h-5" />,
-      question: "How does the Reddit-style discussion format work?",
-      answer: "Our platform features threaded discussions where you can share AI tool discoveries, ask for feedback on ideas, showcase your solopreneur progress, and get help with AI-assisted coding. Upvote the best content, engage in meaningful conversations, and build your reputation in the vibecoder community."
+      question: "How can I learn and practice AI prompting here?",
+      answer: "Our Prompt Playground is a safe space to experiment with AI prompts, share your results, and get feedback from fellow vibecoders. Whether you're new to prompting or want to master advanced techniques, you'll find resources and a community eager to help you grow."
     },
     {
       id: "item-3",
       icon: <Users className="w-5 h-5" />,
-      question: "Can I promote my own events or workshops in the community?",
-      answer: "Absolutely! While we don't host official events, community members are encouraged to promote their workshops, talks, meetups, or online sessions. Share your expertise about AI tools, solopreneur strategies, or coding techniques with fellow vibecoders."
+      question: "Can I find collaborators or freelance gigs as a vibecoder?",
+      answer: "Yes! Vibebrew connects you with other creative coders for project collaboration, freelance opportunities, and even full-time jobs. Our platform is designed to help you showcase your skills, build your network, and vibe with like-minded people."
     },
     {
       id: "item-4",
       icon: <Gift className="w-5 h-5" />,
-      question: "What's this about lifetime free access for the first 100 users?",
-      answer: "The first 100 people to sign up get lifetime free access to all premium features including advanced AI tool recommendations, exclusive solopreneur resources, priority support, and access to our inner circle of successful vibecoders. Join early to secure your spot!"
+      question: "How does the community help with launching new products or ideas?",
+      answer: "Before you launch to the world, you can share your product or idea in our Product Launchpad. Get honest, constructive feedback from real developers and creators, and access our Startup Kit to help you turn your vision into reality—all while vibing with a supportive community."
     }
   ];
 
