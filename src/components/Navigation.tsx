@@ -23,10 +23,11 @@ export const Navigation = () => {
               <img 
                 src="/logo.webp" 
                 alt="Vibebrew" 
-                className="h-8 sm:h-10 w-auto object-contain"
+                className="h-8 sm:h-10 w-auto object-contain glow-pulse"
                 style={{ 
                   maxHeight: '40px', 
-                  minWidth: '40px'
+                  minWidth: '40px',
+                  filter: 'drop-shadow(0 0 8px rgba(255, 20, 147, 0.4)) drop-shadow(0 0 12px rgba(138, 43, 226, 0.3))'
                 }}
               />
             </div>
