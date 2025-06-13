@@ -1,5 +1,5 @@
 import React from "react";
-import { Users, MessageSquare, Github, Star, Coffee, Code } from "lucide-react";
+import { Users, MessageSquare, Github, Star, Coffee, Code, Briefcase } from "lucide-react";
 
 // Optimize the CommunityShowcase component with React.memo
 export const CommunityShowcase = React.memo(() => {
@@ -67,10 +67,10 @@ export const CommunityShowcase = React.memo(() => {
             <div 
               className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4"
             >
-              <Github className="w-8 h-8 text-white" />
+              <Briefcase className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Open Source</h3>
-            <p className="text-white/70">Contribute to open source projects and showcase your coding skills</p>
+            <h3 className="text-xl font-bold text-white mb-2">Freelance & Jobs</h3>
+            <p className="text-white/70">Find freelance opportunities and tech jobs, connect with recruiters, and grow your career like LinkedIn</p>
           </div>
 
           {/* Feature 5 */}
