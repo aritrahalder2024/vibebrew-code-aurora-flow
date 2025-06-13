@@ -39,10 +39,10 @@ export const CommunityShowcase = React.memo(() => {
             <div 
               className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4"
             >
-              <MessageSquare className="w-8 h-8 text-white" />
+              <Code className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Daily Discussions</h3>
-            <p className="text-white/70">Engage in meaningful conversations about tech, AI, and development trends</p>
+            <h3 className="text-xl font-bold text-white mb-2">Prompt Playground</h3>
+            <p className="text-white/70">Learn, experiment, and practice AI prompting in a collaborative playground for creative minds</p>
           </div>
 
           {/* Feature 3 */}
