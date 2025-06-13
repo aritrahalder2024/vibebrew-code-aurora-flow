@@ -95,10 +95,10 @@ export const CommunityShowcase = React.memo(() => {
             <div 
               className="w-16 h-16 bg-gradient-to-r from-teal-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4"
             >
-              <Coffee className="w-8 h-8 text-white" />
+              <Star className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Networking</h3>
-            <p className="text-white/70">Connect with industry professionals and expand your network</p>
+            <h3 className="text-xl font-bold text-white mb-2">Product Launchpad</h3>
+            <p className="text-white/70">Showcase your product, get community feedback before public launch, and access our exclusive Startup Kit</p>
           </div>
         </div>
       </div>
