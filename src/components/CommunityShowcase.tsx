@@ -1,4 +1,3 @@
-
 import { Users, MessageSquare, Github, Star, Coffee, Code } from "lucide-react";
 
 export const CommunityShowcase = () => {
@@ -15,7 +14,7 @@ export const CommunityShowcase = () => {
         </div>
 
         {/* Community Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Feature 1 */}
           <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
             <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -68,21 +67,6 @@ export const CommunityShowcase = () => {
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Networking</h3>
             <p className="text-white/70">Connect with industry professionals and expand your network</p>
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center">
-          <div className="glass-strong rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">Ready to Join?</h3>
-            <p className="text-white/80 mb-6">
-              Be part of a community that's shaping the future of development. Join our waitlist to get early access and exclusive perks!
-            </p>
-            <div className="flex justify-center space-x-4">
-              <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full font-semibold">
-                🚀 Early Access Available
-              </div>
-            </div>
           </div>
         </div>
       </div>
