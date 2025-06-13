@@ -4,13 +4,21 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import Button from "./Button";
 import React from "react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
+// Define types for the TypewriterEffect component
+interface TypewriterEffectProps {
+  text?: string;
+  typeSpeed?: number;
+  initialDelay?: number;
+}
 
 // Simple TypewriterEffect component optimized with React.memo
 const TypewriterEffect = React.memo(({
   text = "Build & Brew Ideas with AI",
   typeSpeed = 80,
   initialDelay = 400
-}) => {
+}: TypewriterEffectProps) => {
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
@@ -39,6 +47,49 @@ const TypewriterEffect = React.memo(({
 
 TypewriterEffect.displayName = 'TypewriterEffect';
 
+// Define types for the user avatar component
+interface UserAvatarProps {
+  user: {
+    name: string;
+    img: string | null;
+  };
+  index: number;
+  handleClick: (index: number) => void;
+}
+
+// Interactive avatar component
+const UserAvatar = React.memo(({ user, index, handleClick }: UserAvatarProps) => {
+  return (
+    <TooltipProvider delayDuration={300}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div
+            onClick={() => handleClick(index)}
+            className="w-10 h-10 rounded-full border-2 border-gray-500 flex items-center justify-center text-white font-bold text-lg shadow bg-gray-700 group transition-transform duration-200 hover:scale-110 hover:z-20 hover:ring-2 hover:ring-pink-400 cursor-pointer"
+            style={{ zIndex: 10 - index, willChange: 'transform' }}
+          >
+            {user.img ? (
+              <img
+                src={user.img}
+                alt={user.name}
+                className="w-full h-full object-cover rounded-full"
+                loading="lazy"
+              />
+            ) : (
+              user.name.charAt(0)
+            )}
+          </div>
+        </TooltipTrigger>
+        <TooltipContent side="top" className="bg-gray-800 text-white border-gray-700">
+          {user.name}
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+});
+
+UserAvatar.displayName = 'UserAvatar';
+
 export const HeroSection = () => {
   // State to store the email input value
   const [email, setEmail] = useState("");
@@ -46,6 +97,8 @@ export const HeroSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   // Hook to show toast notifications
   const { toast } = useToast();
+  // State to track which avatar is active (for animation)
+  const [activeAvatar, setActiveAvatar] = useState<number | null>(null);
 
   // Pre-compute background particles to avoid recalculation on re-renders
   const backgroundParticles = useMemo(() => {
@@ -60,8 +113,24 @@ export const HeroSection = () => {
     }));
   }, []);
 
+  // Sample user data for avatars
+  const users = useMemo(() => [
+    { name: "Alex Chen", img: null },
+    { name: "Priya Sharma", img: null },
+    { name: "Jordan Lee", img: null },
+    { name: "Maya Rodriguez", img: null },
+    { name: "Ethan Kim", img: null },
+  ], []);
+
+  // Handle avatar click
+  const handleAvatarClick = (index: number) => {
+    setActiveAvatar(index);
+    // Reset active avatar after animation completes
+    setTimeout(() => setActiveAvatar(null), 1000);
+  };
+
   // Function to handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // Prevent page refresh
     
     // Don't submit if email is empty
@@ -184,6 +253,45 @@ export const HeroSection = () => {
               </Button>
             </div>
           </form>
+
+          {/* Interactive user avatars section */}
+          <div className="mt-6 flex items-center justify-center gap-4 max-w-sm mx-auto relative z-10">
+            {/* Overlapping avatars with hover effect and tooltip */}
+            <div className="flex -space-x-4">
+              {users.map((user, idx) => (
+                <UserAvatar 
+                  key={idx} 
+                  user={user} 
+                  index={idx} 
+                  handleClick={handleAvatarClick} 
+                />
+              ))}
+            </div>
+            
+            {/* Text counter */}
+            <div>
+              <div className="text-white font-bold text-lg leading-tight">1,200+ developers</div>
+              <div className="text-white/60 text-sm leading-tight">already brewing</div>
+            </div>
+          </div>
+
+          {/* Animation overlay for clicked avatars */}
+          {activeAvatar !== null && (
+            <div 
+              className="fixed inset-0 pointer-events-none z-30 flex items-center justify-center"
+              style={{ perspective: '1000px' }}
+            >
+              <div 
+                className="w-20 h-20 rounded-full bg-aurora-gradient animate-ping opacity-70"
+                style={{ 
+                  animation: 'ping 1s cubic-bezier(0, 0, 0.2, 1) forwards',
+                  transformStyle: 'preserve-3d',
+                  transform: 'rotateY(0deg) scale(0)',
+                  animationName: 'avatar-pulse'
+                }}
+              />
+            </div>
+          )}
         </div>
       </div>
     </section>
