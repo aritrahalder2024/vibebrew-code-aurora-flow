@@ -194,3 +194,15 @@ img[alt="Vibebrew"] {
 .animate-float {
   animation: animate-float 8s ease-in-out infinite;
 }
+
+/* Override browser autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+  box-shadow: inset 0 0 0 1000px transparent !important;
+  background: transparent !important;
+}
