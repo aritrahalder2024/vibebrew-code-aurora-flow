@@ -1,12 +1,4 @@
-
 export const AboutSection = () => {
-  const stats = [
-    { number: "1.2K+", label: "Active Creators" },
-    { number: "150+", label: "Daily Discussions" },
-    { number: "300+", label: "Projects Shared" },
-    { number: "24/7", label: "Community Support" }
-  ];
-
   return (
     <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
       <div className="container mx-auto relative z-10 max-w-6xl">
@@ -18,20 +10,6 @@ export const AboutSection = () => {
             Where passionate creators, developers, and innovators come together to build, share, and grow. 
             Join our thriving community of makers who are shaping the future of technology and culture.
           </p>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-12 sm:mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center glass-strong rounded-2xl p-4 sm:p-6 hover:scale-105 transition-transform duration-300">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-space-grotesk font-bold text-aurora-pink mb-2">
-                {stat.number}
-              </div>
-              <div className="text-sm sm:text-base text-white/80 font-medium">
-                {stat.label}
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Feature Grid */}
