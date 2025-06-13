@@ -25,7 +25,7 @@ export const BlogSection = () => {
       author: "Maya Patel",
       date: "2024-06-05",
       readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop"
+      image: "https://images.unsplash.com/photo-1498050108023-47ba0277781c?w=400&h=250&fit=crop"
     },
     {
       id: 4,
@@ -50,48 +50,43 @@ export const BlogSection = () => {
           </p>
         </div>
 
-        <div className="overflow-x-auto">
-          <div className="flex gap-6 pb-4" style={{ width: 'max-content' }}>
-            {blogPosts.map((post) => (
-              <div
-                key={post.id}
-                className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow transition-all duration-300 cursor-pointer group w-80 flex-shrink-0"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        {/* Responsive grid for posts */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {blogPosts.map((post) => (
+            <div
+              key={post.id}
+              className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow transition-all duration-300 cursor-pointer group max-w-xs mx-auto p-4"
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-36 object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              </div>
+              <div className="p-4">
+                <div className="flex items-center justify-between text-xs text-white/60 mb-2">
+                  <span>{new Date(post.date).toLocaleDateString()}</span>
+                  <span>{post.readTime}</span>
                 </div>
-                
-                <div className="p-6">
-                  <div className="flex items-center justify-between text-sm text-white/60 mb-3">
-                    <span>{new Date(post.date).toLocaleDateString()}</span>
-                    <span>{post.readTime}</span>
-                  </div>
-                  
-                  <h3 className="text-xl font-space-grotesk font-bold text-white mb-3 group-hover:text-aurora-pink transition-colors">
-                    {post.title}
-                  </h3>
-                  
-                  <p className="text-white/70 text-sm mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-aurora-violet text-sm font-medium">
-                      by {post.author}
-                    </span>
-                    <span className="text-white/60 text-sm group-hover:text-white transition-colors">
-                      Read more →
-                    </span>
-                  </div>
+                <h3 className="text-lg font-space-grotesk font-bold text-white mb-2 group-hover:text-aurora-pink transition-colors">
+                  {post.title}
+                </h3>
+                <p className="text-white/70 text-xs mb-3 line-clamp-3">
+                  {post.excerpt}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-aurora-violet text-xs font-medium">
+                    by {post.author}
+                  </span>
+                  <span className="text-white/60 text-xs group-hover:text-white transition-colors">
+                    Read more →
+                  </span>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
