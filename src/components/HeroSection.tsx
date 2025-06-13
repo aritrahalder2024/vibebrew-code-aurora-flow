@@ -1,11 +1,12 @@
 import { Input } from "@/components/ui/input";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import Button from "./Button";
+import React from "react";
 
-// Simple TypewriterEffect component
-const TypewriterEffect = ({
+// Simple TypewriterEffect component optimized with React.memo
+const TypewriterEffect = React.memo(({
   text = "Build & Brew Ideas with AI",
   typeSpeed = 80,
   initialDelay = 400
@@ -34,7 +35,9 @@ const TypewriterEffect = ({
       {displayText.length < text.length && <span className="typing-cursor">|</span>}
     </span>
   );
-};
+});
+
+TypewriterEffect.displayName = 'TypewriterEffect';
 
 export const HeroSection = () => {
   // State to store the email input value
@@ -43,6 +46,19 @@ export const HeroSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   // Hook to show toast notifications
   const { toast } = useToast();
+
+  // Pre-compute background particles to avoid recalculation on re-renders
+  const backgroundParticles = useMemo(() => {
+    return Array.from({ length: 8 }).map((_, i) => ({
+      key: i,
+      width: Math.random() * 300 + 50,
+      height: Math.random() * 300 + 50,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      animationDuration: Math.random() * 20 + 10,
+      animationDelay: Math.random() * 5
+    }));
+  }, []);
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -97,21 +113,22 @@ export const HeroSection = () => {
     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 relative overflow-hidden">
       {/* Fixed background without interfering elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-      {/* Animated background particles */}
+      {/* Optimized animated background particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 15 }).map((_, i) => (
+        {backgroundParticles.map((particle) => (
           <div 
-            key={i}
+            key={particle.key}
             className="absolute rounded-full bg-gradient-to-r from-pink-500 to-purple-500 opacity-10"
             style={{
-              width: `${Math.random() * 300 + 50}px`,
-              height: `${Math.random() * 300 + 50}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: `${particle.width}px`,
+              height: `${particle.height}px`,
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
               transform: 'translate(-50%, -50%)',
               filter: 'blur(50px)',
-              animation: `float-particle ${Math.random() * 20 + 10}s ease-in-out infinite alternate`,
-              animationDelay: `${Math.random() * 5}s`
+              animation: `float-particle ${particle.animationDuration}s ease-in-out infinite alternate`,
+              animationDelay: `${particle.animationDelay}s`,
+              willChange: 'transform, opacity, filter'
             }}
           />
         ))}
@@ -138,6 +155,7 @@ export const HeroSection = () => {
             <div className="flex flex-col sm:flex-row w-full bg-white/15 backdrop-blur-xl rounded-2xl sm:rounded-full border border-white/30 overflow-hidden shadow-2xl relative p-1 h-14 items-center"
                  style={{
                    boxShadow: '0 0 40px rgba(255, 20, 147, 0.4), 0 0 80px rgba(138, 43, 226, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                   willChange: 'transform'
                  }}>
               {/* Animated border glow */}
               <div className="absolute inset-0 rounded-2xl sm:rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 opacity-20"></div>
@@ -157,6 +175,7 @@ export const HeroSection = () => {
                 className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl sm:rounded-full px-6 font-semibold relative overflow-hidden transform transition-all duration-300 hover:scale-105 w-full sm:w-auto mt-2 sm:mt-0 h-12"
                 style={{
                   boxShadow: '0 0 25px rgba(255, 20, 147, 0.6), 0 0 50px rgba(138, 43, 226, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                  willChange: 'transform'
                 }}
               >
                 <span className="relative z-10 drop-shadow-lg">

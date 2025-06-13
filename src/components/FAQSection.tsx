@@ -1,3 +1,4 @@
+import React, { useMemo } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -6,7 +7,8 @@ import {
 } from "@/components/ui/accordion";
 import { MessageSquare, Zap, Users, Gift } from "lucide-react";
 
-export const FAQSection = () => {
+// Optimize the FAQSection component with React.memo
+export const FAQSection = React.memo(() => {
   const faqs = [
     {
       id: "item-1",
@@ -34,6 +36,18 @@ export const FAQSection = () => {
     }
   ];
 
+  // Pre-compute animated code symbols to avoid recalculation on re-renders
+  const codeSymbols = useMemo(() => {
+    return Array.from({ length: 5 }).map((_, i) => ({
+      key: i,
+      symbol: ['</', '/>', '{}', '()', '[]'][i],
+      left: 10 + (i * 20),
+      top: 20 + (i % 3) * 30,
+      animationDelay: i * 0.5,
+      animationDuration: 6 + i * 0.5
+    }));
+  }, []);
+
   return (
     <section id="faq" className="py-16 sm:py-20 px-4 sm:px-6 relative">
       <div className="container mx-auto max-w-4xl">
@@ -48,34 +62,41 @@ export const FAQSection = () => {
         </div>
 
         <div className="glass-strong rounded-3xl p-6 sm:p-8 relative overflow-hidden w-full max-w-2xl mx-auto">
-          {/* Animated code symbols in background */}
+          {/* Optimized animated code symbols in background */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {[...Array(8)].map((_, i) => (
+            {codeSymbols.map((symbol) => (
               <div
-                key={i}
+                key={symbol.key}
                 className="absolute text-white/5 font-jetbrains-mono text-4xl sm:text-6xl animate-float"
                 style={{
-                  left: `${10 + (i * 12)}%`,
-                  top: `${20 + (i % 4) * 20}%`,
-                  animationDelay: `${i * 0.3}s`,
-                  animationDuration: `${6 + i}s`
+                  left: `${symbol.left}%`,
+                  top: `${symbol.top}%`,
+                  animationDelay: `${symbol.animationDelay}s`,
+                  animationDuration: `${symbol.animationDuration}s`,
+                  willChange: 'transform'
                 }}
               >
-                {['</', '/>', '{}', '()', '[]', '=>', '&&', '||'][i]}
+                {symbol.symbol}
               </div>
             ))}
           </div>
 
           <Accordion type="single" collapsible className="relative z-10">
-            {faqs.map((faq, index) => (
+            {faqs.map((faq) => (
               <AccordionItem 
                 key={faq.id} 
                 value={faq.id}
                 className="border-white/10 group hover:bg-white/5 rounded-xl transition-all duration-300"
               >
-                <AccordionTrigger className="text-white hover:text-aurora-pink px-4 sm:px-6 py-4 text-left group-hover:scale-[1.02] transition-transform">
+                <AccordionTrigger 
+                  className="text-white hover:text-aurora-pink px-4 sm:px-6 py-4 text-left group-hover:scale-[1.02] transition-transform"
+                  style={{ willChange: 'transform, color' }}
+                >
                   <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="p-2 bg-aurora-gradient rounded-lg group-hover:scale-110 transition-transform flex-shrink-0">
+                    <div 
+                      className="p-2 bg-aurora-gradient rounded-lg group-hover:scale-110 transition-transform flex-shrink-0"
+                      style={{ willChange: 'transform' }}
+                    >
                       {faq.icon}
                     </div>
                     <span className="font-medium text-base sm:text-lg text-left">{faq.question}</span>
@@ -93,4 +114,6 @@ export const FAQSection = () => {
       </div>
     </section>
   );
-};
+});
+
+FAQSection.displayName = 'FAQSection';
