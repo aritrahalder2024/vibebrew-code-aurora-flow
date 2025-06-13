@@ -1,8 +1,46 @@
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import Button from "./Button";
+
+// TypewriterEffect component for typing animation
+const TypewriterEffect = ({ text, speed = 100, delay = 1000 }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(false);
+
+  useEffect(() => {
+    // Initial delay before typing starts
+    const startTimeout = setTimeout(() => {
+      setIsTyping(true);
+    }, delay);
+
+    return () => clearTimeout(startTimeout);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!isTyping) return;
+
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prevIndex => prevIndex + 1);
+      }, speed);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, isTyping, speed, text]);
+
+  return (
+    <>
+      {displayText}
+      {currentIndex < text.length && (
+        <span className="typing-cursor">|</span>
+      )}
+    </>
+  );
+};
 
 export const HeroSection = () => {
   // State to store the email input value
@@ -74,7 +112,7 @@ export const HeroSection = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-space-grotesk font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight relative z-10 px-2">
             <span className="block sm:inline">Where Devs Vibe, </span>
             <span className="text-aurora-pink font-bold block sm:inline whitespace-nowrap">
-              Build & Brew Ideas with AI
+              <TypewriterEffect text="Build & Brew Ideas with AI" speed={80} />
             </span>
           </h1>
           
