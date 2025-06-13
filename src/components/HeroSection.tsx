@@ -74,7 +74,7 @@ export const HeroSection = () => {
           {/* Main heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-space-grotesk font-black text-white mb-6 leading-tight tracking-tight relative z-10">
             <span className="inline">Where Devs Vibe, </span>
-            <span className="text-aurora-pink font-bold inline">
+            <span className="text-aurora-pink font-bold inline whitespace-nowrap">
               Build & Brew Ideas with AI
             </span>
           </h1>
@@ -84,15 +84,25 @@ export const HeroSection = () => {
             Join the vibrant community of creators, developers, and innovators building the future together.
           </p>
           
-          {/* Email signup form with glowing button */}
+          {/* Email signup form with enhanced glowing effects */}
           <form onSubmit={handleSubmit} className="flex justify-center items-center mb-8 max-w-md mx-auto px-4 relative z-10">
-            <div className="flex w-full bg-white/10 backdrop-blur-md rounded-full border border-white/20 overflow-hidden shadow-lg">
+            <div className="flex w-full bg-white/15 backdrop-blur-xl rounded-full border border-white/30 overflow-hidden shadow-2xl relative"
+                 style={{
+                   boxShadow: '0 0 40px rgba(255, 20, 147, 0.4), 0 0 80px rgba(138, 43, 226, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                   animation: 'form-glow 3s ease-in-out infinite'
+                 }}>
+              {/* Animated border glow */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 opacity-20 animate-pulse"></div>
+              
               <Input
                 type="email"
                 placeholder="Your work email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent border-0 text-white placeholder:text-white/60 focus:ring-0 focus:border-0 flex-1 px-6 py-4 text-base rounded-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="bg-transparent border-0 text-white placeholder:text-white/70 focus:ring-0 focus:border-0 flex-1 px-6 py-4 text-base rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 relative z-10"
+                style={{
+                  textShadow: '0 0 10px rgba(255, 255, 255, 0.3)'
+                }}
                 required
               />
               <Button 
@@ -100,17 +110,18 @@ export const HeroSection = () => {
                 disabled={isSubmitting}
                 variant="primary"
                 size="medium"
-                className="bg-black text-white rounded-full py-2 px-6 font-semibold relative overflow-hidden group"
+                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full py-2 px-6 font-semibold relative overflow-hidden group transform transition-all duration-300 hover:scale-105"
                 style={{
-                  boxShadow: '0 0 15px rgba(255, 20, 147, 0.7), 0 0 30px rgba(138, 43, 226, 0.4)',
-                  animation: 'glow-pulse 2s ease-in-out infinite'
+                  boxShadow: '0 0 25px rgba(255, 20, 147, 0.8), 0 0 50px rgba(138, 43, 226, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                  animation: 'button-glow 2s ease-in-out infinite'
                 }}
               >
-                <span className="relative z-10">
+                <span className="relative z-10 drop-shadow-lg">
                   {isSubmitting ? "Joining..." : "Join waitlist"}
                 </span>
-                {/* Animated glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                {/* Enhanced animated glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 opacity-0 group-hover:opacity-40 transition-opacity duration-300 animate-pulse"></div>
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </Button>
             </div>
           </form>
