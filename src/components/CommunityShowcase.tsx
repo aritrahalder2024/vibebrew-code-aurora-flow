@@ -16,7 +16,7 @@ export const CommunityShowcase = () => {
         {/* Community Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Feature 1 */}
-          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300 w-full max-w-md mx-auto">
             <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="w-8 h-8 text-white" />
             </div>
@@ -25,7 +25,7 @@ export const CommunityShowcase = () => {
           </div>
 
           {/* Feature 2 */}
-          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300 w-full max-w-md mx-auto">
             <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <MessageSquare className="w-8 h-8 text-white" />
             </div>
@@ -34,7 +34,7 @@ export const CommunityShowcase = () => {
           </div>
 
           {/* Feature 3 */}
-          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300 w-full max-w-md mx-auto">
             <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <Code className="w-8 h-8 text-white" />
             </div>
@@ -43,7 +43,7 @@ export const CommunityShowcase = () => {
           </div>
 
           {/* Feature 4 */}
-          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300 w-full max-w-md mx-auto">
             <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <Github className="w-8 h-8 text-white" />
             </div>
@@ -52,7 +52,7 @@ export const CommunityShowcase = () => {
           </div>
 
           {/* Feature 5 */}
-          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300 w-full max-w-md mx-auto">
             <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <Star className="w-8 h-8 text-white" />
             </div>
@@ -61,7 +61,7 @@ export const CommunityShowcase = () => {
           </div>
 
           {/* Feature 6 */}
-          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+          <div className="glass-strong rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300 w-full max-w-md mx-auto">
             <div className="w-16 h-16 bg-gradient-to-r from-teal-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <Coffee className="w-8 h-8 text-white" />
             </div>

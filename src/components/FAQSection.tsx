@@ -1,4 +1,3 @@
-
 import {
   Accordion,
   AccordionContent,
@@ -48,7 +47,7 @@ export const FAQSection = () => {
           </p>
         </div>
 
-        <div className="glass-strong rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+        <div className="glass-strong rounded-3xl p-6 sm:p-8 relative overflow-hidden w-full max-w-2xl mx-auto">
           {/* Animated code symbols in background */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {[...Array(8)].map((_, i) => (

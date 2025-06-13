@@ -1,4 +1,3 @@
-
 export const EventsSection = () => {
   const events = [
     {
@@ -47,7 +46,7 @@ export const EventsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {events.map((event, index) => (
-            <div key={event.id} className="glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:scale-105 transition-all duration-300 cursor-pointer group">
+            <div key={event.id} className="glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:scale-105 transition-all duration-300 cursor-pointer group w-full max-w-md mx-auto">
               <div className="flex items-center justify-between mb-4">
                 <span className="px-3 py-1 bg-aurora-gradient rounded-full text-xs font-medium text-white">
                   {event.type}

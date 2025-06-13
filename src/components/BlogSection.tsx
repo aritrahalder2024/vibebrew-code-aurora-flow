@@ -55,7 +55,7 @@ export const BlogSection = () => {
           {blogPosts.map((post) => (
             <div
               key={post.id}
-              className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow transition-all duration-300 cursor-pointer group max-w-xs mx-auto p-4"
+              className="glass-strong rounded-glass overflow-hidden shadow-tile hover:scale-105 hover:shadow-glow transition-all duration-300 cursor-pointer group w-full max-w-xs mx-auto p-4"
             >
               <div className="relative overflow-hidden">
                 <img
