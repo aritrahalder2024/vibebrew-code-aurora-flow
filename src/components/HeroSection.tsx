@@ -113,13 +113,18 @@ export const HeroSection = () => {
     }));
   }, []);
 
-  // Sample user data for avatars
+  // Sample user data for avatars with real human faces and random names
+  const maleNames = ["Alex Carter", "James Lee", "Michael Smith", "David Kim", "John Patel", "Ethan Brown", "Ryan Clark", "Daniel Singh", "Chris Evans", "Liam Wilson"];
+  const femaleNames = ["Priya Sharma", "Maya Rodriguez", "Emma Johnson", "Sophia Chen", "Olivia Garcia", "Ava Martinez", "Isabella Lopez", "Emily Davis", "Grace Lee", "Chloe Kim"];
+  function getRandomName(names) {
+    return names[Math.floor(Math.random() * names.length)];
+  }
   const users = useMemo(() => [
-    { name: "Alex Chen", img: null },
-    { name: "Priya Sharma", img: null },
-    { name: "Jordan Lee", img: null },
-    { name: "Maya Rodriguez", img: null },
-    { name: "Ethan Kim", img: null },
+    { name: getRandomName(maleNames), img: `https://randomuser.me/api/portraits/men/${Math.floor(Math.random()*100)}.jpg` },
+    { name: getRandomName(femaleNames), img: `https://randomuser.me/api/portraits/women/${Math.floor(Math.random()*100)}.jpg` },
+    { name: getRandomName(maleNames), img: `https://randomuser.me/api/portraits/men/${Math.floor(Math.random()*100)}.jpg` },
+    { name: getRandomName(femaleNames), img: `https://randomuser.me/api/portraits/women/${Math.floor(Math.random()*100)}.jpg` },
+    { name: getRandomName(maleNames), img: `https://randomuser.me/api/portraits/men/${Math.floor(Math.random()*100)}.jpg` },
   ], []);
 
   // Handle avatar click
