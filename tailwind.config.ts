@@ -1,5 +1,6 @@
-
 import type { Config } from "tailwindcss";
+// @ts-ignore
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -131,6 +132,10 @@ export default {
 					'0%, 100%': { boxShadow: '0 0 20px rgba(122, 92, 250, 0.3)' },
 					'50%': { boxShadow: '0 0 30px rgba(122, 92, 250, 0.5)' },
 				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '0.7', transform: 'scale(1.5)' },
+					'50%': { opacity: '0.4', transform: 'scale(1.4)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -138,8 +143,9 @@ export default {
 				'aurora-flow': 'aurora-flow 8s ease-in-out infinite',
 				'float': 'float 6s ease-in-out infinite',
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;

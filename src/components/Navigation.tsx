@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -20,9 +19,13 @@ export const Navigation = () => {
         {/* Logo with enhanced visibility */}
         <div className="flex items-center h-full pl-2">
           <a href="#home" className="flex items-center h-full">
-            <div className="relative group">
-              {/* Glow effect behind logo */}
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-150"></div>
+            <div className="relative logo-container">
+              {/* Permanent glow effect behind logo */}
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/40 to-purple-500/40 rounded-full blur-lg opacity-70 scale-150 animate-pulse-slow"></div>
+              
+              {/* Subtle backdrop for better contrast */}
+              <div className="absolute inset-0 bg-black/20 backdrop-blur-sm rounded-full scale-90"></div>
+              
               <img 
                 src="/logo.webp" 
                 alt="Vibebrew" 
@@ -30,9 +33,12 @@ export const Navigation = () => {
                 style={{ 
                   maxHeight: '40px', 
                   minWidth: '40px',
-                  filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 20px rgba(255, 20, 147, 0.2))'
+                  filter: 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 15px rgba(255, 20, 147, 0.6)) drop-shadow(0 0 30px rgba(138, 43, 226, 0.4))'
                 }}
               />
+              
+              {/* Additional highlight effect */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent rounded-full rotate-45 scale-75"></div>
             </div>
           </a>
         </div>
