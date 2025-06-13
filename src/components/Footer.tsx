@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-[#4a2d5f] to-[#131525] py-4 px-6">
+    <footer className="backdrop-blur-md bg-white/5 border-t border-white/10 py-4 px-6">
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
         {/* Left side - Links */}
         <div className="flex items-center space-x-6 mb-4 sm:mb-0">
