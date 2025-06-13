@@ -25,7 +25,7 @@ export const BlogSection = () => {
       author: "Maya Patel",
       date: "2024-06-05",
       readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1498050108023-47ba0277781c?w=400&h=250&fit=crop"
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=250&fit=crop"
     },
     {
       id: 4,
@@ -62,6 +62,7 @@ export const BlogSection = () => {
                   src={post.image}
                   alt={post.title}
                   className="w-full h-36 object-cover group-hover:scale-110 transition-transform duration-300"
+                  onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
                 />
                 <div className="absolute inset-0 bg-aurora-gradient opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </div>
