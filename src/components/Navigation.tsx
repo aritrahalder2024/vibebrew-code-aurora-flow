@@ -19,15 +19,19 @@ export const Navigation = () => {
         {/* Logo */}
         <div className="flex items-center h-full pl-2">
           <a href="#home" className="flex items-center h-full">
-            <div className="relative">
+            <div className="relative p-1.5 rounded-lg overflow-hidden" style={{
+              background: "linear-gradient(135deg, rgba(255, 20, 147, 0.15), rgba(138, 43, 226, 0.15))",
+              boxShadow: "0 0 15px rgba(255, 20, 147, 0.2), 0 0 30px rgba(138, 43, 226, 0.1)",
+              border: "1px solid rgba(255, 255, 255, 0.15)"
+            }}>
               <img 
                 src="/logo.webp" 
                 alt="Vibebrew" 
-                className="h-8 sm:h-10 w-auto object-contain glow-pulse"
+                className="h-8 sm:h-10 w-auto object-contain"
                 style={{ 
                   maxHeight: '40px', 
                   minWidth: '40px',
-                  filter: 'drop-shadow(0 0 8px rgba(255, 20, 147, 0.4)) drop-shadow(0 0 12px rgba(138, 43, 226, 0.3))'
+                  filter: 'brightness(1.05) contrast(1.05)'
                 }}
               />
             </div>
