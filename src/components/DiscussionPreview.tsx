@@ -1,4 +1,3 @@
-
 import { MessageCircle, Heart, Share } from "lucide-react";
 
 export const DiscussionPreview = () => {
@@ -63,9 +62,6 @@ export const DiscussionPreview = () => {
           <h2 className="text-5xl md:text-6xl font-space-grotesk font-bold text-white mb-6">
             Live <span className="text-aurora-purple">Discussions</span>
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Real conversations happening right now in our community
-          </p>
         </div>
 
         <div className="max-w-4xl mx-auto space-y-6">
