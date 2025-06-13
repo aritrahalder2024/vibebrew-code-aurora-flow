@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -14,17 +15,25 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="navbar-glass fixed left-1/2 top-6 transform -translate-x-1/2 z-50 h-20 flex items-center rounded-full shadow-lg px-8 max-w-6xl w-[96vw]">
-      <div className="flex items-center justify-between w-full h-20">
-        {/* Logo */}
+    <nav className="navbar-glass fixed left-1/2 top-6 transform -translate-x-1/2 z-50 h-16 sm:h-20 flex items-center rounded-full shadow-lg px-4 sm:px-8 max-w-6xl w-[96vw]">
+      <div className="flex items-center justify-between w-full h-full">
+        {/* Logo with enhanced visibility */}
         <div className="flex items-center h-full pl-2">
           <a href="#home" className="flex items-center h-full">
-            <img 
-              src="/logo.webp" 
-              alt="Vibebrew" 
-              className="h-10 w-auto object-contain"
-              style={{ maxHeight: '48px', minWidth: '48px' }}
-            />
+            <div className="relative group">
+              {/* Glow effect behind logo */}
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-150"></div>
+              <img 
+                src="/logo.webp" 
+                alt="Vibebrew" 
+                className="h-8 sm:h-10 w-auto object-contain relative z-10 filter drop-shadow-lg"
+                style={{ 
+                  maxHeight: '40px', 
+                  minWidth: '40px',
+                  filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 20px rgba(255, 20, 147, 0.2))'
+                }}
+              />
+            </div>
           </a>
         </div>
 
@@ -49,15 +58,15 @@ export const Navigation = () => {
             onClick={() => setIsOpen(!isOpen)}
             className="text-white/80 hover:text-white p-2"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-white/10">
+        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-slate-900/95 backdrop-blur-xl rounded-2xl border border-white/20 mx-4">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <a
                 key={item.href}

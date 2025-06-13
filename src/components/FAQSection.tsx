@@ -1,3 +1,4 @@
+
 import {
   Accordion,
   AccordionContent,
@@ -35,30 +36,25 @@ export const FAQSection = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 px-6 relative">
+    <section id="faq" className="py-16 sm:py-20 px-4 sm:px-6 relative">
       <div className="container mx-auto max-w-4xl">
-        {/* Remove floating background elements */}
-        {/* <div className="absolute top-10 left-10 w-20 h-20 bg-aurora-purple/20 rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 bg-aurora-pink/20 rounded-full blur-xl floating animation-delay-300"></div> */}
-        
-        <div className="text-center mb-16 relative z-10">
-          <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-6">
-            Frequently Asked
-            <br />
-            <span className="text-aurora-pink">Questions</span>
+        <div className="text-center mb-12 sm:mb-16 relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-4 sm:mb-6 px-4">
+            <span className="block sm:inline">Frequently Asked </span>
+            <span className="text-aurora-pink block sm:inline">Questions</span>
           </h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto px-4">
             Everything you need to know about joining the vibecoder community
           </p>
         </div>
 
-        <div className="glass-strong rounded-3xl p-8 relative overflow-hidden">
+        <div className="glass-strong rounded-3xl p-6 sm:p-8 relative overflow-hidden">
           {/* Animated code symbols in background */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {[...Array(8)].map((_, i) => (
               <div
                 key={i}
-                className="absolute text-white/5 font-jetbrains-mono text-6xl animate-float"
+                className="absolute text-white/5 font-jetbrains-mono text-4xl sm:text-6xl animate-float"
                 style={{
                   left: `${10 + (i * 12)}%`,
                   top: `${20 + (i % 4) * 20}%`,
@@ -78,16 +74,16 @@ export const FAQSection = () => {
                 value={faq.id}
                 className="border-white/10 group hover:bg-white/5 rounded-xl transition-all duration-300"
               >
-                <AccordionTrigger className="text-white hover:text-aurora-pink px-6 py-4 text-left group-hover:scale-[1.02] transition-transform">
-                  <div className="flex items-center gap-4">
-                    <div className="p-2 bg-aurora-gradient rounded-lg group-hover:scale-110 transition-transform">
+                <AccordionTrigger className="text-white hover:text-aurora-pink px-4 sm:px-6 py-4 text-left group-hover:scale-[1.02] transition-transform">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="p-2 bg-aurora-gradient rounded-lg group-hover:scale-110 transition-transform flex-shrink-0">
                       {faq.icon}
                     </div>
-                    <span className="font-medium text-lg">{faq.question}</span>
+                    <span className="font-medium text-base sm:text-lg text-left">{faq.question}</span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-white/70 px-6 pb-6 text-base leading-relaxed">
-                  <div className="ml-12">
+                <AccordionContent className="text-white/70 px-4 sm:px-6 pb-6 text-sm sm:text-base leading-relaxed">
+                  <div className="ml-8 sm:ml-12">
                     {faq.answer}
                   </div>
                 </AccordionContent>
