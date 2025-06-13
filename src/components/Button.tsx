@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 interface ButtonProps {
@@ -8,6 +9,7 @@ interface ButtonProps {
   className?: string;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  style?: React.CSSProperties;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -18,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   disabled = false,
   type = 'button',
+  style,
 }) => {
   const baseStyles = 'font-medium transition-all duration-300 relative overflow-hidden';
   
@@ -45,9 +48,7 @@ const Button: React.FC<ButtonProps> = ({
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${waitlistButtonStyles} ${className}`}
       onClick={onClick}
       disabled={disabled}
-      style={variant === 'primary' ? {
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)'
-      } : {}}
+      style={style}
     >
       <span className="relative z-10">{children}</span>
       {variant === 'primary' && (
@@ -57,4 +58,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button; 
+export default Button;
