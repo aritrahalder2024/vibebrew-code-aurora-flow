@@ -84,7 +84,7 @@ export const HeroSection = () => {
           </p>
           
           {/* Email signup form with enhanced glowing effects - Mobile optimized */}
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row justify-center items-center mb-6 sm:mb-8 w-[350px] mx-auto px-4 relative z-10 gap-3 sm:gap-0">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row justify-center items-center mb-6 sm:mb-8 w-[450px] mx-auto px-4 relative z-10 gap-3 sm:gap-0">
             <div className="flex flex-col sm:flex-row w-full bg-white/15 backdrop-blur-xl rounded-2xl sm:rounded-full border border-white/30 overflow-hidden shadow-2xl relative p-1 h-14 items-center"
                  style={{
                    boxShadow: '0 0 40px rgba(255, 20, 147, 0.4), 0 0 80px rgba(138, 43, 226, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
