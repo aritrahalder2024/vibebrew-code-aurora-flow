@@ -1,44 +1,130 @@
 import { Input } from "@/components/ui/input";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import Button from "./Button";
 
-// TypewriterEffect component for typing animation
-const TypewriterEffect = ({ text, speed = 100, delay = 1000 }) => {
+// Enhanced TypewriterEffect component with backspacing and pausing
+const TypewriterEffect = ({ 
+  text = "Build & Brew Ideas with AI", 
+  typeSpeed = 70, 
+  backspaceSpeed = 30, 
+  initialDelay = 800,
+  pauseBeforeBackspace = 1500,
+  pauseBeforeRestart = 1000,
+  backspaceChars = 8,  // Number of characters to backspace
+  highlightColor = "rgba(255, 20, 147, 0.2)" // Pink highlight color
+}) => {
   const [displayText, setDisplayText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(false);
+  const [phase, setPhase] = useState('waiting'); // waiting, typing, pausing, backspacing, restarting
+  const [highlightIndex, setHighlightIndex] = useState(-1);
+  const containerRef = useRef(null);
+  
+  // Typing sound effect (subtle key press sound)
+  const playTypeSound = useCallback(() => {
+    // This would normally play a sound, but we'll just simulate it
+    // In a real implementation, you could add actual sound effects
+  }, []);
 
   useEffect(() => {
-    // Initial delay before typing starts
-    const startTimeout = setTimeout(() => {
-      setIsTyping(true);
-    }, delay);
-
-    return () => clearTimeout(startTimeout);
-  }, [delay]);
-
-  useEffect(() => {
-    if (!isTyping) return;
-
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayText(prev => prev + text[currentIndex]);
-        setCurrentIndex(prevIndex => prevIndex + 1);
-      }, speed);
-
-      return () => clearTimeout(timeout);
+    let timeout;
+    
+    switch (phase) {
+      case 'waiting':
+        timeout = setTimeout(() => setPhase('typing'), initialDelay);
+        break;
+        
+      case 'typing':
+        if (displayText.length < text.length) {
+          timeout = setTimeout(() => {
+            setDisplayText(text.substring(0, displayText.length + 1));
+            // Randomly highlight a character to simulate "thinking" about what to type
+            if (Math.random() > 0.7) {
+              setHighlightIndex(displayText.length);
+              setTimeout(() => setHighlightIndex(-1), 300);
+            }
+            playTypeSound();
+          }, typeSpeed + Math.random() * 50); // Add some randomness to typing speed
+        } else {
+          setPhase('pausing');
+        }
+        break;
+        
+      case 'pausing':
+        timeout = setTimeout(() => setPhase('backspacing'), pauseBeforeBackspace);
+        break;
+        
+      case 'backspacing':
+        if (displayText.length > text.length - backspaceChars) {
+          timeout = setTimeout(() => {
+            setDisplayText(text.substring(0, displayText.length - 1));
+            playTypeSound();
+          }, backspaceSpeed);
+        } else {
+          setPhase('restarting');
+        }
+        break;
+        
+      case 'restarting':
+        timeout = setTimeout(() => setPhase('typing'), pauseBeforeRestart);
+        break;
     }
-  }, [currentIndex, isTyping, speed, text]);
+    
+    return () => clearTimeout(timeout);
+  }, [displayText, phase, text, typeSpeed, backspaceSpeed, initialDelay, pauseBeforeBackspace, pauseBeforeRestart, backspaceChars, playTypeSound]);
+
+  // Apply dynamic hover effects to characters
+  useEffect(() => {
+    if (containerRef.current && phase === 'pausing') {
+      const chars = containerRef.current.querySelectorAll('.typewriter-char');
+      chars.forEach((char, index) => {
+        // Set custom property for staggered animations
+        char.style.setProperty('--char-index', index);
+        
+        // Add hover listeners for interactive effects
+        char.addEventListener('mouseenter', () => {
+          char.classList.add('char-hover');
+          
+          // Create ripple effect to nearby characters
+          const nearbyChars = 3;
+          for (let i = Math.max(0, index - nearbyChars); i < Math.min(chars.length, index + nearbyChars + 1); i++) {
+            if (i !== index) {
+              const distance = Math.abs(i - index);
+              const delay = distance * 50;
+              setTimeout(() => {
+                chars[i].classList.add('char-ripple');
+                setTimeout(() => chars[i].classList.remove('char-ripple'), 300);
+              }, delay);
+            }
+          }
+        });
+        
+        char.addEventListener('mouseleave', () => {
+          char.classList.remove('char-hover');
+        });
+      });
+    }
+  }, [displayText, phase]);
 
   return (
-    <>
-      {displayText}
-      {currentIndex < text.length && (
+    <span className="typewriter-container" ref={containerRef}>
+      {displayText.split('').map((char, index) => (
+        <span 
+          key={index} 
+          className={`typewriter-char ${index === highlightIndex ? 'highlight' : ''}`}
+          style={{
+            '--char-index': index,
+            backgroundColor: index === highlightIndex ? highlightColor : 'transparent',
+            animationDelay: `${index * 0.03}s`
+          } as React.CSSProperties}
+        >
+          {char}
+        </span>
+      ))}
+      {(phase === 'typing' || phase === 'backspacing') && (
         <span className="typing-cursor">|</span>
       )}
-    </>
+    </span>
   );
 };
 
@@ -104,6 +190,26 @@ export const HeroSection = () => {
       {/* Fixed background without interfering elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
       
+      {/* Animated background particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div 
+            key={i}
+            className="absolute rounded-full bg-gradient-to-r from-pink-500 to-purple-500 opacity-10"
+            style={{
+              width: `${Math.random() * 300 + 50}px`,
+              height: `${Math.random() * 300 + 50}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              transform: 'translate(-50%, -50%)',
+              filter: 'blur(50px)',
+              animation: `float-particle ${Math.random() * 20 + 10}s ease-in-out infinite alternate`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
+      </div>
+      
       {/* Overlay with centered content */}
       <div className="container mx-auto text-center relative z-20 max-w-5xl">
         {/* Main content */}
@@ -111,8 +217,8 @@ export const HeroSection = () => {
           {/* Main heading */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-space-grotesk font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight relative z-10 px-2">
             <span className="block sm:inline">Where Devs Vibe, </span>
-            <span className="text-aurora-pink font-bold block sm:inline whitespace-nowrap">
-              <TypewriterEffect text="Build & Brew Ideas with AI" speed={80} />
+            <span className="text-aurora-pink font-bold block sm:inline whitespace-nowrap typewriter-text">
+              <TypewriterEffect />
             </span>
           </h1>
           

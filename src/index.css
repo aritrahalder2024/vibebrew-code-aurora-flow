@@ -6,6 +6,62 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.5% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
 body {
   font-family: "Inter", sans-serif;
   line-height: 1.5;
@@ -109,34 +165,178 @@ img[alt="Vibebrew"] {
   object-fit: contain;
 }
 
-/* Scrollbar styling */
+/* Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 20, 147, 0.5);
-  border-radius: 4px;
+  background: linear-gradient(to bottom, #ff1493, #8a2be2);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 20, 147, 0.7);
+  background: linear-gradient(to bottom, #ff1493, #9400d3);
 }
 
-/* Ultra-enhanced navbar glass effect - Maximum glass morphism */
+/* Autofill style override */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Enhanced Typewriter effect styling */
+.typewriter-container {
+  position: relative;
+  display: inline-block;
+  perspective: 1000px;
+}
+
+.typewriter-text {
+  position: relative;
+  display: inline-block;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.typewriter-char {
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center bottom;
+  transform-style: preserve-3d;
+}
+
+.typewriter-char.highlight {
+  transform: translateY(-4px) scale(1.1);
+  text-shadow: 
+    0 0 8px rgba(255, 20, 147, 0.8), 
+    0 0 12px rgba(138, 43, 226, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.4);
+  animation: pulse-glow 0.5s ease-in-out;
+}
+
+.typewriter-char.char-hover {
+  transform: translateY(-6px) scale(1.2) rotate(5deg);
+  color: #ff1493;
+  text-shadow: 
+    0 0 10px rgba(255, 20, 147, 0.8), 
+    0 0 20px rgba(255, 20, 147, 0.6),
+    0 0 30px rgba(255, 20, 147, 0.4);
+  z-index: 10;
+}
+
+.typewriter-char.char-ripple {
+  animation: ripple-effect 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes ripple-effect {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes pulse-glow {
+  0% { text-shadow: 0 0 5px rgba(255, 20, 147, 0.6), 0 0 10px rgba(138, 43, 226, 0.4); }
+  50% { text-shadow: 0 0 15px rgba(255, 20, 147, 0.8), 0 0 30px rgba(138, 43, 226, 0.6), 0 0 40px rgba(255, 255, 255, 0.4); }
+  100% { text-shadow: 0 0 5px rgba(255, 20, 147, 0.6), 0 0 10px rgba(138, 43, 226, 0.4); }
+}
+
+/* Typing cursor with advanced animation */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background-color: #ff1493;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink-caret 0.85s step-end infinite, glow-pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(255, 20, 147, 0.8), 0 0 12px rgba(138, 43, 226, 0.6);
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+@keyframes blink-caret {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes glow-pulse {
+  0% { box-shadow: 0 0 5px rgba(255, 20, 147, 0.6), 0 0 10px rgba(138, 43, 226, 0.4); }
+  50% { box-shadow: 0 0 12px rgba(255, 20, 147, 0.8), 0 0 20px rgba(138, 43, 226, 0.6); }
+  100% { box-shadow: 0 0 5px rgba(255, 20, 147, 0.6), 0 0 10px rgba(138, 43, 226, 0.4); }
+}
+
+/* Text highlight effect for the typewriter */
+.typewriter-text {
+  background: linear-gradient(120deg, rgba(255, 20, 147, 0) 0%, rgba(255, 20, 147, 0.1) 50%, rgba(138, 43, 226, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: gradient-shift 8s ease infinite;
+  padding: 0 8px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.typewriter-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 20, 147, 0.7), rgba(138, 43, 226, 0.7), transparent);
+  background-size: 200% 100%;
+  animation: gradient-shift 4s linear infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 3D text effect for the typewriter */
+.typewriter-char {
+  text-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 0 rgba(255, 20, 147, 0.2),
+    0 3px 0 rgba(138, 43, 226, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.4);
+  transform-style: preserve-3d;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect on the entire typewriter text */
+.typewriter-text:hover .typewriter-char {
+  animation: bounce-text 0.3s ease forwards;
+  animation-delay: calc(0.03s * var(--char-index, 0));
+}
+
+@keyframes bounce-text {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+  60% { transform: translateY(3px); }
+  100% { transform: translateY(0); }
+}
+
+/* Glass morphism for navbar */
 .navbar-glass {
-  background: rgba(15, 10, 35, 0.25);
-  backdrop-filter: blur(12px) saturate(180%);
-  box-shadow: 
-    0 20px 80px 0 rgba(31, 38, 135, 0.2), 
-    0 8px 32px 0 rgba(0, 0, 0, 0.15), 
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 50px;
+  background: rgba(20, 20, 40, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Mobile optimization for ultra-enhanced navbar */
@@ -216,4 +416,21 @@ input:-webkit-autofill:active {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+/* Floating particle animation */
+@keyframes float-particle {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
+    opacity: 0.05;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+    opacity: 0.15;
+    filter: blur(60px);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.9) rotate(360deg);
+    opacity: 0.08;
+  }
 }
