@@ -29,11 +29,10 @@ export const Navigation = () => {
               <img 
                 src="/logo.webp" 
                 alt="Vibebrew" 
-                className="h-8 sm:h-10 w-auto object-contain relative z-10 filter drop-shadow-lg"
+                className="h-8 sm:h-10 w-auto object-contain relative z-10"
                 style={{ 
                   maxHeight: '40px', 
-                  minWidth: '40px',
-                  filter: 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 15px rgba(255, 20, 147, 0.6)) drop-shadow(0 0 30px rgba(138, 43, 226, 0.4))'
+                  minWidth: '40px'
                 }}
               />
               
