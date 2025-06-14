@@ -1,4 +1,3 @@
-
 import { ArrowRight } from "lucide-react";
 import React from "react";
 import { useDiscussions } from "@/hooks/useDiscussions";
@@ -25,24 +24,24 @@ export const DiscussionPreview = () => {
         <DiscussionList discussions={discussions} isLoading={isLoading} error={error as Error | null} />
         
         <div className="text-center mt-12">
-          <a
-            href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/discussions`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <div
             className="
               inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold mt-4
               shadow-glow-pink glass-strong text-aurora-purple bg-white/80
               hover:bg-white/100 hover:scale-105 hover:text-pink-600 transition duration-200
               dark:bg-white/10 dark:text-white
+              cursor-default
             "
             style={{
               backdropFilter: "blur(14px)",
               fontSize: "1.07rem"
             }}
+            tabIndex={0}
+            aria-label="Join the Discussion"
           >
             Join the Discussion
             <ArrowRight size={18} className="ml-1" />
-          </a>
+          </div>
         </div>
       </div>
     </section>
