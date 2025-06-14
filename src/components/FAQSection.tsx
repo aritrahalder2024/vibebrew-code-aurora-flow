@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { MessageSquare, Zap, Users, Gift } from "lucide-react";
+import { MessageSquare, Zap, Users, Gift, Star, DollarSign } from "lucide-react";
 
 // Optimize the FAQSection component with React.memo
 export const FAQSection = React.memo(() => {
@@ -13,7 +13,7 @@ export const FAQSection = React.memo(() => {
     {
       id: "item-1",
       icon: <MessageSquare className="w-5 h-5" />,
-      question: "What is ‘vibe coding’ and how is it different?",
+      question: "What is 'vibe coding' and how is it different?",
       answer: "Vibe coding is about more than just writing code—it's about building, learning, and collaborating in a positive, creative, and supportive environment. At Vibebrew, we believe coding should be fun, social, and inspiring, not just a solo grind."
     },
     {
@@ -33,6 +33,12 @@ export const FAQSection = React.memo(() => {
       icon: <Gift className="w-5 h-5" />,
       question: "How does the community help with launching new products or ideas?",
       answer: "Before you launch to the world, you can share your product or idea in our Product Launchpad. Get honest, constructive feedback from real developers and creators, and access our Startup Kit to help you turn your vision into reality—all while vibing with a supportive community."
+    },
+    {
+      id: "item-5",
+      icon: <DollarSign className="w-5 h-5" />,
+      question: "Will this all be free?",
+      answer: "It's a freemium model: most features are free, but there will also be paid tiers for professionals and entrepreneurs."
     }
   ];
 
@@ -61,7 +67,7 @@ export const FAQSection = React.memo(() => {
           </p>
         </div>
 
-        <div className="glass-strong rounded-3xl p-6 sm:p-8 relative overflow-hidden w-full max-w-2xl mx-auto">
+        <div className="glass-strong rounded-3xl p-6 sm:p-8 relative overflow-hidden w-full max-w-4xl mx-auto">
           {/* Optimized animated code symbols in background */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {codeSymbols.map((symbol) => (
@@ -99,7 +105,7 @@ export const FAQSection = React.memo(() => {
                     >
                       {faq.icon}
                     </div>
-                    <span className="font-medium text-base sm:text-lg text-left">{faq.question}</span>
+                    <span className="font-medium text-base sm:text-lg text-left whitespace-nowrap">{faq.question}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-white/70 px-4 sm:px-6 pb-6 text-sm sm:text-base leading-relaxed">
