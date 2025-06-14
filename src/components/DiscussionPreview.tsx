@@ -232,13 +232,13 @@ export const DiscussionPreview = () => {
                     )}
                     {/* Row: Comments, Likes, Share */}
                     <div className="flex gap-7 mt-2 text-white/60 text-sm">
-                      <span className="flex items-center gap-1.5 hover:text-white transition">
+                      <span className="flex items-center gap-1.5">
                         <MessageCircle size={17} /> {d.comments}
                       </span>
-                      <span className="flex items-center gap-1.5 hover:text-white transition">
+                      <span className="flex items-center gap-1.5">
                         <Heart size={17} /> {d.upvotes}
                       </span>
-                      <span className="flex items-center gap-1.5 hover:text-white cursor-pointer group-hover:underline transition">
+                      <span className="flex items-center gap-1.5">
                         <Share size={17} /> Share
                       </span>
                     </div>
