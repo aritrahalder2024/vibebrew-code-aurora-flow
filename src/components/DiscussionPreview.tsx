@@ -1,4 +1,3 @@
-
 import { MessageCircle, Heart, Share, ArrowRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
@@ -19,6 +18,7 @@ const mockDiscussions = [
     description: "Used Claude to generate the entire backend API and React frontend. Revenue: $2.1k in first week...",
     comments: 47,
     upvotes: 156,
+    url: "#",
   },
   {
     id: "2",
@@ -34,6 +34,7 @@ const mockDiscussions = [
     description: "The context window is insane! Built a full e-commerce store in one session...",
     comments: 23,
     upvotes: 89,
+    url: "#",
   },
   {
     id: "3",
@@ -49,6 +50,7 @@ const mockDiscussions = [
     description: "Started with ChatGPT for market research, used Claude for coding, Midjourney for design...",
     comments: 92,
     upvotes: 304,
+    url: "#",
   },
 ];
 
@@ -58,6 +60,7 @@ const REPO_NAME = "react";
 const GITHUB_TOKEN = "";
 
 async function fetchDiscussions() {
+  console.log("Fetching GitHub discussions...");
   const res = await fetch(GITHUB_API_URL, {
     method: "POST",
     headers: {
@@ -98,6 +101,7 @@ async function fetchDiscussions() {
   let data;
   try {
     data = await res.json();
+    console.log("GitHub API response:", data);
   } catch (err) {
     console.log("Error parsing GitHub response:", err);
     throw new Error("Unable to parse GitHub response");
@@ -134,6 +138,8 @@ export const DiscussionPreview = () => {
     staleTime: 1000 * 60 * 3, // 3 minutes
   });
 
+  console.log("Query state:", { discussions, isLoading, error });
+
   let displayDiscussions = mockDiscussions;
   let useDemo = true;
 
@@ -166,6 +172,8 @@ export const DiscussionPreview = () => {
     }));
     useDemo = false;
   }
+
+  console.log("Display discussions:", displayDiscussions);
 
   return (
     <section className={`py-20 px-6 relative overflow-hidden ${purpleBg}`}>
