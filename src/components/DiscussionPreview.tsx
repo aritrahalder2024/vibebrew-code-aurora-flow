@@ -1,3 +1,4 @@
+
 import { MessageCircle, Heart, Share } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
@@ -7,7 +8,7 @@ const GITHUB_API_URL = "https://api.github.com/graphql";
 const REPO_OWNER = "facebook";
 const REPO_NAME = "react";
 // Put your GitHub token here for higher rate limits (recommended), or leave blank for demo/public
-const GITHUB_TOKEN = ""; 
+const GITHUB_TOKEN = "";
 
 async function fetchDiscussions() {
   const res = await fetch(GITHUB_API_URL, {
@@ -43,10 +44,14 @@ async function fetchDiscussions() {
     }),
   });
 
-  if (!res.ok) {
-    throw new Error("GitHub API error: " + res.statusText);
+  let data;
+  try {
+    data = await res.json();
+  } catch (err) {
+    console.log("Error parsing GitHub response:", err);
+    throw new Error("Unable to parse GitHub response");
   }
-  const data = await res.json();
+  console.log("GitHub discussions response:", data);
   return data?.data?.repository?.discussions?.nodes || [];
 }
 
@@ -67,6 +72,9 @@ export const DiscussionPreview = () => {
     queryFn: fetchDiscussions,
     staleTime: 1000 * 60 * 3, // 3 minutes
   });
+
+  // Log useful info every render for debugging
+  console.log("DiscussionPreview:", { isLoading, error, discussions });
 
   return (
     <section className="py-20 px-6 relative overflow-hidden">
@@ -101,7 +109,7 @@ export const DiscussionPreview = () => {
           )}
           {error && (
             <div className="text-center text-red-500">
-              Couldn't load GitHub discussions. Try again later.
+              Couldn't load GitHub discussions. {error instanceof Error ? error.message : String(error)}
             </div>
           )}
           {!isLoading && !error && (
@@ -171,3 +179,4 @@ export const DiscussionPreview = () => {
     </section>
   );
 };
+
