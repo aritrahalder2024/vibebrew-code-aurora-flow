@@ -11,9 +11,9 @@ import { DiscussionPreview } from "@/components/DiscussionPreview";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-slate-900 relative">
+    <div className="min-h-screen bg-[#150d21] relative">
       {/* Fixed background */}
-      <div className="fixed inset-0 -z-10 bg-gradient-to-br from-[#1c1126] via-[#3a1d52] to-[#6d28d9]"></div>
+      <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,#38235a,#150d21)]"></div>
       
       {/* Main content */}
       <div className="relative z-10">
