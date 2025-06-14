@@ -78,14 +78,14 @@ body {
   font-family: "JetBrains Mono", monospace;
 }
 
-/* Enhanced navbar glass effect - restored to original strength */
+/* Enhanced navbar glass effect - minimal and subtle like reference */
 .navbar-glass {
-  background: rgba(15, 23, 42, 0.6) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 
-              0 4px 16px rgba(255, 255, 255, 0.1) inset !important;
+  background: rgba(15, 23, 42, 0.2) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 
+              0 1px 4px rgba(255, 255, 255, 0.05) inset !important;
 }
 
 .navbar-glass::before {
@@ -96,20 +96,20 @@ body {
   right: 0;
   bottom: 0;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.2) 0%, 
-    rgba(255, 255, 255, 0.05) 50%, 
-    rgba(255, 255, 255, 0.1) 100%);
+    rgba(255, 255, 255, 0.05) 0%, 
+    rgba(255, 255, 255, 0.02) 50%, 
+    rgba(255, 255, 255, 0.03) 100%);
   border-radius: inherit;
   pointer-events: none;
   z-index: -1;
 }
 
-/* Mobile navbar adjustments with stronger effect */
+/* Mobile navbar adjustments with subtle effect */
 @media (max-width: 640px) {
   .navbar-glass {
-    background: rgba(15, 23, 42, 0.7) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
+    background: rgba(15, 23, 42, 0.25) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
   }
 }
 
