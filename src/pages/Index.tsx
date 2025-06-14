@@ -12,7 +12,7 @@ import { DiscussionPreview } from "@/components/DiscussionPreview";
 const Index = () => {
   return (
     <div className="min-h-screen relative overflow-x-hidden">
-      {/* Static elegant aurora-inspired gradient background */}
+      {/* Static multi-tone gradient background - fresh aurora palette */}
       <div
         className="
           fixed inset-0 -z-10
@@ -21,7 +21,8 @@ const Index = () => {
         "
         style={{
           background:
-            "linear-gradient(135deg, #181347 0%, #363078 30%, #6a33a5 65%, #e26cc3 90%, #120b25 100%)",
+            // Aurora blend: deep blue, cyan, violet, blush
+            "linear-gradient(120deg, #162245 0%, #38a2d7 30%, #8f5efe 65%, #efc1e6 90%, #252250 100%)",
         }}
         aria-hidden="true"
       />
