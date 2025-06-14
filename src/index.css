@@ -78,6 +78,24 @@ body {
   font-family: "JetBrains Mono", monospace;
 }
 
+/* Critical navbar styling - MUST be preserved */
+.navbar-glass {
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Mobile navbar adjustments */
+@media (max-width: 640px) {
+  .navbar-glass {
+    background: rgba(15, 23, 42, 0.9) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+  }
+}
+
 /* Glass morphism effects */
 .glass-strong {
   background: rgba(255, 255, 255, 0.08);
@@ -91,26 +109,6 @@ body {
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transform: translateZ(0);
-}
-
-/* Critical navbar styling */
-.navbar-glass {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  transform: translateZ(0);
-}
-
-/* Mobile navbar adjustments */
-@media (max-width: 640px) {
-  .navbar-glass {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
 }
 
 /* Aurora gradient background */
