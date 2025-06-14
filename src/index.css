@@ -78,17 +78,14 @@ body {
   font-family: "JetBrains Mono", monospace;
 }
 
-/* Enhanced navbar glass effect - made even stronger */
+/* Enhanced navbar glass effect - restored to original strength */
 .navbar-glass {
-  background: rgba(8, 15, 30, 0.75) !important;
-  backdrop-filter: blur(40px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.6), 
-    0 8px 32px rgba(255, 255, 255, 0.15) inset,
-    0 1px 0 rgba(255, 255, 255, 0.3) inset !important;
-  position: relative;
+  background: rgba(15, 23, 42, 0.6) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 
+              0 4px 16px rgba(255, 255, 255, 0.1) inset !important;
 }
 
 .navbar-glass::before {
@@ -107,13 +104,12 @@ body {
   z-index: -1;
 }
 
-/* Mobile navbar adjustments with even stronger effect */
+/* Mobile navbar adjustments with stronger effect */
 @media (max-width: 640px) {
   .navbar-glass {
-    background: rgba(8, 15, 30, 0.8) !important;
-    backdrop-filter: blur(35px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+    background: rgba(15, 23, 42, 0.7) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
   }
 }
 
