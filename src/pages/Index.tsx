@@ -12,16 +12,16 @@ import { DiscussionPreview } from "@/components/DiscussionPreview";
 const Index = () => {
   return (
     <div className="min-h-screen relative overflow-x-hidden">
-      {/* Static vibrant aurora background */}
+      {/* Static elegant aurora-inspired gradient background */}
       <div
         className="
           fixed inset-0 -z-10
-          bg-gradient-to-br from-[#522072] via-[#a11f65] to-[#f44fa3]
-          bg-aurora-gradient
-          opacity-95
-          "
+          bg-no-repeat bg-cover
+          opacity-90
+        "
         style={{
-          background: "linear-gradient(135deg, #522072 0%, #a11f65 40%, #f44fa3 100%)",
+          background:
+            "linear-gradient(135deg, #181347 0%, #363078 30%, #6a33a5 65%, #e26cc3 90%, #120b25 100%)",
         }}
         aria-hidden="true"
       />
