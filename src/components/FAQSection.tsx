@@ -68,25 +68,6 @@ export const FAQSection = React.memo(() => {
         </div>
 
         <div className="glass-strong rounded-3xl p-6 sm:p-8 relative overflow-hidden w-full max-w-4xl mx-auto">
-          {/* Optimized animated code symbols in background */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {codeSymbols.map((symbol) => (
-              <div
-                key={symbol.key}
-                className="absolute text-white/5 font-jetbrains-mono text-4xl sm:text-6xl animate-float"
-                style={{
-                  left: `${symbol.left}%`,
-                  top: `${symbol.top}%`,
-                  animationDelay: `${symbol.animationDelay}s`,
-                  animationDuration: `${symbol.animationDuration}s`,
-                  willChange: 'transform'
-                }}
-              >
-                {symbol.symbol}
-              </div>
-            ))}
-          </div>
-
           <Accordion type="single" collapsible className="relative z-10">
             {faqs.map((faq) => (
               <AccordionItem 

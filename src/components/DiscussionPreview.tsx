@@ -6,7 +6,7 @@ export const DiscussionPreview = () => {
       id: 1,
       title: "Just built my first SaaS with Claude AI in 48 hours! 🚀",
       author: "CodeNinja23",
-      avatar: "CN",
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       replies: 47,
       likes: 156,
       tag: "Solo Success",
@@ -17,7 +17,7 @@ export const DiscussionPreview = () => {
       id: 2,
       title: "Anyone tried the new GPT-4o for code generation?",
       author: "AIVibeLord",
-      avatar: "AV",
+      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
       replies: 23,
       likes: 89,
       tag: "AI Tools",
@@ -28,7 +28,7 @@ export const DiscussionPreview = () => {
       id: 3,
       title: "From idea to $10k MRR using only AI tools - My journey",
       author: "SoloHustler",
-      avatar: "SH",
+      avatar: "https://randomuser.me/api/portraits/men/65.jpg",
       replies: 92,
       likes: 304,
       tag: "Journey",
@@ -74,8 +74,8 @@ export const DiscussionPreview = () => {
               }}
             >
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-aurora-gradient rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 group-hover:scale-110 transition-transform">
-                  {discussion.avatar}
+                <div className="w-12 h-12 bg-aurora-gradient rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 group-hover:scale-110 transition-transform overflow-hidden">
+                  <img src={discussion.avatar} alt={discussion.author} className="w-full h-full object-cover rounded-full" />
                 </div>
                 
                 <div className="flex-1 min-w-0">
