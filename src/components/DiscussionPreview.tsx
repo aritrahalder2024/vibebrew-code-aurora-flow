@@ -127,8 +127,9 @@ function timeAgo(dateString: string) {
   return `${Math.floor(diff / (60 * 24))}d ago`;
 }
 
-// Purple gradient for background
+// Style variables for backgrounds
 const purpleBg = "bg-gradient-to-br from-[#6317c1] via-[#7928ca] to-[#4f23b7]";
+// const cardBg = "bg-white/90";  // We'll apply this inline for better clarity.
 
 export const DiscussionPreview = () => {
   // Live demo: try fetching, fallback to mock on error/empty
@@ -155,9 +156,10 @@ export const DiscussionPreview = () => {
       },
       tag: {
         name: d.category?.name || "General",
-        color: i === 0
-          ? "bg-pink-600"
-          : i === 1
+        color:
+          i === 0
+            ? "bg-pink-600"
+            : i === 1
             ? "bg-aurora-purple"
             : "bg-aurora-pink"
       },
@@ -176,14 +178,17 @@ export const DiscussionPreview = () => {
   console.log("Display discussions:", displayDiscussions);
 
   return (
-    <section className={`py-20 px-6 relative overflow-hidden ${purpleBg}`}>
+    <section className={`py-20 px-4 sm:px-6 relative overflow-hidden ${purpleBg}`}>
       <div className="container mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-space-grotesk font-bold text-white mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-2">
             Live <span className="text-aurora-purple">Discussions</span>
           </h2>
+          <p className="text-white/70 text-lg font-medium mx-auto max-w-2xl">
+            Share wins, ask for help, and level up together. It’s your forum.
+          </p>
         </div>
-        <div className="max-w-3xl mx-auto space-y-7">
+        <div className="max-w-2xl mx-auto flex flex-col gap-6">
           {isLoading ? (
             <div className="text-center text-white/80">Loading discussions...</div>
           ) : (
@@ -193,16 +198,20 @@ export const DiscussionPreview = () => {
                 href={d.url || "#"}
                 target={d.url ? "_blank" : undefined}
                 rel={d.url ? "noopener noreferrer" : undefined}
-                className="block rounded-2xl backdrop-blur-2xl border border-white/10 bg-white/10 hover:bg-white/20 transition-all shadow-lg px-6 py-5 cursor-pointer"
-                style={{
-                  boxShadow: "0 2px 32px 0 rgba(155,81,224,0.14)",
-                  border: "1.5px solid rgba(220,220,255,0.08)",
-                  animationDelay: `${idx * 0.15}s`
-                }}
+                className={`
+                  group block focus-visible:ring-2 focus-visible:ring-aurora-pink focus:outline-none
+                  rounded-xl bg-white/90 shadow-xl border border-white/60
+                  hover:shadow-glow-pink transition-all px-5 py-4
+                  dark:bg-white/10 dark:border-white/20
+                  ring-1 ring-inset ring-aurora-purple/10
+                `}
+                style={{ backdropFilter: 'blur(6px)' }}
+                tabIndex={0}
+                aria-label={d.title}
               >
                 <div className="flex items-start">
                   {/* Avatar */}
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center mr-5 font-bold text-lg text-white ${d.author.color} flex-shrink-0`} style={{boxShadow: "0 2px 16px 2px rgba(140,0,255,0.15)"}}>
+                  <div className={`w-11 h-11 rounded-full flex items-center justify-center mr-4 font-bold text-md text-white ${d.author.color}`}>
                     {d.author.avatarUrl
                       ? <img src={d.author.avatarUrl} alt={d.author.login} className="w-full h-full rounded-full object-cover" />
                       : <span>{d.author.initials}</span>
@@ -211,31 +220,31 @@ export const DiscussionPreview = () => {
                   <div className="flex-1 min-w-0">
                     {/* Meta: tag and time */}
                     <div className="flex items-center gap-3 mb-1">
-                      <span className={`text-xs font-semibold rounded-full px-2.5 py-1 mr-2 text-white ${d.tag.color}`}>
+                      <span className={`text-xs font-medium rounded px-2 py-1 ${d.tag.color} text-white/90`} style={{boxShadow: "0 1px 8px 0 rgba(200,0,120,0.09)"}}>
                         {d.tag.name}
                       </span>
-                      <span className="text-white/70 text-xs">{d.timeAgo}</span>
+                      <span className="text-zinc-400 text-xs">{d.timeAgo}</span>
                     </div>
                     {/* Title */}
-                    <div className="font-space-grotesk font-bold text-lg md:text-xl text-white mb-1 leading-tight">
+                    <div className="font-space-grotesk font-semibold text-lg text-gray-900 dark:text-white mb-1 leading-tight group-hover:text-aurora-purple transition-colors">
                       {d.title}
                     </div>
-                    {/* Description/subtitle, if available */}
+                    {/* Description/subtitle */}
                     {d.description && (
-                      <div className="text-white/90 text-base md:text-md opacity-75 mb-2 line-clamp-1">
+                      <div className="text-zinc-600 text-sm dark:text-white/70 mb-2 line-clamp-2">
                         {d.description}
                       </div>
                     )}
                     {/* Row: Comments, Likes, Share */}
-                    <div className="flex gap-8 mt-2 text-white/70 text-sm">
-                      <span className="flex items-center gap-2 hover:text-pink-200 transition">
-                        <MessageCircle size={18} /> {d.comments}
+                    <div className="flex gap-7 mt-2 text-zinc-500 dark:text-zinc-300/90 text-sm">
+                      <span className="flex items-center gap-1.5 hover:text-aurora-pink transition">
+                        <MessageCircle size={17} /> {d.comments}
                       </span>
-                      <span className="flex items-center gap-2 hover:text-pink-200 transition">
-                        <Heart size={18} /> {d.upvotes}
+                      <span className="flex items-center gap-1.5 hover:text-aurora-pink transition">
+                        <Heart size={17} /> {d.upvotes}
                       </span>
-                      <span className="flex items-center gap-2 hover:text-pink-200 cursor-pointer transition">
-                        <Share size={18} /> Share
+                      <span className="flex items-center gap-1.5 hover:text-aurora-pink cursor-pointer group-hover:underline transition">
+                        <Share size={17} /> Share
                       </span>
                     </div>
                   </div>
@@ -250,14 +259,20 @@ export const DiscussionPreview = () => {
             </div>
           )}
         </div>
-        <div className="text-center mt-10">
+        <div className="text-center mt-12">
           <a
             href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/discussions`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-white font-semibold mt-4 glass-strong hover:bg-white/20 hover:scale-105 transition duration-200 shadow-glow-pink"
+            className="
+              inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold mt-4
+              shadow-glow-pink glass-strong text-aurora-purple bg-white/80
+              hover:bg-white/100 hover:scale-105 hover:text-pink-600 transition duration-200
+              dark:bg-white/10 dark:text-white
+            "
             style={{
-              background: "rgba(145,65,255, 0.20)"
+              backdropFilter: "blur(14px)",
+              fontSize: "1.07rem"
             }}
           >
             Join the Discussion
