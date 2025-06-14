@@ -127,9 +127,6 @@ function timeAgo(dateString: string) {
   return `${Math.floor(diff / (60 * 24))}d ago`;
 }
 
-// Style variables for backgrounds
-const purpleBg = "bg-gradient-to-br from-[#6317c1] via-[#7928ca] to-[#4f23b7]";
-
 export const DiscussionPreview = () => {
   // Live demo: try fetching, fallback to mock on error/empty
   const { data: discussions, isLoading, error } = useQuery({
@@ -177,7 +174,7 @@ export const DiscussionPreview = () => {
   console.log("Display discussions:", displayDiscussions);
 
   return (
-    <section className={`py-20 px-4 sm:px-6 relative overflow-hidden ${purpleBg}`}>
+    <section className="py-20 px-4 sm:px-6 relative overflow-hidden">
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-2">

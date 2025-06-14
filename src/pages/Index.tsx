@@ -13,10 +13,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-slate-900 relative">
       {/* Fixed background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-purple-900/30 to-slate-900/50"></div>
-      </div>
+      <div className="fixed inset-0 -z-10 bg-gradient-to-br from-[#1c1126] via-[#3a1d52] to-[#6d28d9]"></div>
       
       {/* Main content */}
       <div className="relative z-10">
