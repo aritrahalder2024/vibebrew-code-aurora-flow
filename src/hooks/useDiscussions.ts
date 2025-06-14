@@ -62,52 +62,60 @@ const GITHUB_TOKEN = ""; // Keep this empty, as it was in the original file
 
 async function fetchDiscussions(): Promise<GitHubDiscussionNode[]> {
   console.log("Fetching GitHub discussions...");
-  const res = await fetch(GITHUB_API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...(GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {}),
-    },
-    body: JSON.stringify({
-      query: `
-        query {
-          repository(owner: "${REPO_OWNER}", name: "${REPO_NAME}") {
-            discussions(first: 3, orderBy: {field: CREATED_AT, direction: DESC}) {
-              nodes {
-                id
-                title
-                url
-                upvoteCount
-                comments {
-                  totalCount
-                }
-                author {
-                  login
-                  avatarUrl
+  
+  try {
+    const res = await fetch(GITHUB_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {}),
+      },
+      body: JSON.stringify({
+        query: `
+          query {
+            repository(owner: "${REPO_OWNER}", name: "${REPO_NAME}") {
+              discussions(first: 3, orderBy: {field: CREATED_AT, direction: DESC}) {
+                nodes {
+                  id
+                  title
                   url
+                  upvoteCount
+                  comments {
+                    totalCount
+                  }
+                  author {
+                    login
+                    avatarUrl
+                    url
+                  }
+                  category {
+                    name
+                  }
+                  createdAt
+                  bodyText
                 }
-                category {
-                  name
-                }
-                createdAt
-                bodyText
               }
             }
           }
-        }
-      `
-    }),
-  });
+        `
+      }),
+    });
 
-  let data;
-  try {
-    data = await res.json();
+    const data = await res.json();
     console.log("GitHub API response:", data);
-  } catch (err) {
-    console.log("Error parsing GitHub response:", err);
-    throw new Error("Unable to parse GitHub response");
+
+    // Handle rate limiting or other API errors
+    if (!res.ok || data.errors || data.message) {
+      console.log("GitHub API error, falling back to mock data");
+      throw new Error(data.message || "GitHub API error");
+    }
+
+    return data?.data?.repository?.discussions?.nodes || [];
+  } catch (error) {
+    console.log("Error fetching GitHub discussions:", error);
+    // Return empty array to trigger fallback to mock data
+    throw error;
   }
-  return data?.data?.repository?.discussions?.nodes || [];
 }
 
 const formatDiscussions = (discussions: GitHubDiscussionNode[]): FormattedDiscussion[] => {
@@ -143,18 +151,26 @@ export const useDiscussions = () => {
   const { data: discussions, isLoading, error } = useQuery({
     queryKey: ["github-discussions", REPO_OWNER, REPO_NAME],
     queryFn: fetchDiscussions,
-    staleTime: 1000 * 60 * 3, // 3 minutes
+    staleTime: 1000 * 60 * 5, // 5 minutes
+    retry: 1, // Only retry once to avoid hitting rate limits repeatedly
+    retryDelay: 2000, // Wait 2 seconds before retry
   });
 
+  // Always use mock discussions as fallback when there's an error or no data
   let displayDiscussions = mockDiscussions;
+  let showError = false;
   
   if (!isLoading && !error && Array.isArray(discussions) && discussions.length > 0) {
     displayDiscussions = formatDiscussions(discussions);
+  } else if (error) {
+    // Only show error for non-rate-limit errors
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    showError = !errorMessage.includes("rate limit");
   }
   
   return {
     discussions: displayDiscussions,
     isLoading,
-    error,
+    error: showError ? error : null, // Hide rate limit errors
   };
 };
