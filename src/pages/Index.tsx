@@ -1,8 +1,6 @@
-
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
-import { DiscussionPreview } from "@/components/DiscussionPreview";
 import { CommunityShowcase } from "@/components/CommunityShowcase";
 import { EventsSection } from "@/components/EventsSection";
 import { BlogSection } from "@/components/BlogSection";
@@ -20,7 +18,11 @@ const Index = () => {
         <Navigation />
         <HeroSection />
         <AboutSection />
-        <DiscussionPreview />
+        <div className="flex justify-center py-12">
+          <div className="dash-float-anim">
+            <img src="/dash.webp" alt="Dashboard Preview" className="rounded-2xl max-w-3xl w-full h-auto object-contain dash-image-effect" />
+          </div>
+        </div>
         <CommunityShowcase />
         <EventsSection />
         <BlogSection />
