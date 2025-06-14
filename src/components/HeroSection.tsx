@@ -79,6 +79,8 @@ const UserAvatar = React.memo(({ user, index, handleClick }: UserAvatarProps) =>
                 alt={user.name}
                 className="w-full h-full object-cover rounded-full"
                 loading="lazy"
+                width={40}
+                height={40}
               />
             ) : (
               user.name.charAt(0)
@@ -95,7 +97,7 @@ const UserAvatar = React.memo(({ user, index, handleClick }: UserAvatarProps) =>
 
 UserAvatar.displayName = 'UserAvatar';
 
-// Optimized background particle component
+// Optimized background particle component with reduced count
 const BackgroundParticle = React.memo(({ particle }: { particle: any }) => (
   <div 
     className="absolute rounded-full bg-gradient-to-r from-pink-500 to-purple-500 opacity-10 gpu-accelerated"
@@ -108,6 +110,7 @@ const BackgroundParticle = React.memo(({ particle }: { particle: any }) => (
       filter: 'blur(50px)',
       animation: `float-particle ${particle.animationDuration}s ease-in-out infinite alternate`,
       animationDelay: `${particle.animationDelay}s`,
+      willChange: 'transform',
     }}
   />
 ));
@@ -120,39 +123,27 @@ export const HeroSection = () => {
   const { toast } = useToast();
   const [activeAvatar, setActiveAvatar] = useState<number | null>(null);
 
-  // Optimized background particles with fewer particles for better performance
+  // Reduced background particles from 6 to 4 for better performance
   const backgroundParticles = useMemo(() => {
-    return Array.from({ length: 6 }).map((_, i) => ({
+    return Array.from({ length: 4 }).map((_, i) => ({
       key: i,
-      width: Math.random() * 200 + 40,
-      height: Math.random() * 200 + 40,
+      width: Math.random() * 160 + 40,
+      height: Math.random() * 160 + 40,
       left: Math.random() * 100,
       top: Math.random() * 100,
-      animationDuration: Math.random() * 15 + 8,
-      animationDelay: Math.random() * 3
+      animationDuration: Math.random() * 12 + 8,
+      animationDelay: Math.random() * 2
     }));
   }, []);
 
-  // Optimized name arrays with type definitions
-  const nameArrays = useMemo(() => {
-    const maleNames: string[] = ["Alex Carter", "James Lee", "Michael Smith", "David Kim", "John Patel"];
-    const femaleNames: string[] = ["Priya Sharma", "Maya Rodriguez", "Emma Johnson", "Sophia Chen", "Olivia Garcia"];
-    
-    const getRandomName = (names: string[]): string => {
-      return names[Math.floor(Math.random() * names.length)];
-    };
-
-    return { maleNames, femaleNames, getRandomName };
-  }, []);
-
-  // Optimized users array with memoization
+  // Pre-generated user data to avoid random generation on each render
   const users = useMemo(() => [
-    { name: nameArrays.getRandomName(nameArrays.maleNames), img: `https://randomuser.me/api/portraits/men/${Math.floor(Math.random()*50)}.jpg` },
-    { name: nameArrays.getRandomName(nameArrays.femaleNames), img: `https://randomuser.me/api/portraits/women/${Math.floor(Math.random()*50)}.jpg` },
-    { name: nameArrays.getRandomName(nameArrays.maleNames), img: `https://randomuser.me/api/portraits/men/${Math.floor(Math.random()*50)}.jpg` },
-    { name: nameArrays.getRandomName(nameArrays.femaleNames), img: `https://randomuser.me/api/portraits/women/${Math.floor(Math.random()*50)}.jpg` },
-    { name: nameArrays.getRandomName(nameArrays.maleNames), img: `https://randomuser.me/api/portraits/men/${Math.floor(Math.random()*50)}.jpg` },
-  ], [nameArrays]);
+    { name: "Alex Carter", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" },
+    { name: "Priya Sharma", img: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" },
+    { name: "James Lee", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" },
+    { name: "Maya Rodriguez", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" },
+    { name: "Michael Smith", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" },
+  ], []);
 
   // Optimized avatar click handler with useCallback
   const handleAvatarClick = useCallback((index: number) => {
@@ -206,7 +197,7 @@ export const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 relative overflow-hidden">
-      {/* Optimized animated background particles */}
+      {/* Optimized animated background particles with reduced count */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {backgroundParticles.map((particle) => (
           <BackgroundParticle key={particle.key} particle={particle} />
@@ -245,6 +236,7 @@ export const HeroSection = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="bg-transparent border-0 text-white placeholder:text-white/60 focus:ring-0 focus:border-0 flex-1 px-6 py-0 text-base text-left rounded-xl sm:rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 relative z-10 w-full h-full leading-normal"
                 required
+                autoComplete="email"
               />
               <Button 
                 type="submit"
