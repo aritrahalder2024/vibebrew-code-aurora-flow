@@ -1,4 +1,3 @@
-
 import { MessageCircle, Heart, Share } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
@@ -15,7 +14,7 @@ async function fetchDiscussions() {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      ...(GITHUB_TOKEN && { Authorization: `Bearer ${GITHUB_TOKEN}` }),
+      ...(GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {}),
     },
     body: JSON.stringify({
       query: `
