@@ -8,11 +8,11 @@ const mockDiscussions = [
     id: "1",
     author: {
       login: "CN",
-      avatarUrl: "",
+      avatarUrl: "https://i.pravatar.cc/44?u=1",
       initials: "CN",
       color: "bg-pink-500",
     },
-    tag: { name: "Solo Success", color: "bg-pink-600" },
+    tag: { name: "Solo Success", color: "bg-aurora-pink" },
     timeAgo: "2h ago",
     title: "Just built my first SaaS with Claude AI in 48 hours! 🚀",
     description: "Used Claude to generate the entire backend API and React frontend. Revenue: $2.1k in first week...",
@@ -24,7 +24,7 @@ const mockDiscussions = [
     id: "2",
     author: {
       login: "AV",
-      avatarUrl: "",
+      avatarUrl: "https://i.pravatar.cc/44?u=2",
       initials: "AV",
       color: "bg-purple-600",
     },
@@ -40,7 +40,7 @@ const mockDiscussions = [
     id: "3",
     author: {
       login: "SH",
-      avatarUrl: "",
+      avatarUrl: "https://i.pravatar.cc/44?u=3",
       initials: "SH",
       color: "bg-pink-700",
     },
@@ -129,7 +129,6 @@ function timeAgo(dateString: string) {
 
 // Style variables for backgrounds
 const purpleBg = "bg-gradient-to-br from-[#6317c1] via-[#7928ca] to-[#4f23b7]";
-// const cardBg = "bg-white/90";  // We'll apply this inline for better clarity.
 
 export const DiscussionPreview = () => {
   // Live demo: try fetching, fallback to mock on error/empty
@@ -158,7 +157,7 @@ export const DiscussionPreview = () => {
         name: d.category?.name || "General",
         color:
           i === 0
-            ? "bg-pink-600"
+            ? "bg-aurora-pink"
             : i === 1
             ? "bg-aurora-purple"
             : "bg-aurora-pink"
@@ -200,18 +199,17 @@ export const DiscussionPreview = () => {
                 rel={d.url ? "noopener noreferrer" : undefined}
                 className={`
                   group block focus-visible:ring-2 focus-visible:ring-aurora-pink focus:outline-none
-                  rounded-xl bg-white/90 shadow-xl border border-white/60
-                  hover:shadow-glow-pink transition-all px-5 py-4
-                  dark:bg-white/10 dark:border-white/20
-                  ring-1 ring-inset ring-aurora-purple/10
+                  rounded-2xl bg-white/5 border border-white/10
+                  hover:bg-white/10 hover:border-white/20 hover:shadow-glow
+                  transition-all duration-300 px-6 py-5
                 `}
-                style={{ backdropFilter: 'blur(6px)' }}
+                style={{ backdropFilter: 'blur(12px)' }}
                 tabIndex={0}
                 aria-label={d.title}
               >
                 <div className="flex items-start">
                   {/* Avatar */}
-                  <div className={`w-11 h-11 rounded-full flex items-center justify-center mr-4 font-bold text-md text-white ${d.author.color}`}>
+                  <div className={`w-11 h-11 rounded-full flex items-center justify-center mr-4 font-bold text-md text-white shrink-0 ${d.author.color}`}>
                     {d.author.avatarUrl
                       ? <img src={d.author.avatarUrl} alt={d.author.login} className="w-full h-full rounded-full object-cover" />
                       : <span>{d.author.initials}</span>
@@ -219,31 +217,31 @@ export const DiscussionPreview = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     {/* Meta: tag and time */}
-                    <div className="flex items-center gap-3 mb-1">
-                      <span className={`text-xs font-medium rounded px-2 py-1 ${d.tag.color} text-white/90`} style={{boxShadow: "0 1px 8px 0 rgba(200,0,120,0.09)"}}>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className={`text-xs font-medium rounded-md px-2 py-1 ${d.tag.color} text-white/90`} style={{boxShadow: "0 1px 8px 0 rgba(200,0,120,0.09)"}}>
                         {d.tag.name}
                       </span>
-                      <span className="text-zinc-400 text-xs">{d.timeAgo}</span>
+                      <span className="text-white/60 text-xs">{d.timeAgo}</span>
                     </div>
                     {/* Title */}
-                    <div className="font-space-grotesk font-semibold text-lg text-gray-900 dark:text-white mb-1 leading-tight group-hover:text-aurora-purple transition-colors">
+                    <div className="font-space-grotesk font-semibold text-lg text-white mb-1 leading-tight group-hover:text-aurora-purple transition-colors">
                       {d.title}
                     </div>
                     {/* Description/subtitle */}
                     {d.description && (
-                      <div className="text-zinc-600 text-sm dark:text-white/70 mb-2 line-clamp-2">
+                      <div className="text-white/70 text-sm mb-3 line-clamp-2">
                         {d.description}
                       </div>
                     )}
                     {/* Row: Comments, Likes, Share */}
-                    <div className="flex gap-7 mt-2 text-zinc-500 dark:text-zinc-300/90 text-sm">
-                      <span className="flex items-center gap-1.5 hover:text-aurora-pink transition">
+                    <div className="flex gap-7 mt-2 text-white/60 text-sm">
+                      <span className="flex items-center gap-1.5 hover:text-white transition">
                         <MessageCircle size={17} /> {d.comments}
                       </span>
-                      <span className="flex items-center gap-1.5 hover:text-aurora-pink transition">
+                      <span className="flex items-center gap-1.5 hover:text-white transition">
                         <Heart size={17} /> {d.upvotes}
                       </span>
-                      <span className="flex items-center gap-1.5 hover:text-aurora-pink cursor-pointer group-hover:underline transition">
+                      <span className="flex items-center gap-1.5 hover:text-white cursor-pointer group-hover:underline transition">
                         <Share size={17} /> Share
                       </span>
                     </div>
