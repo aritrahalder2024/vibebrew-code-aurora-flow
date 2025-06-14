@@ -9,10 +9,7 @@ interface DiscussionCardProps {
 
 export const DiscussionCard: React.FC<DiscussionCardProps> = ({ discussion: d }) => {
   return (
-    <a
-      href={d.url || "#"}
-      target={d.url ? "_blank" : undefined}
-      rel={d.url ? "noopener noreferrer" : undefined}
+    <div
       className={`
         group block focus-visible:ring-2 focus-visible:ring-aurora-pink focus:outline-none
         rounded-2xl bg-white/5 border border-white/10
@@ -50,19 +47,19 @@ export const DiscussionCard: React.FC<DiscussionCardProps> = ({ discussion: d })
             </div>
           )}
           {/* Row: Comments, Likes, Share */}
-          <div className="flex gap-7 mt-2 text-white/60 text-sm">
-            <span className="flex items-center gap-1.5">
+          <div className="flex gap-7 mt-2 text-white/60 text-sm select-none">
+            <span className="flex items-center gap-1.5 cursor-default">
               <MessageCircle size={17} /> {d.comments}
             </span>
-            <span className="flex items-center gap-1.5">
+            <span className="flex items-center gap-1.5 cursor-default">
               <Heart size={17} /> {d.upvotes}
             </span>
-            <span className="flex items-center gap-1.5">
+            <span className="flex items-center gap-1.5 cursor-default">
               <Share size={17} /> Share
             </span>
           </div>
         </div>
       </div>
-    </a>
+    </div>
   );
 };
