@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -77,38 +78,44 @@ body {
   font-family: "JetBrains Mono", monospace;
 }
 
-/* Glass morphism effects - Optimized */
+/* Optimized glass morphism effects */
 .glass-strong {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  will-change: transform, opacity;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
 .glass-subtle {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  will-change: transform, opacity;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
-/* Aurora gradient background - Optimized */
+/* Optimized aurora gradient background */
 .aurora-bg {
   background: linear-gradient(45deg, 
     rgba(139, 69, 19, 0.1) 0%,
     rgba(255, 20, 147, 0.15) 50%,
     rgba(75, 0, 130, 0.1) 100%);
   background-size: 200% 200%;
-  animation: aurora-move 15s ease infinite;
-  will-change: background-position;
+  animation: aurora-move 20s ease-in-out infinite;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
 @keyframes aurora-move {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%, 100% { 
+    background-position: 0% 50%;
+    transform: translateZ(0);
+  }
+  50% { 
+    background-position: 100% 50%;
+    transform: translateZ(0);
+  }
 }
 
-/* Custom aurora gradient - Simplified */
+/* Custom aurora gradient */
 .bg-aurora-gradient {
   background: linear-gradient(135deg, #ff1493, #8a2be2);
 }
@@ -125,7 +132,7 @@ body {
   color: #9333ea;
 }
 
-/* Enhanced glow effects - Optimized */
+/* Optimized glow effects using transform instead of box-shadow where possible */
 .shadow-glow {
   box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
 }
@@ -164,10 +171,10 @@ img[alt="Vibebrew"] {
   max-width: 100%;
   height: auto;
   object-fit: contain;
-  will-change: transform;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
-/* Custom scrollbar styling - Simplified */
+/* Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -187,7 +194,7 @@ img[alt="Vibebrew"] {
   background: linear-gradient(to bottom, #ff1493, #9400d3);
 }
 
-/* Autofill style override - Optimized */
+/* Autofill style override */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -198,10 +205,10 @@ input:-webkit-autofill:active {
   box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Minimal Typewriter effect styling - Optimized */
+/* Optimized Typewriter effect styling */
 .typewriter-container {
   display: inline-block;
-  will-change: contents;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
 .typing-cursor {
@@ -211,8 +218,8 @@ input:-webkit-autofill:active {
   background: #ff1493;
   margin-left: 2px;
   vertical-align: middle;
-  animation: blink-caret 0.8s step-end infinite;
-  will-change: opacity;
+  animation: blink-caret 1s step-end infinite;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
 @keyframes blink-caret {
@@ -220,7 +227,7 @@ input:-webkit-autofill:active {
   50% { opacity: 0; }
 }
 
-/* Text highlight effect for the typewriter - Simplified */
+/* Text highlight effect for the typewriter */
 .typewriter-text {
   background: linear-gradient(120deg, rgba(255, 20, 147, 0) 0%, rgba(138, 43, 226, 0.1) 100%);
   padding: 0 8px;
@@ -238,7 +245,7 @@ input:-webkit-autofill:active {
   background: linear-gradient(90deg, transparent, rgba(255, 20, 147, 0.7), transparent);
 }
 
-/* 3D text effect for the typewriter - Simplified */
+/* 3D text effect for the typewriter */
 .typewriter-char {
   text-shadow: 
     0 1px 0 rgba(255, 255, 255, 0.4),
@@ -246,17 +253,17 @@ input:-webkit-autofill:active {
   transition: all 0.2s ease;
 }
 
-/* Glass morphism for navbar - Optimized */
+/* Optimized glass morphism for navbar */
 .navbar-glass {
   background: rgba(20, 20, 40, 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  will-change: opacity, backdrop-filter;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
-/* Mobile optimization for ultra-enhanced navbar */
+/* Mobile optimization for navbar */
 @media (max-width: 640px) {
   .navbar-glass {
     background: rgba(15, 10, 35, 0.3);
@@ -266,113 +273,148 @@ input:-webkit-autofill:active {
   }
 }
 
-/* Glowing button animation - Optimized */
+/* Optimized glowing button animation using transform */
 @keyframes glow-pulse {
   0%, 100% {
     box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+    transform: translateZ(0) scale(1);
   }
   50% {
     box-shadow: 0 0 30px rgba(255, 20, 147, 0.7);
+    transform: translateZ(0) scale(1.02);
   }
 }
 
 .glow-pulse {
-  animation: glow-pulse 1.5s ease-in-out infinite;
-  will-change: box-shadow;
+  animation: glow-pulse 2s ease-in-out infinite;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
-/* Floating animation for background elements - Optimized */
+/* Optimized floating animation using transform only */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
+  0%, 100% { 
+    transform: translateZ(0) translateY(0px); 
+  }
+  50% { 
+    transform: translateZ(0) translateY(-15px); 
+  }
 }
 
 .floating {
-  animation: float 5s ease-in-out infinite;
-  will-change: transform;
+  animation: float 6s ease-in-out infinite;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
-/* Animate float for FAQ background elements - Optimized */
+/* Optimized animate float for FAQ background elements */
 @keyframes animate-float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { 
+    transform: translateZ(0) translateY(0px); 
+  }
+  50% { 
+    transform: translateZ(0) translateY(-10px); 
+  }
 }
 
 .animate-float {
-  animation: animate-float 6s ease-in-out infinite;
-  will-change: transform;
+  animation: animate-float 8s ease-in-out infinite;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
-/* Override browser autofill styles - Optimized */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: white !important;
-  transition: background-color 5000s ease-in-out 0s !important;
-  box-shadow: inset 0 0 0 1000px transparent !important;
-  background: transparent !important;
-}
-
-/* Floating particle animation - Optimized */
+/* Optimized floating particle animation */
 @keyframes float-particle {
   0% {
-    transform: translate(-50%, -50%) scale(0.9);
+    transform: translate(-50%, -50%) translateZ(0) scale(0.9);
     opacity: 0.05;
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) translateZ(0) scale(1.1);
     opacity: 0.15;
-    filter: blur(50px);
   }
   100% {
-    transform: translate(-50%, -50%) scale(0.9);
+    transform: translate(-50%, -50%) translateZ(0) scale(0.9);
     opacity: 0.08;
   }
 }
 
-/* Avatar pulse animation */
+/* Optimized avatar pulse animation */
 @keyframes avatar-pulse {
   0% {
-    transform: rotateY(0deg) scale(0);
+    transform: translateZ(0) rotateY(0deg) scale(0);
     opacity: 0;
   }
   50% {
-    transform: rotateY(180deg) scale(1.5);
+    transform: translateZ(0) rotateY(180deg) scale(1.5);
     opacity: 0.7;
   }
   100% {
-    transform: rotateY(360deg) scale(2);
+    transform: translateZ(0) rotateY(360deg) scale(2);
     opacity: 0;
   }
 }
 
-/* Animation for avatar click interaction */
+/* Optimized animation for avatar click interaction */
 .avatar-active {
   animation: avatar-active 0.5s ease-in-out;
-  will-change: transform;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
 @keyframes avatar-active {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.3); }
-  100% { transform: scale(1); }
+  0% { transform: translateZ(0) scale(1); }
+  50% { transform: translateZ(0) scale(1.3); }
+  100% { transform: translateZ(0) scale(1); }
 }
 
-/* Dashboard image effects */
+/* Optimized dashboard image effects */
 .dash-image-effect {
-  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
   box-shadow: 0 0 32px 0 rgba(255, 20, 147, 0.25), 0 4px 32px 0 rgba(138, 43, 226, 0.15);
+  transform: translateZ(0); /* Force GPU acceleration */
 }
+
 .dash-image-effect:hover {
-  transform: scale(1.04) translateY(-4px);
+  transform: translateZ(0) scale(1.04) translateY(-4px);
   box-shadow: 0 0 48px 8px #ff1493, 0 8px 48px 0 #8a2be2;
 }
+
 .dash-float-anim {
-  animation: dash-float 5s ease-in-out infinite;
+  animation: dash-float 6s ease-in-out infinite;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
+
 @keyframes dash-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { 
+    transform: translateZ(0) translateY(0); 
+  }
+  50% { 
+    transform: translateZ(0) translateY(-10px); 
+  }
+}
+
+/* Performance optimization classes */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.smooth-transform {
+  transition: transform 0.2s ease-out;
+  transform: translateZ(0);
+}
+
+.reduced-motion {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

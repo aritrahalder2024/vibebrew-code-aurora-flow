@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 // @ts-ignore
 import tailwindcssAnimate from "tailwindcss-animate";
@@ -121,29 +122,49 @@ export default {
 					}
 				},
 				'aurora-flow': {
-					'0%': { transform: 'translateX(-100%)' },
-					'100%': { transform: 'translateX(100%)' },
+					'0%': { 
+						transform: 'translateX(-100%) translateZ(0)'
+					},
+					'100%': { 
+						transform: 'translateX(100%) translateZ(0)'
+					},
 				},
 				'float': {
-					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-20px)' },
+					'0%, 100%': { 
+						transform: 'translateY(0px) translateZ(0)' 
+					},
+					'50%': { 
+						transform: 'translateY(-20px) translateZ(0)' 
+					},
 				},
 				'glow-pulse': {
-					'0%, 100%': { boxShadow: '0 0 20px rgba(122, 92, 250, 0.3)' },
-					'50%': { boxShadow: '0 0 30px rgba(122, 92, 250, 0.5)' },
+					'0%, 100%': { 
+						boxShadow: '0 0 20px rgba(122, 92, 250, 0.3)',
+						transform: 'translateZ(0) scale(1)'
+					},
+					'50%': { 
+						boxShadow: '0 0 30px rgba(122, 92, 250, 0.5)',
+						transform: 'translateZ(0) scale(1.02)'
+					},
 				},
 				'pulse-slow': {
-					'0%, 100%': { opacity: '0.7', transform: 'scale(1.5)' },
-					'50%': { opacity: '0.4', transform: 'scale(1.4)' },
+					'0%, 100%': { 
+						opacity: '0.7', 
+						transform: 'scale(1.5) translateZ(0)' 
+					},
+					'50%': { 
+						opacity: '0.4', 
+						transform: 'scale(1.4) translateZ(0)' 
+					},
 				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'aurora-flow': 'aurora-flow 8s ease-in-out infinite',
-				'float': 'float 6s ease-in-out infinite',
-				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
-				'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
+				'aurora-flow': 'aurora-flow 10s ease-in-out infinite',
+				'float': 'float 8s ease-in-out infinite',
+				'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
 			}
 		}
 	},
