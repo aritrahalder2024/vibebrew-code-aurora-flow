@@ -68,7 +68,7 @@ export const EmailSignupForm = () => {
           }
         } else {
           toast({
-            title: "Welcome to the Revolution! 🚀",
+            title: "Welcome to Vibebrew family",
             description: "You're now on the waitlist. Get ready for exclusive discounts!",
             duration: 5000,
           });
