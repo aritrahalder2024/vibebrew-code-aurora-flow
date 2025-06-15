@@ -110,17 +110,25 @@ async function fetchDiscussions(): Promise<GitHubDiscussionNode[]> {
       }),
     });
 
-    const data = await res.json();
     console.log("GitHub API response status:", res.status);
 
     // Handle rate limiting or other API errors
-    if (!res.ok || data.errors || data.message) {
-      if (data.message?.includes("rate limit")) {
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      
+      if (res.status === 403 && data.message?.includes("rate limit")) {
         console.log("GitHub API rate limited, using mock data. To get live data, add your GitHub token to localStorage with key 'github_token'");
       } else {
-        console.log("GitHub API error:", data.message || "Unknown error");
+        console.log("GitHub API error:", data.message || `HTTP ${res.status}`);
       }
-      throw new Error(data.message || "GitHub API error");
+      throw new Error(data.message || `HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+    
+    if (data.errors) {
+      console.log("GraphQL errors:", data.errors);
+      throw new Error(data.errors[0]?.message || "GraphQL error");
     }
 
     console.log("Successfully fetched GitHub discussions");
