@@ -44,8 +44,8 @@ const Index = () => {
           background: "rgba(15, 15, 35, 0.25)"
         }}
       />
-      {/* Main content placed above the overlays */}
-      <div className="relative z-10">
+      {/* Main content placed above the overlays - removed borders and separations */}
+      <div className="relative z-10 space-y-0">
         <Navigation />
         <HeroSection />
         <Suspense fallback={<SectionLoader />}>

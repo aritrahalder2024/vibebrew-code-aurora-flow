@@ -21,7 +21,7 @@ FeatureCard.displayName = 'FeatureCard';
 
 export const AboutSection = React.memo(() => {
   return (
-    <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden border-0">
       <div className="container mx-auto relative z-10 max-w-6xl">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-4 sm:mb-6">
