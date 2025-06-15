@@ -1,3 +1,4 @@
+
 import { ArrowRight } from "lucide-react";
 import React from "react";
 import { useDiscussions } from "@/hooks/useDiscussions";
@@ -17,7 +18,7 @@ export const DiscussionPreview = () => {
             Live <span className="text-aurora-purple">Discussions</span>
           </h2>
           <p className="text-white/70 text-lg font-medium mx-auto max-w-2xl">
-            Share wins, ask for help, and level up together. It’s your forum.
+            Share wins, ask for help, and level up together. It's your forum.
           </p>
         </div>
         
