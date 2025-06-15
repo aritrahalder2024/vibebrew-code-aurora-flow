@@ -181,6 +181,7 @@ export const HeroSection = () => {
             description: "You're already signed up. We'll notify you when we launch!",
             duration: 5000,
           });
+          setEmail(""); // Clear the email input for duplicate entries too
         } else {
           throw error;
         }
