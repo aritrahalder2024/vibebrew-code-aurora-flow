@@ -68,16 +68,22 @@ const getGitHubToken = () => {
 };
 
 async function fetchDiscussions(): Promise<GitHubDiscussionNode[]> {
-  console.log("Fetching GitHub discussions...");
-  
   const token = getGitHubToken();
+  
+  // If no token is available, skip the API call to avoid rate limiting errors
+  if (!token) {
+    console.log("No GitHub token found, using mock data. To get live data, add your GitHub token to localStorage with key 'github_token'");
+    throw new Error("No GitHub token available");
+  }
+  
+  console.log("Fetching GitHub discussions with token...");
   
   try {
     const res = await fetch(GITHUB_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         query: `
@@ -112,15 +118,9 @@ async function fetchDiscussions(): Promise<GitHubDiscussionNode[]> {
 
     console.log("GitHub API response status:", res.status);
 
-    // Handle rate limiting or other API errors
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
-      
-      if (res.status === 403 && data.message?.includes("rate limit")) {
-        console.log("GitHub API rate limited, using mock data. To get live data, add your GitHub token to localStorage with key 'github_token'");
-      } else {
-        console.log("GitHub API error:", data.message || `HTTP ${res.status}`);
-      }
+      console.log("GitHub API error:", data.message || `HTTP ${res.status}`);
       throw new Error(data.message || `HTTP ${res.status}`);
     }
 
@@ -169,33 +169,30 @@ const formatDiscussions = (discussions: GitHubDiscussionNode[]): FormattedDiscus
 };
 
 export const useDiscussions = () => {
+  const token = getGitHubToken();
+  
   const { data: discussions, isLoading, error } = useQuery({
     queryKey: ["github-discussions", REPO_OWNER, REPO_NAME],
     queryFn: fetchDiscussions,
+    enabled: !!token, // Only run the query if we have a token
     staleTime: 1000 * 60 * 5, // 5 minutes
     retry: false, // Don't retry to avoid hitting rate limits repeatedly
     refetchOnWindowFocus: false, // Don't refetch on window focus to reduce API calls
   });
 
-  // Always use mock discussions as fallback when there's an error or no data
+  // Always use mock discussions as fallback
   let displayDiscussions = mockDiscussions;
-  let showError = false;
   
   if (!isLoading && !error && Array.isArray(discussions) && discussions.length > 0) {
     displayDiscussions = formatDiscussions(discussions);
     console.log("Using live GitHub discussions");
   } else {
     console.log("Using mock discussions");
-    if (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      // Only show error for non-rate-limit errors
-      showError = !errorMessage.includes("rate limit");
-    }
   }
   
   return {
     discussions: displayDiscussions,
-    isLoading,
-    error: showError ? error : null,
+    isLoading: token ? isLoading : false, // Don't show loading if no token
+    error: null, // Don't expose errors to UI, always fallback gracefully
   };
 };
