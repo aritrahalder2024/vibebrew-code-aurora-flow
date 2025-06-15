@@ -58,17 +58,26 @@ const mockDiscussions: FormattedDiscussion[] = [
 const GITHUB_API_URL = "https://api.github.com/graphql";
 const REPO_OWNER = "facebook";
 const REPO_NAME = "react";
-const GITHUB_TOKEN = ""; // Keep this empty, as it was in the original file
+
+// Get GitHub token from localStorage (users can set this if they want higher rate limits)
+const getGitHubToken = () => {
+  if (typeof window !== 'undefined') {
+    return localStorage.getItem('github_token') || '';
+  }
+  return '';
+};
 
 async function fetchDiscussions(): Promise<GitHubDiscussionNode[]> {
   console.log("Fetching GitHub discussions...");
+  
+  const token = getGitHubToken();
   
   try {
     const res = await fetch(GITHUB_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        ...(GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {}),
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
       body: JSON.stringify({
         query: `
@@ -102,18 +111,22 @@ async function fetchDiscussions(): Promise<GitHubDiscussionNode[]> {
     });
 
     const data = await res.json();
-    console.log("GitHub API response:", data);
+    console.log("GitHub API response status:", res.status);
 
     // Handle rate limiting or other API errors
     if (!res.ok || data.errors || data.message) {
-      console.log("GitHub API error, falling back to mock data");
+      if (data.message?.includes("rate limit")) {
+        console.log("GitHub API rate limited, using mock data. To get live data, add your GitHub token to localStorage with key 'github_token'");
+      } else {
+        console.log("GitHub API error:", data.message || "Unknown error");
+      }
       throw new Error(data.message || "GitHub API error");
     }
 
+    console.log("Successfully fetched GitHub discussions");
     return data?.data?.repository?.discussions?.nodes || [];
   } catch (error) {
     console.log("Error fetching GitHub discussions:", error);
-    // Return empty array to trigger fallback to mock data
     throw error;
   }
 }
@@ -152,8 +165,8 @@ export const useDiscussions = () => {
     queryKey: ["github-discussions", REPO_OWNER, REPO_NAME],
     queryFn: fetchDiscussions,
     staleTime: 1000 * 60 * 5, // 5 minutes
-    retry: 1, // Only retry once to avoid hitting rate limits repeatedly
-    retryDelay: 2000, // Wait 2 seconds before retry
+    retry: false, // Don't retry to avoid hitting rate limits repeatedly
+    refetchOnWindowFocus: false, // Don't refetch on window focus to reduce API calls
   });
 
   // Always use mock discussions as fallback when there's an error or no data
@@ -162,15 +175,19 @@ export const useDiscussions = () => {
   
   if (!isLoading && !error && Array.isArray(discussions) && discussions.length > 0) {
     displayDiscussions = formatDiscussions(discussions);
-  } else if (error) {
-    // Only show error for non-rate-limit errors
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    showError = !errorMessage.includes("rate limit");
+    console.log("Using live GitHub discussions");
+  } else {
+    console.log("Using mock discussions");
+    if (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      // Only show error for non-rate-limit errors
+      showError = !errorMessage.includes("rate limit");
+    }
   }
   
   return {
     discussions: displayDiscussions,
     isLoading,
-    error: showError ? error : null, // Hide rate limit errors
+    error: showError ? error : null,
   };
 };
