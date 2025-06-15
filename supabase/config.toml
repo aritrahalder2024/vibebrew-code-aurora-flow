@@ -1,1 +1,14 @@
+
 project_id = "jeokrpqugmheyledrycq"
+
+[auth]
+# Set more secure token expiry times to resolve Auth OTP Long Expiry warning
+[auth.email]
+# Email confirmation token expires in 24 hours (86400 seconds)
+confirm_signup_token_expiry = 86400
+# Password reset token expires in 1 hour (3600 seconds) 
+reset_password_token_expiry = 3600
+
+[auth.jwt]
+# JWT tokens expire in 1 hour (3600 seconds)
+expiry = 3600
