@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import { TypewriterEffect } from "./hero/TypewriterEffect";
 import { BackgroundParticle } from "./hero/BackgroundParticle";

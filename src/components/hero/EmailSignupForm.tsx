@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
@@ -10,49 +9,85 @@ export const EmailSignupForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!email) return;
-    
-    setIsSubmitting(true);
-    
-    try {
-      const { error } = await supabase
-        .from('waitlist')
-        .insert([{ email }]);
+  // Simple client-side email validation (required basic security)
+  function isValidEmail(email: string) {
+    return (
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) &&
+      email.length < 320
+    );
+  }
 
-      if (error) {
-        if (error.code === '23505') {
+  // In-memory simple rate limiting - resets on refresh
+  const [lastSubmit, setLastSubmit] = useState<number | null>(null);
+  const RATE_LIMIT_MS = 5000;
+
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+
+      if (!email || !isValidEmail(email)) {
+        toast({
+          title: "Invalid Email",
+          description: "Please enter a valid email address.",
+          duration: 4000,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      // Basic rate limiter (client only)
+      const now = Date.now();
+      if (lastSubmit && now - lastSubmit < RATE_LIMIT_MS) {
+        toast({
+          title: "Slow down!",
+          description: "Please wait a few seconds before re-submitting.",
+          duration: 3000,
+          variant: "destructive",
+        });
+        return;
+      }
+      setLastSubmit(now);
+
+      setIsSubmitting(true);
+
+      try {
+        const { error } = await supabase
+          .from('waitlist')
+          .insert([{ email: email.trim() }]);
+
+        if (error) {
+          if (error.code === '23505') {
+            toast({
+              title: "Already on the waitlist! 🎉",
+              description: "You're already signed up. We'll notify you when we launch!",
+              duration: 5000,
+            });
+            setEmail(""); // Clear the email input for duplicate entries too
+          } else {
+            throw error;
+          }
+        } else {
           toast({
-            title: "Already on the waitlist! 🎉",
-            description: "You're already signed up. We'll notify you when we launch!",
+            title: "Welcome to the Revolution! 🚀",
+            description: "You're now on the waitlist. Get ready for exclusive discounts!",
             duration: 5000,
           });
-          setEmail(""); // Clear the email input for duplicate entries too
-        } else {
-          throw error;
+          setEmail("");
         }
-      } else {
+      } catch (error) {
+        console.error('Error adding to waitlist:', error);
         toast({
-          title: "Welcome to the Revolution! 🚀",
-          description: "You're now on the waitlist. Get ready for exclusive discounts!",
+          title: "Oops! Something went wrong",
+          description: "Please try again later.",
+          variant: "destructive",
           duration: 5000,
         });
-        setEmail("");
+      } finally {
+        setIsSubmitting(false);
       }
-    } catch (error) {
-      console.error('Error adding to waitlist:', error);
-      toast({
-        title: "Oops! Something went wrong",
-        description: "Please try again later.",
-        variant: "destructive",
-        duration: 5000,
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [email, toast]);
+    },
+    [email, toast, lastSubmit]
+  );
 
   return (
     <form onSubmit={handleSubmit} className="flex justify-center items-center mb-6 sm:mb-8 w-full max-w-[450px] mx-auto px-4 relative z-10">
