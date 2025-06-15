@@ -1,3 +1,4 @@
+
 import { MessageCircle } from "lucide-react";
 
 export const Footer = () => {
@@ -27,8 +28,16 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/80 hover:text-white transition-colors"
+              aria-label="Discord server"
             >
-              <MessageCircle size={20} strokeWidth={2} />
+              {/* Discord outline icon (SVG in Lucide/outline style, size, and stroke) */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="5" />
+                <path d="M6 16c1-1 2.5-2 6-2s5 1 6 2" />
+                <ellipse cx="9" cy="12" rx="1.25" ry="1.5" />
+                <ellipse cx="15" cy="12" rx="1.25" ry="1.5" />
+              </svg>
             </a>
             <a href="https://www.linkedin.com/in/aritra-halder/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
