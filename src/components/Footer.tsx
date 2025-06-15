@@ -1,3 +1,5 @@
+import { MessageCircle } from "lucide-react";
+
 export const Footer = () => {
   return (
     <footer className="backdrop-blur-md bg-white/5 border-t border-white/10 py-4 px-2 sm:px-6">
@@ -26,11 +28,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               className="text-white/80 hover:text-white transition-colors"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 9a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9Z" />
-                <circle cx="9" cy="12" r="1" />
-                <circle cx="15" cy="12" r="1" />
-              </svg>
+              <MessageCircle size={20} strokeWidth={2} />
             </a>
             <a href="https://www.linkedin.com/in/aritra-halder/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
