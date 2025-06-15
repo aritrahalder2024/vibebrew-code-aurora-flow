@@ -4,16 +4,16 @@ import { MessageCircle } from "lucide-react";
 export const Footer = () => {
   return (
     <footer className="backdrop-blur-md bg-white/5 border-t border-white/10 py-4 px-2 sm:px-6">
-      <div className="container mx-auto flex flex-col items-center space-y-1">
-        {/* Top row: About, Terms, Privacy links */}
-        <div className="flex items-center justify-center space-x-9 mb-0.5">
+      <div className="container mx-auto flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:py-2">
+        {/* Left: About, Terms, Privacy */}
+        <div className="flex items-center justify-center sm:justify-start space-x-9 order-1 sm:order-none mb-1 sm:mb-0">
           <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">About</a>
           <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">Terms</a>
           <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">Privacy</a>
         </div>
 
-        {/* Middle row: Social icons, centered */}
-        <div className="flex items-center justify-center space-x-10 my-1">
+        {/* Center: Social Icons */}
+        <div className="flex items-center justify-center space-x-10 order-3 sm:order-none my-1 sm:my-0">
           {/* Twitter */}
           <a
             href="https://x.com/_aritrahalder_"
@@ -44,7 +44,6 @@ export const Footer = () => {
             className="text-white/80 hover:text-white transition-colors"
             aria-label="Discord server"
           >
-            {/* Minimal outlined Discord face */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -88,8 +87,8 @@ export const Footer = () => {
           </a>
         </div>
 
-        {/* Bottom row: Built with message */}
-        <div className="text-white/80 text-sm text-center mt-1">
+        {/* Right: Built with message */}
+        <div className="text-white/80 text-sm text-center sm:text-right order-2 sm:order-none mt-1 sm:mt-0 w-full sm:w-auto">
           Built with <span className="text-yellow-300">✨</span> in public.
         </div>
       </div>
