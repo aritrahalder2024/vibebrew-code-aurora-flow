@@ -30,23 +30,36 @@ export const Footer = () => {
               className="text-white/80 hover:text-white transition-colors"
               aria-label="Discord server"
             >
-              {/* Discord "Clyde" mascot outline */}
+              {/* Discord "Clyde" mascot outline - styled after user's uploaded image */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
-                viewBox="0 0 40 40"
+                viewBox="0 0 50 50"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2.2"
+                strokeWidth="2.3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                {/* Mascot outline */}
-                <path d="M10.2 29c-2-2.7-3.5-5.7-4.2-9 .7-3.3 2.1-6 4.3-8.8C13.7 8.7 18.3 7 23 7c4.8 0 9.5 1.8 12.8 4.2 2.3 2.7 3.6 5.5 4.2 8.8-.7 3.3-2.1 6.3-4.2 9-4 2.3-8.8 3.6-13 3.6-4.2 0-9-1.3-13-3.6z"/>
+                {/* Main head outline */}
+                <path
+                  d="M10 36
+                    Q5 28, 8.5 19
+                    Q15 6, 25 6
+                    Q35 6, 41.5 19
+                    Q45 28, 40 36
+                    Q33 42, 25 42
+                    Q17 42, 10 36
+                    Z"
+                  />
                 {/* Eyes */}
-                <circle cx="16.7" cy="20" r="1.3" fill="currentColor" />
-                <circle cx="27" cy="20" r="1.3" fill="currentColor" />
+                <circle cx="18" cy="25" r="3.1" />
+                <circle cx="32" cy="25" r="3.1" />
+                {/* Smile */}
+                <path d="M17 31 Q25 36 33 31" />
+                {/* Top details ("horns") */}
+                <path d="M17 13 Q20 11 25 12 Q30 11 33 13" />
               </svg>
             </a>
             <a href="https://www.linkedin.com/in/aritra-halder/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">
