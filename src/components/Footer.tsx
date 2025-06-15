@@ -9,7 +9,7 @@ export const Footer = () => {
           <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">About</a>
           <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">Terms</a>
           <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">Privacy</a>
-          
+
           {/* Social icons */}
           <div className="flex items-center space-x-3">
             <a
@@ -29,22 +29,33 @@ export const Footer = () => {
               className="text-white/80 hover:text-white transition-colors"
               aria-label="Discord server"
             >
-              {/* Discord mascot icon in outline style */}
+              {/* Discord mascot outlined icon, matches official shape */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
-                viewBox="0 0 24 24"
+                viewBox="0 0 245 240"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="12"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                style={{ display: "block" }}
               >
-                <path d="M17.72 17.64A15.06 15.06 0 0 0 21 18.5c.25-1.23.53-3.17.28-5.69-.29-2.95-1.75-6.13-4.99-6.13h-.06c-.44-.03-1.03-.09-1.7-.13-.38-.03-.76-.04-1.14-.05-.38.01-.76.02-1.14.05-.67.04-1.26.1-1.7.13H8.7C5.46 6.68 4 9.86 3.71 12.81c-.25 2.52.03 4.46.28 5.69a15.06 15.06 0 0 0 3.28-.86m10.45 0A11.87 11.87 0 0 1 12 19a11.87 11.87 0 0 1-5.01-1.36" />
-                <ellipse cx="9" cy="13.5" rx="1.15" ry="1.2"/>
-                <ellipse cx="15" cy="13.5" rx="1.15" ry="1.2"/>
-                <path d="M8.75 16.3c1 .48 2.5.49 3.5 0" />
+                <path
+                  d="M104.4 193.1c-11.8 0-21.1-10.4-21.1-23.2m78.3 23.2c11.8 0 21.1-10.4 21.1-23.2"
+                  stroke="currentColor"
+                  strokeWidth="12"
+                  fill="none"
+                />
+                <path
+                  d="M64.7 205.1C29 194.9 7 174.2 7 174.2s20.3-36.3 30.9-77.4c5.3-20.5 13.5-40.5 24.1-57.9 15.8-25.6 38-37.2 48.7-41.2 22.3-8.6 54.6-8.6 76.9 0 10.7 4.1 32.9 15.6 48.8 41.2 10.6 17.3 18.8 37.3 24.1 57.9C217.7 137.9 238 174.2 238 174.2s-22 20.7-57.7 30.9c-7.3-12.3-18.1-23.6-33.5-23.6h-37.6c-15.3.1-26.2 11.4-33.5 23.6z"
+                  stroke="currentColor"
+                  strokeWidth="12"
+                  fill="none"
+                />
+                <ellipse cx="94.8" cy="143.8" rx="13.5" ry="16.5" stroke="currentColor" strokeWidth="9" fill="none"/>
+                <ellipse cx="150.2" cy="143.8" rx="13.5" ry="16.5" stroke="currentColor" strokeWidth="9" fill="none"/>
               </svg>
             </a>
             <a href="https://www.linkedin.com/in/aritra-halder/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">
@@ -56,7 +67,7 @@ export const Footer = () => {
             </a>
           </div>
         </div>
-        
+
         {/* Right side - Built with message */}
         <div className="text-white/80 text-sm">
           Built with <span className="text-yellow-300">✨</span> in public.
