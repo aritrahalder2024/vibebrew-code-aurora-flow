@@ -40,7 +40,7 @@ export const HeroSection = () => {
 
           {/* Description */}
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed font-medium px-4 relative z-10">
-            A place where Vibe Coders dream aloud, Build Boldly, and Shape the Future with Lines of Prompts and Sparks of Vision.
+            A place where Vibe Coders dream aloud, Build Boldly, and Shape the Future with Prompting and Sparks of Vision.
           </p>
 
           <div className="mt-10 sm:mt-20 lg:mt-28"></div>
