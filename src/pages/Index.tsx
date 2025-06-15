@@ -22,27 +22,26 @@ const SectionLoader = () => (
 const Index = () => {
   return (
     <div className="min-h-screen relative overflow-x-hidden">
-      {/* Static aurora-inspired gradient background */}
+      {/* Strong aurora gradient background from dark left to light right */}
       <div
         className="
           fixed inset-0 -z-20
           bg-no-repeat bg-cover
-          opacity-90
+          opacity-95
         "
         style={{
           background:
-            // Softer aurora: deep blue, faded cyan, soft violet, blush
-            "linear-gradient(120deg, #182044 0%, #3d8bb8 30%, #7b6fe8 65%, #e6d1e6 90%, #2e2957 100%)",
+            "linear-gradient(135deg, #0f0f23 0%, #1a1a3a 20%, #2d1b69 40%, #b565d9 60%, #ff5f96 80%, #ffd6e8 100%)",
           willChange: 'auto',
         }}
         aria-hidden="true"
       />
-      {/* Semi-transparent overlay to boost contrast */}
+      {/* Reduced overlay for better aurora visibility */}
       <div
         className="fixed inset-0 -z-10 pointer-events-none"
         aria-hidden="true"
         style={{
-          background: "rgba(20, 17, 40, 0.62)"
+          background: "rgba(15, 15, 35, 0.25)"
         }}
       />
       {/* Main content placed above the overlays */}
