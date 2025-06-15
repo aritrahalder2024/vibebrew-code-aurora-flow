@@ -1,3 +1,4 @@
+
 import { MessageCircle } from "lucide-react";
 
 export const Footer = () => {
@@ -18,7 +19,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               className="text-white/80 hover:text-white transition-colors"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
               </svg>
             </a>
@@ -29,37 +30,27 @@ export const Footer = () => {
               className="text-white/80 hover:text-white transition-colors"
               aria-label="Discord server"
             >
-              {/* Discord mascot outlined icon, matches official shape */}
+              {/* Discord "Clyde" mascot outline */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
-                viewBox="0 0 245 240"
+                viewBox="0 0 40 40"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="12"
+                strokeWidth="2.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                style={{ display: "block" }}
               >
-                <path
-                  d="M104.4 193.1c-11.8 0-21.1-10.4-21.1-23.2m78.3 23.2c11.8 0 21.1-10.4 21.1-23.2"
-                  stroke="currentColor"
-                  strokeWidth="12"
-                  fill="none"
-                />
-                <path
-                  d="M64.7 205.1C29 194.9 7 174.2 7 174.2s20.3-36.3 30.9-77.4c5.3-20.5 13.5-40.5 24.1-57.9 15.8-25.6 38-37.2 48.7-41.2 22.3-8.6 54.6-8.6 76.9 0 10.7 4.1 32.9 15.6 48.8 41.2 10.6 17.3 18.8 37.3 24.1 57.9C217.7 137.9 238 174.2 238 174.2s-22 20.7-57.7 30.9c-7.3-12.3-18.1-23.6-33.5-23.6h-37.6c-15.3.1-26.2 11.4-33.5 23.6z"
-                  stroke="currentColor"
-                  strokeWidth="12"
-                  fill="none"
-                />
-                <ellipse cx="94.8" cy="143.8" rx="13.5" ry="16.5" stroke="currentColor" strokeWidth="9" fill="none"/>
-                <ellipse cx="150.2" cy="143.8" rx="13.5" ry="16.5" stroke="currentColor" strokeWidth="9" fill="none"/>
+                {/* Mascot outline */}
+                <path d="M10.2 29c-2-2.7-3.5-5.7-4.2-9 .7-3.3 2.1-6 4.3-8.8C13.7 8.7 18.3 7 23 7c4.8 0 9.5 1.8 12.8 4.2 2.3 2.7 3.6 5.5 4.2 8.8-.7 3.3-2.1 6.3-4.2 9-4 2.3-8.8 3.6-13 3.6-4.2 0-9-1.3-13-3.6z"/>
+                {/* Eyes */}
+                <circle cx="16.7" cy="20" r="1.3" fill="currentColor" />
+                <circle cx="27" cy="20" r="1.3" fill="currentColor" />
               </svg>
             </a>
             <a href="https://www.linkedin.com/in/aritra-halder/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                 <rect x="2" y="9" width="4" height="12" />
                 <circle cx="4" cy="4" r="2" />
