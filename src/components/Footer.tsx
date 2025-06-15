@@ -1,4 +1,3 @@
-
 import { MessageCircle } from "lucide-react";
 
 export const Footer = () => {
@@ -30,13 +29,22 @@ export const Footer = () => {
               className="text-white/80 hover:text-white transition-colors"
               aria-label="Discord server"
             >
-              {/* Discord outline icon (SVG in Lucide/outline style, size, and stroke) */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="5" />
-                <path d="M6 16c1-1 2.5-2 6-2s5 1 6 2" />
-                <ellipse cx="9" cy="12" rx="1.25" ry="1.5" />
-                <ellipse cx="15" cy="12" rx="1.25" ry="1.5" />
+              {/* Discord mascot icon in outline style */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M17.72 17.64A15.06 15.06 0 0 0 21 18.5c.25-1.23.53-3.17.28-5.69-.29-2.95-1.75-6.13-4.99-6.13h-.06c-.44-.03-1.03-.09-1.7-.13-.38-.03-.76-.04-1.14-.05-.38.01-.76.02-1.14.05-.67.04-1.26.1-1.7.13H8.7C5.46 6.68 4 9.86 3.71 12.81c-.25 2.52.03 4.46.28 5.69a15.06 15.06 0 0 0 3.28-.86m10.45 0A11.87 11.87 0 0 1 12 19a11.87 11.87 0 0 1-5.01-1.36" />
+                <ellipse cx="9" cy="13.5" rx="1.15" ry="1.2"/>
+                <ellipse cx="15" cy="13.5" rx="1.15" ry="1.2"/>
+                <path d="M8.75 16.3c1 .48 2.5.49 3.5 0" />
               </svg>
             </a>
             <a href="https://www.linkedin.com/in/aritra-halder/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">
