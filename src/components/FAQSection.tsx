@@ -38,8 +38,8 @@ export const FAQSection = React.memo(() => {
     {
       id: "item-5",
       icon: <DollarSign className="w-5 h-5" />,
-      question: "Will this all be free?",
-      answer: "It's a freemium model: most features are free, but there will also be paid tiers for professionals and entrepreneurs."
+      question: "Is this a free ride or a velvet rope club?",
+      answer: "A bit of both. Vibebrew is free to enter and explore. But if you want to level up with advanced tools and member only perks, the premium experience is waiting."
     }
   ];
 
