@@ -233,9 +233,9 @@ export const HeroSection = () => {
 
           <div className="mt-10 sm:mt-20 lg:mt-28"></div>
 
-          {/* Optimized email signup form */}
+          {/* Consistent email signup form for all screen sizes */}
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row justify-center items-center mb-6 sm:mb-8 w-full max-w-[450px] mx-auto px-4 relative z-10 gap-3 sm:gap-0">
-            <div className="flex flex-col sm:flex-row w-full glass-strong rounded-2xl sm:rounded-full border border-white/30 overflow-hidden shadow-2xl relative p-1 h-14 items-center gpu-accelerated"
+            <div className="flex flex-col sm:flex-row w-full glass-strong rounded-2xl sm:rounded-full border border-white/30 overflow-hidden shadow-2xl relative p-1 h-auto sm:h-14 items-center gpu-accelerated"
                  style={{
                    boxShadow: '0 0 40px rgba(255, 20, 147, 0.4), 0 0 80px rgba(138, 43, 226, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                  }}>
@@ -245,7 +245,7 @@ export const HeroSection = () => {
                 placeholder="you@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent border-0 text-white placeholder:text-white/60 focus:ring-0 focus:border-0 flex-1 px-6 py-0 text-base text-left rounded-xl sm:rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 relative z-10 w-full h-full leading-normal"
+                className="bg-transparent border-0 text-white placeholder:text-white/60 focus:ring-0 focus:border-0 flex-1 px-6 py-4 sm:py-0 text-base text-left rounded-xl sm:rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 relative z-10 w-full h-12 sm:h-full leading-normal"
                 required
                 autoComplete="email"
               />
@@ -254,7 +254,7 @@ export const HeroSection = () => {
                 disabled={isSubmitting}
                 variant="primary"
                 size="medium"
-                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl sm:rounded-full px-6 font-semibold relative overflow-hidden smooth-transform hover:scale-105 w-full sm:w-auto mt-2 sm:mt-0 h-12 gpu-accelerated"
+                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl sm:rounded-full px-6 py-3 font-semibold relative overflow-hidden smooth-transform hover:scale-105 w-full sm:w-auto mt-3 sm:mt-0 h-12 gpu-accelerated"
                 style={{
                   boxShadow: '0 0 25px rgba(255, 20, 147, 0.6), 0 0 50px rgba(138, 43, 226, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                 }}
