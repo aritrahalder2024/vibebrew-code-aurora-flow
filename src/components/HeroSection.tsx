@@ -136,14 +136,25 @@ export const HeroSection = () => {
     }));
   }, []);
 
-  // Pre-generated user data to avoid random generation on each render
-  const users = useMemo(() => [
+  // Pool of available user data for randomization
+  const userPool = [
     { name: "Alex Carter", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" },
     { name: "Priya Sharma", img: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" },
     { name: "James Lee", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" },
     { name: "Maya Rodriguez", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" },
     { name: "Michael Smith", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" },
-  ], []);
+    { name: "Sarah Johnson", img: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=100&h=100&fit=crop&crop=face" },
+    { name: "David Kim", img: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=100&h=100&fit=crop&crop=face" },
+    { name: "Emma Wilson", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face" },
+    { name: "Ryan Chen", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face" },
+    { name: "Lisa Park", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=face" }
+  ];
+
+  // Generate random users on each render (changes with refresh)
+  const users = useMemo(() => {
+    const shuffled = [...userPool].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 5);
+  }, []);
 
   // Optimized avatar click handler with useCallback
   const handleAvatarClick = useCallback((index: number) => {
@@ -260,7 +271,7 @@ export const HeroSection = () => {
             <div className="flex -space-x-4">
               {users.map((user, idx) => (
                 <UserAvatar 
-                  key={idx} 
+                  key={`${user.name}-${idx}`} 
                   user={user} 
                   index={idx} 
                   handleClick={handleAvatarClick} 
