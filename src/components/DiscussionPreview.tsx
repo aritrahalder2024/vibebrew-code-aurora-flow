@@ -15,7 +15,7 @@ export const DiscussionPreview = () => {
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-white mb-2">
-            Live <span className="text-aurora-purple">Discussions</span>
+            Stories, Struggles & <span className="text-aurora-purple">Wins</span>
           </h2>
           <p className="text-white/70 text-lg font-medium mx-auto max-w-2xl">
             Share wins, ask for help, and level up together. It's your forum.
