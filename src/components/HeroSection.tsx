@@ -233,7 +233,7 @@ export const HeroSection = () => {
 
           <div className="mt-10 sm:mt-20 lg:mt-28"></div>
 
-          {/* Consistent email signup form with identical styling for all screen sizes */}
+          {/* Fixed email signup form with proper mobile button sizing */}
           <form onSubmit={handleSubmit} className="flex justify-center items-center mb-6 sm:mb-8 w-full max-w-[450px] mx-auto px-4 relative z-10">
             <div className="flex w-full glass-strong rounded-full border border-white/30 overflow-hidden shadow-2xl relative p-1 h-14 items-center gpu-accelerated"
                  style={{
@@ -254,12 +254,12 @@ export const HeroSection = () => {
                 disabled={isSubmitting}
                 variant="primary"
                 size="medium"
-                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full px-6 py-3 font-semibold relative overflow-hidden smooth-transform hover:scale-105 h-12 gpu-accelerated"
+                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full px-4 sm:px-6 py-3 font-semibold relative overflow-hidden smooth-transform hover:scale-105 h-12 min-w-[100px] sm:min-w-[120px] gpu-accelerated"
                 style={{
                   boxShadow: '0 0 25px rgba(255, 20, 147, 0.6), 0 0 50px rgba(138, 43, 226, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                 }}
               >
-                <span className="relative z-10 drop-shadow-lg">
+                <span className="relative z-10 drop-shadow-lg text-sm sm:text-base">
                   {isSubmitting ? "Joining..." : "Join waitlist"}
                 </span>
               </Button>
