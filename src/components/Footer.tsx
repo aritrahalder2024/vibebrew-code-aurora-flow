@@ -4,16 +4,17 @@ import { MessageCircle } from "lucide-react";
 export const Footer = () => {
   return (
     <footer className="backdrop-blur-md bg-white/5 border-t border-white/10 py-4 px-2 sm:px-6">
-      <div className="container mx-auto flex flex-col items-center space-y-3 sm:space-y-0 sm:py-2">
+      <div className="container mx-auto flex flex-col items-center space-y-1">
         {/* Top row: About, Terms, Privacy links */}
-        <div className="flex items-center justify-center space-x-6">
+        <div className="flex items-center justify-center space-x-9 mb-0.5">
           <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">About</a>
           <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">Terms</a>
           <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">Privacy</a>
         </div>
 
         {/* Middle row: Social icons, centered */}
-        <div className="flex items-center justify-center space-x-8 mt-2">
+        <div className="flex items-center justify-center space-x-10 my-1">
+          {/* Twitter */}
           <a
             href="https://x.com/_aritrahalder_"
             target="_blank"
@@ -21,7 +22,6 @@ export const Footer = () => {
             className="text-white/80 hover:text-white transition-colors"
             aria-label="Twitter"
           >
-            {/* Twitter icon (Lucide style) */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -36,6 +36,7 @@ export const Footer = () => {
               <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
             </svg>
           </a>
+          {/* Discord */}
           <a
             href="https://discord.gg/89SyJ5aG"
             target="_blank"
@@ -43,7 +44,7 @@ export const Footer = () => {
             className="text-white/80 hover:text-white transition-colors"
             aria-label="Discord server"
           >
-            {/* Discord circle mascot based on user reference */}
+            {/* Minimal outlined Discord face */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -55,12 +56,13 @@ export const Footer = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <circle cx="14" cy="14" r="11.5" />
-              <circle cx="10" cy="13" r="1.3" />
-              <circle cx="18" cy="13" r="1.3" />
-              <path d="M10.5 17q3 1.5 7-0.2" />
+              <circle cx="14" cy="14" r="9" />
+              <circle cx="11" cy="13" r="1.2" />
+              <circle cx="17" cy="13" r="1.2" />
+              <path d="M12 17.2q2 0.7 4 0" />
             </svg>
           </a>
+          {/* LinkedIn */}
           <a
             href="https://www.linkedin.com/in/aritra-halder/"
             target="_blank"
@@ -68,7 +70,6 @@ export const Footer = () => {
             className="text-white/80 hover:text-white transition-colors"
             aria-label="LinkedIn"
           >
-            {/* LinkedIn icon (Lucide style) */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -88,7 +89,7 @@ export const Footer = () => {
         </div>
 
         {/* Bottom row: Built with message */}
-        <div className="text-white/80 text-sm mt-2 text-center">
+        <div className="text-white/80 text-sm text-center mt-1">
           Built with <span className="text-yellow-300">✨</span> in public.
         </div>
       </div>
