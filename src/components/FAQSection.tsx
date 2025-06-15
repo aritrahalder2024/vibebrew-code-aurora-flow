@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Accordion,
@@ -15,7 +14,7 @@ export const FAQSection = React.memo(() => {
       id: "item-1",
       icon: <MessageSquare className="w-5 h-5" />,
       question: "What is 'vibe coding' and how is it different?",
-      answer: "Vibe coding is about more than just writing code—it's about building, learning, and collaborating in a positive, creative, and supportive environment. At Vibebrew, we believe coding should be fun, social, and inspiring, not just a solo grind."
+      answer: "Basically, with vibe coding, you just tell an AI the awesome app you're imagining, and it blasts out the code to make it happen. It's all about focusing on your big ideas and the creative vision, instead of getting bogged down in the old-school grind of writing every single line by hand!"
     },
     {
       id: "item-2", 
