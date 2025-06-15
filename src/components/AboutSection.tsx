@@ -28,7 +28,7 @@ export const AboutSection = React.memo(() => {
             Welcome to the <span className="text-aurora-purple">Vibebrew</span> Community
           </h2>
           <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed px-4">
-            Where passionate creators, developers, and innovators come together to build, share, and grow. 
+            Where passionate Vibe Coders, Creators, and Innovators come together to Build, Share, and Grow. 
             Join our thriving community of makers who are shaping the future of technology and culture.
           </p>
         </div>
