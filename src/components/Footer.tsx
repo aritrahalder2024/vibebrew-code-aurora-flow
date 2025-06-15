@@ -35,7 +35,7 @@ export const Footer = () => {
         
         {/* Right side - Built with message */}
         <div className="text-white/80 text-sm">
-          Built with <span className="text-yellow-300">✨</span> in public by curious minds.
+          Built with <span className="text-yellow-300">✨</span> in public.
         </div>
       </div>
     </footer>
