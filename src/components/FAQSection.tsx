@@ -1,3 +1,4 @@
+
 import React, { useMemo } from "react";
 import {
   Accordion,
@@ -67,7 +68,7 @@ export const FAQSection = React.memo(() => {
           </p>
         </div>
 
-        <div className="glass-strong rounded-3xl p-6 sm:p-8 relative overflow-hidden w-full max-w-4xl mx-auto">
+        <div className="glass-strong rounded-3xl p-4 sm:p-6 md:p-8 relative overflow-hidden w-full max-w-4xl mx-auto">
           <Accordion type="single" collapsible className="relative z-10">
             {faqs.map((faq) => (
               <AccordionItem 
@@ -76,21 +77,23 @@ export const FAQSection = React.memo(() => {
                 className="border-white/10 group hover:bg-white/5 rounded-xl transition-all duration-300"
               >
                 <AccordionTrigger 
-                  className="text-white hover:text-aurora-pink px-4 sm:px-6 py-4 text-left group-hover:scale-[1.02] transition-transform"
+                  className="text-white hover:text-aurora-pink px-3 sm:px-4 md:px-6 py-4 text-left group-hover:scale-[1.02] transition-transform [&>svg]:ml-2 [&>svg]:flex-shrink-0"
                   style={{ willChange: 'transform, color' }}
                 >
-                  <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
                     <div 
-                      className="p-2 bg-aurora-gradient rounded-lg group-hover:scale-110 transition-transform flex-shrink-0"
+                      className="p-2 bg-aurora-gradient rounded-lg group-hover:scale-110 transition-transform flex-shrink-0 mt-0.5"
                       style={{ willChange: 'transform' }}
                     >
                       {faq.icon}
                     </div>
-                    <span className="font-medium text-base sm:text-lg text-left whitespace-nowrap">{faq.question}</span>
+                    <span className="font-medium text-sm sm:text-base md:text-lg text-left leading-tight sm:leading-normal break-words hyphens-auto min-w-0 flex-1">
+                      {faq.question}
+                    </span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-white/70 px-4 sm:px-6 pb-6 text-sm sm:text-base leading-relaxed">
-                  <div className="ml-8 sm:ml-12">
+                <AccordionContent className="text-white/70 px-3 sm:px-4 md:px-6 pb-6 text-sm sm:text-base leading-relaxed">
+                  <div className="ml-8 sm:ml-10 md:ml-12 break-words">
                     {faq.answer}
                   </div>
                 </AccordionContent>
